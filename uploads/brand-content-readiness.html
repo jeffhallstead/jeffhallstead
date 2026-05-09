@@ -1076,7 +1076,32 @@ function submitGate() {
   st.name  = document.getElementById('f-name').value.trim();
   st.email = document.getElementById('f-email').value.trim();
   if (!st.email) { document.getElementById('f-email').focus(); return; }
-  // ── Integration point: POST { name, email, mode: st.mode } to your email platform ──
+
+  // Compute scores and send to Airtable via Netlify function
+  const ps = pillarScores();
+  const ov = overall(ps);
+  const t  = tier(ov);
+  const hed = headline(ps);
+  const ct  = cta(ps);
+
+  fetch('/.netlify/functions/submit-quiz', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name:               st.name,
+      email:              st.email,
+      mode:               st.mode,
+      overallScore:       ov,
+      tier:               tierLabel(t),
+      headline:           hed,
+      narrativeScore:     ps[0],
+      engineScore:        ps[1],
+      distributionScore:  ps[2],
+      commerceScore:      ps[3],
+      ctaRecommendation:  ct ? `${ct.type} — ${ct.hed}` : '',
+    }),
+  }).catch(() => {}); // fire-and-forget — don't block the user if it fails
+
   showCalc();
 }
 

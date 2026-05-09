@@ -1020,7 +1020,7 @@ function renderQ() {
   document.getElementById('prog-bar').style.width    = `${(qNum / 20) * 100}%`;
 
   const ghostNum = String(qNum).padStart(2, '0');
-  const letters  = ['A','B','C'];
+  const letters  = ['A','B','C','D'];
   const saved    = st.answers[st.qIdx];
 
   const optsHtml = q.opts.map((o, i) => `

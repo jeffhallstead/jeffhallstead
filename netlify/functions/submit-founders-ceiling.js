@@ -5,7 +5,7 @@ exports.handler = async function(event) {
 
   const AIRTABLE_TOKEN = process.env.AIRTABLE_API_TOKEN;
   const BASE_ID  = 'appIbbAkkBtxHFn3R';
-  const TABLE_ID = 'tbloqkiW7KdxQDlJW';
+  const TABLE_ID = 'tblVrNQFSeMVWOeTP';
 
   if (!AIRTABLE_TOKEN) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Missing Airtable token' }) };
@@ -16,19 +16,13 @@ exports.handler = async function(event) {
   catch { return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) }; }
 
   const fields = {
-    'Name':               body.name || '',
-    'Email':              body.email || '',
-    'Website':            body.website || '',
-    'Mode':               body.mode === 'own' ? 'Own Brand' : 'Client Brand',
-    'Overall Score':      body.overallScore,
-    'Tier':               body.tier,
-    'Profile Headline':   body.headline,
-    'Narrative Score':    body.narrativeScore,
-    'Engine Score':       body.engineScore,
-    'Distribution Score': body.distributionScore,
-    'Commerce Score':     body.commerceScore,
-    'CTA Recommendation': body.ctaRecommendation,
-    'Submitted At':       new Date().toISOString(),
+    'Name':            body.name || '',
+    'Email':           body.email || '',
+    'Website':         body.website || '',
+    'Score':           body.score,
+    'Tier':            body.tier,
+    'Signs Triggered': body.signsTriggered || '',
+    'Submitted At':    new Date().toISOString(),
   };
 
   try {

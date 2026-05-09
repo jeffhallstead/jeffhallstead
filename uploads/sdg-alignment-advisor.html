@@ -468,7 +468,23 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   </div>
 
   <div id="cta-block">
-    <div class="cta-actions">
+    <!-- Email gate (shown first) -->
+    <div id="sdg-gate" style="display:none;">
+      <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(34,212,245,0.8);margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+        Save Your Analysis
+        <span style="flex:1;height:1px;background:rgba(34,212,245,0.2);display:block;"></span>
+      </div>
+      <p style="font-size:14px;color:rgba(255,255,255,0.6);margin-bottom:20px;line-height:1.6;">Leave your details and we'll keep a copy of your SDG alignment analysis. Optional — skip to go straight to next steps.</p>
+      <input id="sdg-name"    type="text"  placeholder="Your name"          autocomplete="name"    style="display:block;width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:15px;padding:13px 16px;border-radius:2px;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box;">
+      <input id="sdg-email"   type="email" placeholder="Email address"      autocomplete="email"   style="display:block;width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:15px;padding:13px 16px;border-radius:2px;margin-bottom:10px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box;">
+      <input id="sdg-website" type="url"   placeholder="Website (optional)" autocomplete="url"     style="display:block;width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:15px;padding:13px 16px;border-radius:2px;margin-bottom:16px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;box-sizing:border-box;">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <button id="sdg-gate-submit" class="btn">save &amp; continue →</button>
+        <button id="sdg-gate-skip" style="background:none;border:none;color:rgba(255,255,255,0.35);font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-family:-apple-system,BlinkMacSystemFont,sans-serif;padding:0;">skip</button>
+      </div>
+    </div>
+    <!-- CTA actions (shown after gate) -->
+    <div id="sdg-cta-actions" style="display:none;" class="cta-actions">
       <a href="https://jeffhallstead.com/contact" class="btn" target="_blank">Book a Strategy Call →</a>
       <button class="btn btn-ghost" onclick="handleReset()">Start a New Analysis</button>
     </div>
@@ -560,15 +576,49 @@ function setHasMessages(yes) {
   chatWrap.classList.toggle('has-messages', yes);
 }
 
+const sdgGate       = document.getElementById('sdg-gate');
+const sdgCtaActions = document.getElementById('sdg-cta-actions');
+
 function showCTA() {
   inputArea.style.display = 'none';
   ctaBlock.style.display  = 'flex';
+  sdgGate.style.display   = 'block';
+  sdgCtaActions.style.display = 'none';
 }
 
 function showInput() {
   ctaBlock.style.display  = 'none';
   inputArea.style.display = 'flex';
 }
+
+function showCtaActions() {
+  sdgGate.style.display       = 'none';
+  sdgCtaActions.style.display = 'flex';
+}
+
+// ── SDG Gate submission ───────────────────────────────────
+document.getElementById('sdg-gate-submit').addEventListener('click', function() {
+  var name    = (document.getElementById('sdg-name').value    || '').trim();
+  var email   = (document.getElementById('sdg-email').value   || '').trim();
+  var website = (document.getElementById('sdg-website').value || '').trim();
+  if (!email) { document.getElementById('sdg-email').focus(); return; }
+
+  // Capture conversation: first user message and first assistant response
+  var userMsgs = thread.querySelectorAll('.msg.user .msg-bubble');
+  var asstMsgs = thread.querySelectorAll('.msg.assistant:not(.loading) .msg-bubble');
+  var missionDesc = userMsgs.length ? userMsgs[0].textContent.trim() : '';
+  var sdgAnalysis = asstMsgs.length ? asstMsgs[0].textContent.trim() : '';
+
+  fetch('/.netlify/functions/submit-sdg-advisor', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: name, email: email, website: website, missionDescription: missionDesc, sdgAnalysis: sdgAnalysis }),
+  }).catch(function() {});
+
+  showCtaActions();
+});
+
+document.getElementById('sdg-gate-skip').addEventListener('click', showCtaActions);
 
 function appendMessage(role, contentHtml, isLoading = false) {
   const div = document.createElement('div');

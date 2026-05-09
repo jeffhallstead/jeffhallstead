@@ -695,8 +695,9 @@
     <h2>See your full readiness profile</h2>
     <p class="lead">Enter your details to receive your results and personalized recommendations.</p>
     <div class="fields">
-      <input class="field" type="text"  id="f-name"  placeholder="Your name"     autocomplete="name">
-      <input class="field" type="email" id="f-email" placeholder="Email address" autocomplete="email">
+      <input class="field" type="text"  id="f-name"    placeholder="Your name"     autocomplete="name">
+      <input class="field" type="email" id="f-email"   placeholder="Email address" autocomplete="email">
+      <input class="field" type="url"   id="f-website" placeholder="Website (optional)" autocomplete="url">
     </div>
     <button class="btn btn-lg" onclick="submitGate()">view my results →</button>
     <button class="skip" onclick="skipGate()">skip — take me straight to results</button>
@@ -1073,8 +1074,9 @@ function advance() {
 // ═══════════════════════════════════════════════════════════════════
 
 function submitGate() {
-  st.name  = document.getElementById('f-name').value.trim();
-  st.email = document.getElementById('f-email').value.trim();
+  st.name    = document.getElementById('f-name').value.trim();
+  st.email   = document.getElementById('f-email').value.trim();
+  st.website = document.getElementById('f-website').value.trim();
   if (!st.email) { document.getElementById('f-email').focus(); return; }
 
   // Compute scores and send to Airtable via Netlify function
@@ -1090,6 +1092,7 @@ function submitGate() {
     body: JSON.stringify({
       name:               st.name,
       email:              st.email,
+      website:            st.website,
       mode:               st.mode,
       overallScore:       ov,
       tier:               tierLabel(t),

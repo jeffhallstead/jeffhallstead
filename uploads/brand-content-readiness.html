@@ -1247,7 +1247,7 @@ function buildAndShowResults() {
     var style = document.createElement('style');
     style.textContent = [
       '#site-nav{position:fixed;top:0;left:0;right:0;z-index:99999;display:flex;align-items:center;justify-content:space-between;padding:0 80px;height:64px;background:rgba(4,12,27,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.06);}',
-      '#site-nav .wordmark{font-family:"Rajdhani",sans-serif;font-weight:700;font-size:15px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;text-decoration:none;}',
+      '#site-nav .wordmark{font-family:"Rajdhani",sans-serif;font-weight:700;font-size:15px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;text-decoration:none;display:inline;margin-bottom:0;}',
       '#site-nav .nav-links{display:flex;gap:32px;align-items:center;}',
       '#site-nav .nav-links a{font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color 0.2s;font-family:-apple-system,BlinkMacSystemFont,sans-serif;}',
       '#site-nav .nav-links a:hover{color:#fff;}',
@@ -1268,6 +1268,12 @@ function buildAndShowResults() {
       '@media(min-width:961px){#site-nav .hamburger{display:none;}}'
     ].join('');
     document.head.appendChild(style);
+    if (!document.querySelector('link[href*="Rajdhani"]')) {
+      var rajdhani = document.createElement('link');
+      rajdhani.rel = 'stylesheet';
+      rajdhani.href = 'https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap';
+      document.head.appendChild(rajdhani);
+    }
     document.body.style.paddingTop = '64px';
     document.body.insertBefore(nav, document.body.firstChild);
 

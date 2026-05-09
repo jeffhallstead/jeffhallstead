@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Founder's Ceiling Quiz · Jeff Hallstead</title>
+<meta name="description" content="How Jeff Hallstead built a fully functional interactive quiz — from concept to deployed product — in under one hour, using an AI-native development workflow with zero lines of code written by hand.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jeff Hallstead">
+<meta property="og:title" content="Founder's Ceiling Quiz · Jeff Hallstead">
+<meta property="og:description" content="How Jeff Hallstead built a fully functional interactive quiz — from concept to deployed product — in under one hour, using an AI-native development workflow with zero lines of code written by hand.">
+<meta property="og:url" content="https://jeffhallstead.com/case-study-founders-ceiling-quiz.html">
+<meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Founder's Ceiling Quiz · Jeff Hallstead">
+<meta name="twitter:description" content="How Jeff Hallstead built a fully functional interactive quiz — from concept to deployed product — in under one hour, using an AI-native development workflow with zero lines of code written by hand.">
+<meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-deep:#040c1b; --bg-mid:#071426; --bg-card:#0d1e3c;
+  --accent-cyan:#22d4f5; --accent-cyan-dim:rgba(34,212,245,0.10);
+  --accent-orange:#e84c2b;
+  --text-primary:#ffffff; --text-secondary:rgba(255,255,255,0.65);
+  --text-tertiary:rgba(255,255,255,0.35);
+  --border-subtle:rgba(255,255,255,0.10);
+  --border-interactive:rgba(100,200,255,0.45);
+  --border-bright:rgba(34,212,245,0.70);
+  --font-wordmark:'Rajdhani',sans-serif;
+  --font-display:'Barlow',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg-deep); color:var(--text-secondary); font-family:var(--font-body); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 80px; height:64px; background:rgba(4,12,27,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); }
+.wordmark { font-family:var(--font-wordmark); font-weight:700; font-size:15px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-primary); text-decoration:none; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { font-family:var(--font-display); font-size:13px; color:var(--text-secondary); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text-primary); }
+.nav-links a.active { color:var(--text-primary); text-decoration:underline; text-underline-offset:4px; }
+.nav-links a.nav-quiz { color:var(--accent-cyan); border:1px solid rgba(34,212,245,0.35); padding:5px 14px; border-radius:2px; transition:background 0.2s,border-color 0.2s,color 0.2s; }
+.nav-links a.nav-quiz:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); color:var(--text-primary); }
+
+/* NAV DROPDOWN */
+.nav-dropdown { position:relative; display:flex; align-items:center; }
+.nav-dropdown-toggle { font-family:var(--font-display); font-size:13px; color:var(--text-secondary); cursor:pointer; display:flex; align-items:center; gap:5px; background:none; border:none; padding:0; transition:color 0.2s; }
+.nav-dropdown-toggle:hover, .nav-dropdown.open .nav-dropdown-toggle { color:var(--text-primary); }
+.nav-dropdown-toggle.active { color:var(--text-primary); }
+.nav-dropdown-chevron { display:inline-block; width:7px; height:7px; border-right:1px solid currentColor; border-bottom:1px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform 0.2s; }
+.nav-dropdown.open .nav-dropdown-chevron { transform:rotate(-135deg) translateY(-2px); }
+.nav-dropdown-menu { display:none; position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%); background:rgba(7,20,38,0.97); backdrop-filter:blur(12px); border:1px solid var(--border-subtle); min-width:210px; z-index:200; flex-direction:column; }
+.nav-dropdown.open .nav-dropdown-menu { display:flex; }
+.nav-dropdown-menu a { font-size:13px; color:var(--text-secondary); text-decoration:none; padding:12px 20px; border-bottom:1px solid rgba(255,255,255,0.07); transition:background 0.15s,color 0.15s; white-space:nowrap; }
+.nav-dropdown-menu a:last-child { border-bottom:none; }
+.nav-dropdown-menu a:hover { background:var(--accent-cyan-dim); color:var(--text-primary); }
+.nav-dropdown-menu a.active { color:var(--text-primary); }
+
+/* HERO */
+#hero { padding:140px 80px 80px; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
+.constellation { position:absolute; top:0; right:0; width:50%; height:100%; pointer-events:none; opacity:0.15; }
+.eyebrow { font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:16px; }
+hr.rule { width:200px; height:1px; background:rgba(255,255,255,0.15); border:none; margin:0 0 32px; }
+h1 { font-family:var(--font-display); font-weight:300; font-size:clamp(34px,4.5vw,60px); line-height:1.1; color:var(--text-primary); text-wrap:pretty; letter-spacing:-0.01em; max-width:700px; }
+.hero-sub { font-family:var(--font-display); font-style:italic; font-weight:300; font-size:18px; color:rgba(255,255,255,0.5); margin-top:12px; }
+
+/* PROOF STRIP */
+#proof-strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--border-subtle); }
+.proof-stat { padding:32px 40px; border-right:1px solid var(--border-subtle); }
+.proof-stat:last-child { border-right:none; }
+.proof-num { font-family:var(--font-display); font-weight:300; font-size:44px; line-height:1; color:var(--text-primary); margin-bottom:8px; }
+.proof-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); line-height:1.5; }
+
+/* CONTENT */
+.content-wrap { max-width:1200px; margin:0 auto; padding:0 80px; }
+.article-section { padding:72px 0; border-bottom:1px solid var(--border-subtle); }
+.article-section:last-child { border-bottom:none; }
+.section-intro { display:grid; grid-template-columns:240px 1fr; gap:72px; align-items:start; }
+.section-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-tertiary); padding-top:6px; position:sticky; top:88px; }
+.section-label span { display:block; color:var(--accent-cyan); font-size:9px; margin-bottom:6px; }
+h2 { font-family:var(--font-display); font-weight:400; font-size:clamp(22px,2.5vw,34px); line-height:1.15; color:var(--text-primary); text-wrap:pretty; margin-bottom:20px; letter-spacing:-0.01em; }
+h3 { font-family:var(--font-display); font-weight:500; font-size:17px; line-height:1.3; color:var(--text-primary); margin-bottom:10px; margin-top:28px; }
+h3:first-child { margin-top:0; }
+.body-text { font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:640px; }
+.body-text + .body-text { margin-top:16px; }
+.body-text strong { color:var(--text-primary); font-weight:500; }
+
+/* CHAPTER */
+.chapter { margin-top:32px; padding-top:32px; border-top:1px solid var(--border-subtle); }
+.chapter-label { font-family:var(--font-mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:12px; }
+
+/* KEY LIST */
+.key-list { list-style:none; display:flex; flex-direction:column; gap:0; margin-top:16px; }
+.key-list li { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:14px; color:var(--text-secondary); line-height:1.6; display:flex; gap:12px; align-items:flex-start; }
+.key-list li:last-child { border-bottom:none; }
+.key-list li::before { content:'—'; color:var(--accent-cyan); flex-shrink:0; margin-top:1px; }
+
+/* STEP LIST */
+.step-list { list-style:none; display:flex; flex-direction:column; gap:0; margin-top:16px; }
+.step-list li { padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:14px; color:var(--text-secondary); line-height:1.7; display:grid; grid-template-columns:48px 1fr; gap:12px; align-items:start; }
+.step-list li:last-child { border-bottom:none; }
+.step-num { font-family:var(--font-mono); font-size:10px; letter-spacing:0.12em; color:var(--accent-cyan); padding-top:2px; }
+
+/* CONTRAST GRID */
+.contrast-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; border:1px solid var(--border-subtle); margin-top:24px; }
+.contrast-cell { background:var(--bg-card); padding:28px 24px; }
+.contrast-cell-label { font-family:var(--font-mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:16px; }
+.contrast-cell p { font-size:14px; color:var(--text-secondary); line-height:1.8; }
+.contrast-cell p + p { margin-top:10px; }
+.contrast-cell strong { color:var(--text-primary); font-weight:500; }
+
+/* CTA BAND */
+.cta-band { background:var(--bg-mid); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); padding:64px 80px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px; }
+.cta-band h2 { font-size:clamp(22px,2.8vw,38px); font-weight:300; max-width:640px; }
+.btn-group { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+.btn { font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:0.05em; text-transform:lowercase; color:var(--text-primary); padding:13px 32px; border-radius:2px; background:transparent; border:1px solid var(--border-interactive); cursor:pointer; transition:background 0.2s,border-color 0.2s; text-decoration:none; display:inline-flex; align-items:center; }
+.btn:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); }
+.btn-ghost { border-color:rgba(255,255,255,0.18); color:var(--text-secondary); }
+.btn-ghost:hover { border-color:rgba(255,255,255,0.4); color:var(--text-primary); background:none; }
+
+/* FOOTER */
+footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); padding:32px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-copy { font-size:12px; color:var(--text-tertiary); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* FADE */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:960px) { nav{padding:0 32px;} .nav-links{gap:16px;} #hero{padding:120px 32px 64px;} .content-wrap{padding:0 32px;} .section-intro{grid-template-columns:1fr;gap:20px;} .section-label{position:static;} #proof-strip{grid-template-columns:repeat(2,1fr);} .proof-stat:nth-child(2){border-right:none;} .proof-stat:nth-child(3){border-top:1px solid var(--border-subtle);} .proof-stat:nth-child(4){border-top:1px solid var(--border-subtle);border-right:none;} .contrast-grid{grid-template-columns:1fr;} .cta-band{padding:56px 32px;} footer{padding:28px 32px;flex-direction:column;gap:16px;} }
+@media(max-width:600px) { nav{padding:0 20px;} .nav-links{gap:12px;} .nav-links a{font-size:12px;} #hero{padding:100px 24px 56px;} .content-wrap{padding:0 24px;} .article-section{padding:52px 0;} #proof-strip{grid-template-columns:repeat(2,1fr);} .proof-stat{padding:24px 20px;} .cta-band{padding:48px 24px;} footer{padding:24px;} .btn-group{flex-direction:column;align-items:center;} }
+
+/* ── HAMBURGER NAV ────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px; height: 16px;
+  background: none; border: none;
+  cursor: pointer; padding: 0; flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: rgba(255,255,255,0.75); border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 64px; left: 0; right: 0;
+    height: calc(100vh - 64px);
+    background: #040c1b;
+    flex-direction: column; padding: 32px 24px 64px;
+    gap: 0; z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > a {
+    font-size: 16px; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+  }
+  .nav-links > a.nav-quiz {
+    margin-top: 20px; margin-bottom: 12px; padding: 14px 0;
+    text-align: center; justify-content: center;
+    display: flex; border: none;
+  }
+  .nav-dropdown {
+    flex-direction: column; align-items: flex-start; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-dropdown-toggle {
+    font-size: 16px; padding: 14px 0; width: 100%;
+    justify-content: space-between;
+  }
+  .nav-dropdown-menu {
+    display: none;
+    position: static; transform: none; left: auto;
+    width: 100%; background: transparent; border: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding-left: 16px; min-width: 0;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: flex; }
+  .nav-dropdown-menu a {
+    font-size: 15px; padding: 10px 0; white-space: normal;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Jeff</a>
+    <a href="content-studio.html">Content Studio</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle active">Case Studies <span class="nav-dropdown-chevron"></span></button>
+      <div class="nav-dropdown-menu">
+        <a href="case-study-plf.html">Pour Les Femmes</a>
+        <a href="case-study-sae.html">SustainAble Exchange</a>
+        <a href="case-study-founders-ceiling-quiz.html" class="active">Founder's Ceiling Quiz</a>
+        <a href="case-study-sdg-advisor.html">SDG Alignment Advisor</a>
+      </div>
+    </div>
+    <a href="contact.html">Contact</a>
+    <a href="uploads/founders-ceiling-quiz.html" class="nav-quiz">Founder's Ceiling Quiz</a>
+    <a href="uploads/sdg-alignment-advisor.html" class="nav-quiz">SDG Alignment Advisor</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <svg class="constellation" viewBox="0 0 700 500" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+      <line x1="120" y1="80" x2="320" y2="160"/><line x1="320" y1="160" x2="500" y2="100"/>
+      <line x1="500" y1="100" x2="640" y2="220"/><line x1="200" y1="300" x2="420" y2="250"/>
+      <line x1="420" y1="250" x2="600" y2="340"/><line x1="80" y1="400" x2="280" y2="360"/>
+    </g>
+    <g fill="#22d4f5" opacity="0.7">
+      <circle cx="120" cy="80" r="2"/><circle cx="320" cy="160" r="2.5"/>
+      <circle cx="500" cy="100" r="2"/><circle cx="640" cy="220" r="1.5"/>
+      <circle cx="200" cy="300" r="2"/><circle cx="420" cy="250" r="2.5"/>
+      <circle cx="600" cy="340" r="2"/><circle cx="80" cy="400" r="1.5"/>
+      <circle cx="280" cy="360" r="2"/>
+    </g>
+  </svg>
+
+  <div class="eyebrow fade-up">Case Study</div>
+  <hr class="rule fade-up">
+  <h1 class="fade-up" style="transition-delay:0.1s">Founder's Ceiling Quiz</h1>
+  <div class="hero-sub fade-up" style="transition-delay:0.2s">Concept. Code. Deployed.</div>
+</section>
+
+<!-- PROOF STRIP -->
+<div id="proof-strip">
+  <div class="proof-stat fade-up">
+    <div class="proof-num">0→1</div>
+    <div class="proof-label">Fully functional interactive quiz<br>built from concept to live product</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.1s">
+    <div class="proof-num">&lt; 1 hr</div>
+    <div class="proof-label">Total time from brief<br>to deployed product</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.2s">
+    <div class="proof-num">0</div>
+    <div class="proof-label">Lines of code written<br>by the founder</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.3s">
+    <div class="proof-num">1</div>
+    <div class="proof-label">Non-technical founder.<br>One AI-native workflow.</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- THE BRIEF -->
+  <div class="article-section fade-up">
+    <div class="section-intro">
+      <div class="section-label"><span>The Brief</span>Building a diagnostic tool without a development team.</div>
+      <div>
+        <h2>The Brief</h2>
+        <p class="body-text">The Founder's Ceiling Quiz is an interactive diagnostic tool that lives on jeffhallstead.com — a structured assessment that walks founders through a set of targeted questions, scores their responses across key dimensions, and delivers a personalized result tied to a defined growth framework.</p>
+        <p class="body-text">The goal was straightforward: give website visitors something more valuable than a static page. A tool they could use, that would reflect the methodology behind the work, and that would create a natural entry point into a strategy conversation.</p>
+        <p class="body-text">The traditional path — briefing an agency, waiting on a developer, reviewing builds, iterating over weeks — wasn't the right fit. The need was real, the timeline was short, and the budget wasn't allocated to outside development. So the quiz was built a different way.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 01 — WORKFLOW -->
+  <div class="article-section fade-up">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 01</span>An AI-Native Development Process</div>
+      <div>
+        <h2>An AI-Native Development Process</h2>
+        <p class="body-text">Claude Code is Anthropic's AI-native development environment. It takes plain-language input and translates it directly into working code — no technical background required, no development team needed.</p>
+        <p class="body-text">The build process followed four steps:</p>
+
+        <ul class="step-list" style="margin-top:24px">
+          <li>
+            <span class="step-num">01</span>
+            <span><strong style="color:var(--text-primary);font-weight:500;">Define the logic in plain language.</strong><br>The questions, scoring model, and result categories were described conversationally — the way you'd explain the concept to a colleague. No technical specification. No wireframe. Just clear intent.</span>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <span><strong style="color:var(--text-primary);font-weight:500;">Claude Code generates the application.</strong><br>From that description, Claude Code produced the complete product: front-end interface, scoring logic, and result rendering — fully functional on first output.</span>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <span><strong style="color:var(--text-primary);font-weight:500;">Iterate conversationally.</strong><br>Adjustments to layout, question flow, and result copy were made by describing what needed to change. Claude Code updated the code in response. No back-and-forth with a developer. No ticket queue.</span>
+          </li>
+          <li>
+            <span class="step-num">04</span>
+            <span><strong style="color:var(--text-primary);font-weight:500;">Deploy.</strong><br>The finished quiz was embedded directly on the site and made live.</span>
+          </li>
+        </ul>
+
+        <p class="body-text" style="margin-top:28px">Total elapsed time: under one hour.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 02 — CONTRAST -->
+  <div class="article-section fade-up">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 02</span>Old Model vs. AI-Native Model</div>
+      <div>
+        <h2>Old Model vs. AI-Native Model</h2>
+        <p class="body-text">The difference between a traditional development workflow and an AI-native one isn't a matter of degree. It's structural.</p>
+
+        <div class="contrast-grid">
+          <div class="contrast-cell">
+            <div class="contrast-cell-label">The Old Model</div>
+            <p>Founder has an idea → writes a brief → hires a developer or agency → waits → reviews → revises → pays → deploys.</p>
+            <p><strong>Timeline:</strong> weeks to months.<br><strong>Cost:</strong> thousands of dollars.<br><strong>Control:</strong> limited.</p>
+          </div>
+          <div class="contrast-cell">
+            <div class="contrast-cell-label">The AI-Native Model</div>
+            <p>Founder has an idea → describes it in plain language → Claude Code builds it → founder iterates in real time → deploys.</p>
+            <p><strong>Timeline:</strong> hours.<br><strong>Cost:</strong> a fraction.<br><strong>Control:</strong> complete.</p>
+          </div>
+        </div>
+
+        <p class="body-text" style="margin-top:28px">The constraint is no longer technical capability. It's clarity of vision. If you can articulate what you want to build, the tools now exist to build it — fast, without a development team, and fully owned by you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 03 — PROOF OF CONCEPT -->
+  <div class="article-section fade-up">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 03</span>Proof of Concept for a Larger Offering</div>
+      <div>
+        <h2>Proof of Concept for a Larger Offering</h2>
+        <p class="body-text">The Founder's Ceiling Quiz is one example. The same workflow — describe, build, iterate, deploy — applies across a much broader surface area:</p>
+
+        <ul class="key-list">
+          <li>Lead capture tools and diagnostic assessments</li>
+          <li>Client-facing dashboards and calculators</li>
+          <li>Internal workflow automations</li>
+          <li>Custom onboarding experiences</li>
+          <li>Data collection and reporting interfaces</li>
+        </ul>
+
+        <p class="body-text" style="margin-top:24px">For clients evaluating what's possible in their own businesses, this is the signal: the barrier to building custom digital products has collapsed. What used to require an engineering team and a development budget can now be built in an afternoon by someone who has never written a line of code.</p>
+        <p class="body-text">This is what an AI-native product development workflow looks like in practice. And it's the foundation of how we work with clients.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band fade-up">
+  <h2>The Founder's Ceiling Quiz is a working example of what becomes possible when AI-native tools meet a founder with a clear vision — and proof that this workflow can be built for your business, too.</h2>
+  <div class="btn-group">
+    <a href="uploads/founders-ceiling-quiz.html" class="btn">take the founder's ceiling quiz →</a>
+    <a href="contact.html" class="btn btn-ghost">book a strategy call</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-copy">&copy; 2025 Jeff Hallstead · Momentive Ventures LLC</span>
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const fadeEls = document.querySelectorAll('.fade-up');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+fadeEls.forEach(el => obs.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    dd.classList.remove('open');
+  });
+});
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

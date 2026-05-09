@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You Have Something Worth Building · Jeff Hallstead</title>
+<meta name="description" content="Two decades inside the organizations doing the real work — as CEO, co-founder, and trusted advisor across brands, social enterprises, and media companies on three continents.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jeff Hallstead">
+<meta property="og:title" content="About Jeff Hallstead">
+<meta property="og:description" content="Two decades inside the organizations doing the real work — as CEO, co-founder, and trusted advisor across brands, social enterprises, and media companies on three continents.">
+<meta property="og:url" content="https://jeffhallstead.com/about.html">
+<meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Jeff Hallstead">
+<meta name="twitter:description" content="Two decades inside the organizations doing the real work — as CEO, co-founder, and trusted advisor across brands, social enterprises, and media companies on three continents.">
+<meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep:    #040c1b;
+  --bg-mid:     #071426;
+  --bg-card:    #0d1e3c;
+  --accent-cyan:     #22d4f5;
+  --accent-cyan-dim: rgba(34,212,245,0.10);
+  --accent-orange:   #e84c2b;
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255,255,255,0.65);
+  --text-tertiary:  rgba(255,255,255,0.35);
+  --border-subtle:      rgba(255,255,255,0.10);
+  --border-interactive: rgba(100,200,255,0.45);
+  --border-bright:      rgba(34,212,245,0.70);
+  --font-wordmark: 'Rajdhani', sans-serif;
+  --font-display:  'Barlow', sans-serif;
+  --font-body:     'Inter', sans-serif;
+  --font-mono:     'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ──────────────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 80px; height: 64px;
+  background: rgba(4,12,27,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 700; font-size: 15px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-primary); text-decoration: none;
+}
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-links a {
+  font-family: var(--font-display); font-size:13px;
+  color: var(--text-secondary); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a.active { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
+.nav-links a.nav-quiz {
+  color: var(--accent-cyan);
+  border: 1px solid rgba(34,212,245,0.35);
+  padding: 5px 14px; border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.nav-links a.nav-quiz:hover {
+  background: var(--accent-cyan-dim);
+  border-color: var(--border-bright);
+  color: var(--text-primary);
+}
+
+
+/* ── DROPDOWN ─────────────────────────────── */
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-toggle {
+  font-family: var(--font-display, 'Barlow', sans-serif); font-size: 13px;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  cursor: pointer; display: flex; align-items: center; gap: 5px;
+  background: none; border: none; padding: 0;
+  transition: color 0.2s;
+}
+.nav-dropdown-toggle:hover,
+.nav-dropdown.open .nav-dropdown-toggle { color: #ffffff; }
+.nav-dropdown-toggle.active { color: #ffffff; text-decoration: underline; text-underline-offset: 4px; }
+.nav-dropdown-chevron {
+  display: inline-block; width: 8px; height: 8px;
+  border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s;
+}
+.nav-dropdown.open .nav-dropdown-chevron { transform: rotate(-135deg) translateY(-2px); }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: calc(100% + 16px); left: 50%;
+  transform: translateX(-50%);
+  background: rgba(7,20,38,0.97); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10);
+  min-width: 200px; z-index: 200;
+  flex-direction: column;
+}
+.nav-dropdown.open .nav-dropdown-menu,
+.nav-dropdown:hover .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a {
+  font-family: var(--font-display, 'Barlow', sans-serif); font-size: 13px;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { background: rgba(34,212,245,0.08); color: #ffffff; }
+.nav-dropdown-menu a.active { color: #22d4f5; }
+
+/* ── HERO ─────────────────────────────────── */
+#hero {
+  padding: 140px 80px 0;
+  position: relative; overflow: hidden;
+}
+.constellation {
+  position: absolute; top:0; right:0; width:50%; height:100%;
+  pointer-events: none; opacity: 0.15;
+}
+.eyebrow {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-bottom: 16px;
+}
+hr.rule {
+  width: 200px; height: 1px; background: rgba(255,255,255,0.15);
+  border: none; margin: 0 0 32px;
+}
+h1 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(36px, 5vw, 66px); line-height: 1.08;
+  color: var(--text-primary); text-wrap: pretty;
+  letter-spacing: -0.01em; max-width: 760px;
+}
+
+/* ── HERO IMAGE ───────────────────────────── */
+.hero-image-wrap {
+  margin-top: 56px;
+  position: relative;
+}
+.hero-img {
+  width: 100%; max-height: 520px;
+  object-fit: cover; object-position: center top;
+  display: block;
+  filter: brightness(0.85);
+}
+.hero-caption {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-tertiary); padding: 12px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ── CONTENT LAYOUT ───────────────────────── */
+.content-wrap {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 80px;
+}
+
+/* ── ARTICLE SECTIONS ─────────────────────── */
+.article-section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.article-section:last-child { border-bottom: none; }
+
+.section-intro {
+  display: grid; grid-template-columns: 280px 1fr; gap: 80px;
+  align-items: start;
+}
+.section-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-tertiary); padding-top: 8px;
+  position: sticky; top: 88px;
+}
+.section-label span {
+  display: block; color: var(--accent-cyan);
+  font-size: 9px; letter-spacing: 0.1em; margin-bottom: 6px;
+}
+
+h2 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;
+  color: var(--text-primary); text-wrap: pretty;
+  margin-bottom: 24px; letter-spacing: -0.01em;
+}
+h3 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 18px; line-height: 1.3;
+  color: var(--text-primary); margin-bottom: 12px;
+}
+.body-text {
+  font-size: 16px; line-height: 1.8;
+  color: var(--text-secondary); max-width: 640px;
+}
+.body-text + .body-text { margin-top: 20px; }
+.body-text strong { color: var(--text-primary); font-weight: 500; }
+.body-text em { font-style: italic; color: rgba(255,255,255,0.75); }
+
+/* ── HOW IT WORKS STEPS ───────────────────── */
+.steps { display: flex; flex-direction: column; gap: 0; margin-top: 32px; }
+.step {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding: 24px 0; border-bottom: 1px solid var(--border-subtle);
+}
+.step:first-child { border-top: 1px solid var(--border-subtle); }
+.step-num {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 32px; color: rgba(34,212,245,0.2);
+  line-height: 1; min-width: 48px; flex-shrink: 0;
+  margin-top: -4px;
+}
+.step-body { flex: 1; }
+.step-title {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 16px; color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.step-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ── CASE STUDY CARDS ─────────────────────── */
+.case-study {
+  margin-top: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 36px 40px;
+  position: relative;
+}
+.case-study-tag {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-bottom: 16px;
+  display: block;
+}
+.case-study h3 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 22px; color: var(--text-primary);
+  margin-bottom: 20px; line-height: 1.2;
+}
+.case-study p { font-size: 15px; color: var(--text-secondary); line-height: 1.75; max-width: 640px; }
+.case-study p + p { margin-top: 16px; }
+.case-study .read-more {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 24px; font-family: var(--font-display); font-size: 13px;
+  color: var(--text-tertiary); text-decoration: none;
+  transition: color 0.2s;
+}
+.case-study .read-more:hover { color: var(--accent-cyan); }
+
+.sub-section { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border-subtle); }
+.sub-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-tertiary); margin-bottom: 8px;
+}
+
+/* ── CTA BAND ─────────────────────────────── */
+.cta-band {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 64px 80px;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 32px;
+}
+.cta-band h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 300; max-width: 560px; }
+.btn {
+  font-family: var(--font-display); font-weight:400; font-size:13px;
+  letter-spacing: 0.05em; text-transform: lowercase;
+  color: var(--text-primary); padding: 13px 32px;
+  border-radius: 2px; background: transparent;
+  border: 1px solid var(--border-interactive);
+  cursor: pointer; transition: background 0.2s, border-color 0.2s;
+  text-decoration: none; display:inline-flex; align-items:center;
+}
+.btn:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+
+/* ── BACKGROUND SECTION ───────────────────── */
+.bg-facts {
+  margin-top: 28px;
+  display: flex; flex-direction: column; gap: 0;
+}
+.bg-fact {
+  padding: 16px 0; border-bottom: 1px solid var(--border-subtle);
+  font-size: 15px; color: var(--text-secondary); line-height: 1.7;
+}
+.bg-fact:first-child { border-top: 1px solid var(--border-subtle); }
+
+/* ── FOOTER ───────────────────────────────── */
+footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-subtle);
+  padding: 32px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 12px; color: var(--text-tertiary); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* ── FADE-UP ──────────────────────────────── */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease, transform 0.65s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 960px) {
+  nav { padding: 0 32px; }
+  .nav-links { gap: 20px; }
+  #hero { padding: 120px 32px 0; }
+  .content-wrap { padding: 0 32px; }
+  .section-intro { grid-template-columns: 1fr; gap: 24px; }
+  .section-label { position: static; }
+  .cta-band { padding: 56px 32px; }
+  footer { padding: 28px 32px; flex-direction: column; gap: 16px; }
+  .case-study { padding: 28px; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 12px; }
+  #hero { padding: 100px 24px 0; }
+  .content-wrap { padding: 0 24px; }
+  .article-section { padding: 56px 0; }
+  .cta-band { padding: 48px 24px; }
+  footer { padding: 24px; }
+}
+
+/* ── HAMBURGER NAV ────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px; height: 16px;
+  background: none; border: none;
+  cursor: pointer; padding: 0; flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: rgba(255,255,255,0.75); border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 64px; left: 0; right: 0;
+    height: calc(100vh - 64px);
+    background: #040c1b;
+    flex-direction: column; padding: 32px 24px 64px;
+    gap: 0; z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > a {
+    font-size: 16px; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+  }
+  .nav-links > a.nav-quiz {
+    margin-top: 20px; margin-bottom: 12px; padding: 14px 0;
+    text-align: center; justify-content: center;
+    display: flex; border: none;
+  }
+  .nav-dropdown {
+    flex-direction: column; align-items: flex-start; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-dropdown-toggle {
+    font-size: 16px; padding: 14px 0; width: 100%;
+    justify-content: space-between;
+  }
+  .nav-dropdown-menu {
+    display: none;
+    position: static; transform: none; left: auto;
+    width: 100%; background: transparent; border: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding-left: 16px; min-width: 0;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: flex; }
+  .nav-dropdown-menu a {
+    font-size: 15px; padding: 10px 0; white-space: normal;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About Jeff</a>
+    <a href="content-studio.html">Content Studio</a>
+  <div class="nav-dropdown">
+    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <div class="nav-dropdown-menu">
+      <a href="case-study-plf.html">Pour Les Femmes</a>
+      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="case-study-founders-ceiling-quiz.html">Founder's Ceiling Quiz</a>
+      <a href="case-study-sdg-advisor.html">SDG Alignment Advisor</a>
+    </div>
+  </div>
+    <a href="contact.html">Contact</a>
+    <a href="uploads/founders-ceiling-quiz.html" class="nav-quiz">Founder's Ceiling Quiz</a>
+    <a href="uploads/sdg-alignment-advisor.html" class="nav-quiz">SDG Alignment Advisor</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" data-screen-label="01 Hero">
+  <svg class="constellation" viewBox="0 0 700 600" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+      <line x1="100" y1="80" x2="350" y2="180"/><line x1="350" y1="180" x2="520" y2="120"/>
+      <line x1="520" y1="120" x2="660" y2="240"/><line x1="200" y1="320" x2="430" y2="270"/>
+      <line x1="430" y1="270" x2="610" y2="350"/><line x1="140" y1="460" x2="380" y2="420"/>
+      <line x1="380" y1="420" x2="560" y2="500"/>
+    </g>
+    <g fill="#22d4f5" opacity="0.7">
+      <circle cx="100" cy="80" r="2"/><circle cx="350" cy="180" r="2.5"/>
+      <circle cx="520" cy="120" r="2"/><circle cx="660" cy="240" r="1.5"/>
+      <circle cx="200" cy="320" r="2"/><circle cx="430" cy="270" r="2.5"/>
+      <circle cx="610" cy="350" r="2"/><circle cx="140" cy="460" r="1.5"/>
+      <circle cx="380" cy="420" r="2.5"/><circle cx="560" cy="500" r="2"/>
+    </g>
+  </svg>
+
+  <div class="eyebrow fade-up">About Jeff Hallstead</div>
+  <hr class="rule fade-up">
+  <h1 class="fade-up" style="transition-delay:0.1s">You Have Something Worth Building.</h1>
+
+  <div class="hero-image-wrap fade-up" style="transition-delay:0.2s">
+    <img class="hero-img"
+      src="https://storage.ghost.io/c/36/b9/36b93ecd-5910-419d-a7c7-bcb3fac7e88f/content/images/size/w1200/2026/04/Jeff-Meta-Beach-Cannes-2025-1.png"
+      alt="Jeff Hallstead at Meta Beach, Cannes Lions 2025"
+      onerror="this.style.display='none'">
+    <div class="hero-caption">Meta Beach, Cannes Lions 2025</div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- FINDING THE RIGHT PARTNER -->
+  <div class="article-section fade-up" data-screen-label="02 Intro">
+    <div class="section-intro">
+      <div class="section-label">
+        <span>The Challenge</span>
+        Finding the right partner to build it is the hard part.
+      </div>
+      <div>
+        <p class="body-text">Most founders don't struggle with vision. They struggle with the gap between what they see clearly and what the market understands about them — and with finding someone who can operate inside that gap without needing to be managed.</p>
+        <p class="body-text" style="margin-top:20px">I work with brands, social enterprises, and media companies as a fractional CEO, co-founder, and strategic operator. My job is to close the gap between where you are and where you need to be — through better positioning, stronger operations, or building the company itself.</p>
+        <div style="margin-top:32px">
+          <a href="contact.html" class="btn">book a strategy call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="article-section fade-up" data-screen-label="03 How It Works">
+    <div class="section-intro">
+      <div class="section-label">
+        <span>The Process</span>
+        Three steps. No ambiguity.
+      </div>
+      <div>
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <div class="step-title">Book a strategy call.</div>
+              <div class="step-desc">45 minutes. I'll give you a candid read on what I'm seeing and whether there's a fit worth pursuing. You'll leave with at least one useful insight regardless of whether we move forward.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <div class="step-title">Diagnostic.</div>
+              <div class="step-desc">A structured review of where you are, what the gap is, and what the highest-leverage moves are. Written output, ranked by priority — not a presentation, a working document.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <div class="step-title">Engagement.</div>
+              <div class="step-desc">A defined scope built around your actual problem — whether that's brand and messaging, fractional operations, or building the company from zero together.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="article-section fade-up" data-screen-label="04 Case Studies">
+    <div class="section-intro">
+      <div class="section-label">
+        <span>The Work</span>
+        Why I can help and how I know.
+      </div>
+      <div>
+        <h2>About Jeff</h2>
+        <p class="body-text">I've built companies from zero. I've run marketing functions for global brands. I've stepped in as the senior operational layer when founders needed someone who could hold strategy and execution in the same hand. The work below is the proof.</p>
+
+        <!-- Case Study 01 -->
+        <div class="case-study" style="margin-top:40px">
+          <span class="case-study-tag">Case Study 01 · Company Creation</span>
+          <h3>SustainAble Exchange</h3>
+          <p>Jeff co-founded <strong>SustainAble Exchange</strong>, a fintech tokenization platform at the intersection of ESG compliance, blockchain infrastructure, and sustainable finance. Working from concept to operational company, Jeff led the brand architecture, go-to-market positioning, and strategic partnership development for a platform designed to bring transparency and accountability to how ESG commitments are tracked, verified, and traded.</p>
+          <p>SustainAble Exchange is the kind of engagement that starts with a thesis and a market opportunity — and ends with a company that exists, has positioning, and is ready to grow. It's the proof of what's possible when the right operational layer shows up at the right moment.</p>
+          <a href="case-study-sae.html" class="read-more">Read the full SustainAble Exchange case study →</a>
+        </div>
+
+        <!-- Case Study 02 -->
+        <div class="case-study" style="margin-top:24px">
+          <span class="case-study-tag">Case Study 02 · Brand Scaling &amp; Transformation</span>
+          <h3>Pour Les Femmes</h3>
+          <p>Jeff led the digital transformation and growth of sleep/loungewear company <strong>Pour Les Femmes</strong>, relaunching the direct-to-consumer business and growing DTC revenue over 4x in the first year. Jeff led the global expansion of the brand, which now has customers in over 50 countries across the US, UK, EU, Australia, and Canada.</p>
+
+          <div class="sub-section">
+            <div class="sub-label">Integrated Marketing</div>
+            <p class="body-text" style="font-size:14px">Jeff created the marketing function for Pour Les Femmes — development, implementation, and ongoing oversight of social and paid media strategy across Facebook, Instagram, Twitter, LinkedIn, and YouTube.</p>
+          </div>
+
+          <div class="sub-section">
+            <div class="sub-label">Brand Partnerships</div>
+            <p class="body-text" style="font-size:14px">Jeff initiated partnerships with NBCUniversal Ad Sales to launch Pour Les Femmes on the NBCU Shoppable TV platform, and managed the Mastercard Europe relationship — including a co-branded awareness campaign in the UK, France, and Ireland that drove over 250K website visits.</p>
+          </div>
+
+          <div class="sub-section">
+            <div class="sub-label">Content Strategy</div>
+            <p class="body-text" style="font-size:14px">Jeff produced and directed <em>Pillow Talk</em>, an original series on sustainability and slow fashion hosted by Robin Wright, featuring guests including Jamie Lee Curtis, Chelsea Handler, and Amber Valletta. Launched on a monetized YouTube channel and as a podcast on Apple iTunes and Spotify.</p>
+          </div>
+
+          <div class="sub-section">
+            <div class="sub-label">Social Impact</div>
+            <p class="body-text" style="font-size:14px">Jeff created and co-founded the Pour Les Femmes Foundation, a 501(c)(3) public charity. He led the PR launch during UNGA week in New York, including a private event at Tavern on the Green sponsored by Salesforce and a panel at the Clinton Global Initiative with welcome remarks by Secretary Clinton. In 2023, Jeff worked with co-founder Robin Wright and Jack Dorsey's #startsmall team on a $250,000 grant to support women and children in conflict regions of Eastern Congo.</p>
+          </div>
+
+          <a href="case-study-plf.html" class="read-more">Read the full Pour Les Femmes case study →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKGROUND -->
+  <div class="article-section fade-up" data-screen-label="05 Background">
+    <div class="section-intro">
+      <div class="section-label">
+        <span>Background</span>
+        Further background.
+      </div>
+      <div>
+        <h2>Further Background</h2>
+        <p class="body-text">Jeff began his career as a strategy consultant at Viant, working with Sony Pictures Entertainment and Diageo/Burger King on new digital media initiatives. As an alum of Nielsen, WPP/Kantar Media, and Comscore, he has helped launch Linear, VOD, and Advanced TV measurement capabilities connecting national and local Automotive, CPG, and Political advertisers with targeted, addressable, cross-platform audiences with MVPD partners including Comcast/Xfinity, DIRECTV/AT&T, Dish/Sling, and Spectrum.</p>
+        <p class="body-text" style="margin-top:16px">Jeff has worked with media clients including Warner Bros., Amazon Studios, Disney, Universal, Paramount, as well as cable networks including Warner Bros/Discovery Networks, Comcast Cable Networks, A+E Networks, and more.</p>
+
+        <div class="bg-facts" style="margin-top:32px">
+          <div class="bg-fact">BA, University of Virginia &nbsp;·&nbsp; MBA, USC Marshall School of Business</div>
+          <div class="bg-fact">Undergraduate year abroad at Sciences Po-Paris and the Sorbonne-Paris IV &nbsp;·&nbsp; Speaks French</div>
+          <div class="bg-fact">Avid sailor, world traveler, and lifelong learner</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<!-- CTA BAND -->
+<div class="cta-band fade-up" data-screen-label="06 CTA">
+  <h2>Ready to close the gap?</h2>
+  <a href="contact.html" class="btn">book a strategy call</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">&copy; 2025 Jeff Hallstead · Momentive Ventures LLC</span>
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const fadeEls = document.querySelectorAll('.fade-up');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+fadeEls.forEach(el => obs.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    dd.classList.remove('open');
+  });
+});
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

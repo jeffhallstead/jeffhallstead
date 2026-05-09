@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Publisher Test — Brand Content Readiness Scorecard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #020810;
+      --s1:          #040C1B;
+      --s2:          #071426;
+      --s3:          #0D1E3C;
+      --s3h:         #102040;
+      --s3s:         #102448;
+      --teal:        #22D4F5;
+      --orange:      #E06050;
+      --orange-hot:  #E84C2B;
+      --white:       #FFFFFF;
+      --w65:         rgba(255,255,255,0.65);
+      --w35:         rgba(255,255,255,0.35);
+      --w15:         rgba(255,255,255,0.15);
+      --w10:         rgba(255,255,255,0.10);
+      --w05:         rgba(255,255,255,0.05);
+      --teal10:      rgba(34,212,245,0.10);
+      --ob:          rgba(232,76,43,0.50);
+      --ob-dim:      rgba(232,76,43,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px 100px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 580px;
+      padding-top: 60px;
+    }
+
+    /* ── Screens ── */
+    .screen { display: none; }
+    .screen.active {
+      display: block;
+      animation: up 0.3s ease forwards;
+    }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Wordmark ── */
+    .wordmark {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--w35);
+      margin-bottom: 52px;
+    }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      display: block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .rule {
+      display: block;
+      height: 1px;
+      background: var(--w10);
+      margin-bottom: 32px;
+    }
+
+    /* ── Typography ── */
+    h1 {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(42px, 8vw, 68px);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    h1 .accent { color: var(--teal); }
+
+    h2 {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(26px, 5vw, 42px);
+      font-weight: 300;
+      line-height: 1.18;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .lead {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--w65);
+      margin-bottom: 44px;
+    }
+
+    /* ── Progress header ── */
+    .prog-header { margin-bottom: 52px; }
+
+    .prog-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    #prog-pillar { color: var(--teal); }
+    #prog-q      { color: var(--w35); }
+
+    .prog-track {
+      height: 1px;
+      background: var(--w10);
+      overflow: visible;
+      position: relative;
+    }
+
+    .prog-fill {
+      height: 2px;
+      position: absolute;
+      top: -0.5px;
+      left: 0;
+      background: var(--teal);
+      transition: width 0.45s ease;
+    }
+
+    /* ── Question area ── */
+    .q-wrap { position: relative; }
+
+    .q-ghost {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      font-size: clamp(110px, 22vw, 160px);
+      line-height: 1;
+      color: rgba(255,255,255,0.03);
+      position: absolute;
+      top: -18px;
+      right: -8px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .q-text {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--white);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Option cards ── */
+    .options {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .opt {
+      border: 1px solid var(--w10);
+      border-left: 3px solid var(--ob-dim);
+      border-radius: 2px;
+      padding: 15px 18px;
+      cursor: pointer;
+      background: var(--s3);
+      transition: background 0.13s, border-color 0.13s, border-left-color 0.13s;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      user-select: none;
+    }
+
+    .opt:hover {
+      background: var(--s3h);
+      border-left-color: rgba(232,76,43,0.28);
+    }
+
+    .opt.selected {
+      border-color: var(--w15);
+      border-left: 3px solid var(--orange-hot);
+      background: var(--s3s);
+    }
+
+    .opt-key {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      color: var(--w35);
+      width: 14px;
+      flex-shrink: 0;
+      padding-top: 4px;
+    }
+
+    .opt.selected .opt-key { color: var(--teal); }
+
+    .opt-label {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--w65);
+    }
+
+    .opt.selected .opt-label { color: var(--white); }
+
+    /* ── Mode selection ── */
+    .modes {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 36px;
+    }
+
+    .mode {
+      border: 1px solid var(--w10);
+      border-left: 3px solid var(--ob-dim);
+      border-radius: 2px;
+      padding: 20px 20px;
+      cursor: pointer;
+      background: var(--s3);
+      transition: all 0.13s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .mode:hover {
+      background: var(--s3h);
+      border-left-color: rgba(232,76,43,0.28);
+    }
+
+    .mode.selected {
+      border-color: var(--w15);
+      border-left: 3px solid var(--orange-hot);
+      background: var(--s3s);
+    }
+
+    .mode-label {
+      font-size: 15px;
+      color: var(--w65);
+    }
+
+    .mode.selected .mode-label { color: var(--white); }
+
+    .radio {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 1px solid var(--w15);
+      transition: all 0.13s;
+      flex-shrink: 0;
+    }
+
+    .mode.selected .radio {
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--w15);
+      border-radius: 2px;
+      background: transparent;
+      padding: 12px 28px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      color: var(--w65);
+      cursor: pointer;
+      transition: border-color 0.13s, color 0.13s;
+      text-decoration: none;
+    }
+
+    .btn:hover:not(:disabled) {
+      border-color: var(--w35);
+      color: var(--white);
+    }
+
+    .btn:disabled {
+      border-color: var(--w05);
+      color: rgba(255,255,255,0.18);
+      cursor: not-allowed;
+    }
+
+    .btn-lg { padding: 15px 36px; font-size: 14px; }
+
+    /* ── Email gate ── */
+    .fields {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      background: var(--s3);
+      border: 1px solid var(--w10);
+      border-radius: 2px;
+      padding: 13px 16px;
+      color: var(--white);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.13s;
+      width: 100%;
+    }
+
+    .field:focus       { border-color: rgba(34,212,245,0.35); }
+    .field::placeholder { color: var(--w35); }
+
+    .skip {
+      background: none;
+      border: none;
+      color: var(--w35);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      text-decoration: underline;
+      padding: 0;
+      margin-top: 14px;
+      display: block;
+    }
+
+    .skip:hover { color: var(--w65); }
+
+    /* ── Calculating ── */
+    #screen-calc {
+      min-height: 60vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #screen-calc.active { display: flex; }
+
+    .calc-title {
+      font-family: 'Barlow', sans-serif;
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: var(--w65);
+      margin-bottom: 28px;
+    }
+
+    .dots span {
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      margin: 0 3px;
+      animation: blink 1.4s infinite;
+    }
+
+    .dots span:nth-child(2) { animation-delay: 0.2s; }
+    .dots span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0.15; transform: scale(0.7); }
+      40%           { opacity: 1;    transform: scale(1); }
+    }
+
+    /* ── Results ── */
+    .r-wordmark {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--w35);
+      margin-bottom: 52px;
+    }
+
+    .r-headline {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(20px, 3.5vw, 30px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.3;
+      color: var(--w65);
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    /* Score block */
+    .score-block {
+      border-top: 1px solid var(--w10);
+      padding-top: 36px;
+      margin-bottom: 52px;
+    }
+
+    .sec-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .sec-rule {
+      display: block;
+      height: 1px;
+      background: var(--w10);
+      margin-bottom: 28px;
+    }
+
+    .score-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 18px;
+    }
+
+    .score-num {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(72px, 14vw, 100px);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--orange);
+    }
+
+    .score-denom {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(24px, 5vw, 36px);
+      font-weight: 300;
+      color: var(--w35);
+    }
+
+    .tier-badge {
+      display: inline-block;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(34,212,245,0.3);
+      padding: 5px 12px;
+    }
+
+    /* Pillar bars */
+    .bars-section { margin-bottom: 52px; }
+
+    .bar-row { margin-bottom: 20px; }
+
+    .bar-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 9px;
+    }
+
+    .bar-name {
+      font-size: 13px;
+      color: var(--w65);
+    }
+
+    .bar-right {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .bar-score {
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--orange);
+    }
+
+    .bar-tier-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--w35);
+    }
+
+    .track {
+      height: 1px;
+      background: var(--w10);
+      position: relative;
+      overflow: visible;
+    }
+
+    .fill {
+      height: 2px;
+      width: 0;
+      position: absolute;
+      top: -0.5px;
+      left: 0;
+      background: var(--teal);
+      transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Narrative cards */
+    .narratives-section { margin-bottom: 52px; }
+
+    .narr-card {
+      border: 1px solid var(--w10);
+      border-left: 3px solid var(--ob);
+      border-radius: 2px;
+      padding: 18px 22px;
+      background: var(--s3);
+      margin-bottom: 8px;
+    }
+
+    .narr-pillar {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+
+    .narr-tier {
+      font-family: 'Barlow', sans-serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .narr-copy {
+      font-size: 13px;
+      line-height: 1.85;
+      color: var(--w65);
+    }
+
+    /* CTA block */
+    .cta-block {
+      border-top: 1px solid var(--w10);
+      padding-top: 52px;
+      margin-bottom: 52px;
+      text-align: center;
+    }
+
+    .cta-hed {
+      font-family: 'Barlow', sans-serif;
+      font-size: clamp(26px, 4.5vw, 38px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .cta-body {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--w65);
+      max-width: 380px;
+      margin: 0 auto 36px;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--w35);
+      text-decoration: none;
+      transition: color 0.13s;
+    }
+
+    .cta-link:hover { color: var(--teal); }
+    .cta-link::after { content: ' →'; }
+
+    /* Footer */
+    .r-footer {
+      text-align: center;
+      padding-top: 28px;
+      border-top: 1px solid var(--w10);
+    }
+
+    .r-footer p {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--w35);
+    }
+
+    .r-footer a { color: var(--w35); text-decoration: none; }
+    .r-footer a:hover { color: var(--teal); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      body { padding: 0 16px 80px; }
+      .wrap { padding-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══════════════════════════════ INTRO ══════════════════════════════ -->
+  <div class="screen active" id="screen-intro">
+    <span class="wordmark">Jeff Hallstead / Brand Content Readiness Assessment</span>
+    <span class="eyebrow">Brand Content Readiness · 20 Questions · ~10 Minutes</span>
+    <span class="rule"></span>
+    <h1>The Publisher<br><span class="accent">Test</span></h1>
+    <p class="lead">20 questions. Four pillars. A clear picture of where your content flywheel is working — and where it's not.</p>
+    <button class="btn btn-lg" onclick="goTo('screen-entry')">begin assessment →</button>
+  </div>
+
+  <!-- ══════════════════════════════ ENTRY ══════════════════════════════ -->
+  <div class="screen" id="screen-entry">
+    <span class="wordmark">Jeff Hallstead / Brand Content Readiness Assessment</span>
+    <span class="eyebrow">Before we begin</span>
+    <span class="rule"></span>
+    <h2>Who are you evaluating today?</h2>
+    <div class="modes">
+      <div class="mode" id="mode-own" onclick="pickMode('own')">
+        <span class="mode-label">My own brand</span>
+        <div class="radio"></div>
+      </div>
+      <div class="mode" id="mode-client" onclick="pickMode('client')">
+        <span class="mode-label">A client's brand</span>
+        <div class="radio"></div>
+      </div>
+    </div>
+    <button class="btn" id="entry-btn" disabled onclick="beginQuiz()">continue →</button>
+  </div>
+
+  <!-- ══════════════════════════════ QUESTION ══════════════════════════════ -->
+  <div class="screen" id="screen-q">
+    <div class="prog-header">
+      <div class="prog-meta">
+        <span id="prog-pillar">Pillar 1 of 4 — Brand Narrative</span>
+        <span id="prog-q">Question 1 of 20</span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" id="prog-bar" style="width:5%"></div>
+      </div>
+    </div>
+    <div id="q-body"></div>
+    <button class="btn" id="q-btn" disabled onclick="advance()">continue →</button>
+  </div>
+
+  <!-- ══════════════════════════════ EMAIL GATE ══════════════════════════════ -->
+  <div class="screen" id="screen-email">
+    <span class="eyebrow">Almost there</span>
+    <span class="rule"></span>
+    <h2>See your full readiness profile</h2>
+    <p class="lead">Enter your details to receive your results and personalized recommendations.</p>
+    <div class="fields">
+      <input class="field" type="text"  id="f-name"  placeholder="Your name"     autocomplete="name">
+      <input class="field" type="email" id="f-email" placeholder="Email address" autocomplete="email">
+    </div>
+    <button class="btn btn-lg" onclick="submitGate()">view my results →</button>
+    <button class="skip" onclick="skipGate()">skip — take me straight to results</button>
+  </div>
+
+  <!-- ══════════════════════════════ CALCULATING ══════════════════════════════ -->
+  <div class="screen" id="screen-calc">
+    <div class="calc-title">Calculating your profile</div>
+    <div class="dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- ══════════════════════════════ RESULTS ══════════════════════════════ -->
+  <div class="screen" id="screen-results"></div>
+
+</div><!-- /wrap -->
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════════════════
+
+const PILLARS = [
+  { id: 'narrative',     name: 'Brand Narrative',        short: 'Narrative' },
+  { id: 'engine',        name: 'Content Engine',          short: 'Engine' },
+  { id: 'distribution',  name: 'Distribution & Audience', short: 'Distribution' },
+  { id: 'commerce',      name: 'Commerce Connection',     short: 'Commerce' },
+];
+
+const QS = [
+  // Pillar 0 — Brand Narrative
+  { p: 0, text: "How would you describe the brand's core story?",
+    opts: [
+      { t: "We have a documented brand narrative — mission, founder story, and POV — that guides all content decisions.", s: 20 },
+      { t: "We have a general sense of our story but it lives in people's heads, not on paper.", s: 10 },
+      { t: "We haven't formally defined our brand narrative.", s: 0 },
+    ]
+  },
+  { p: 0, text: "Does the brand have a distinct, recognizable point of view on its category?",
+    opts: [
+      { t: "Yes — we have a clear perspective that differentiates us and we actively publish from that POV.", s: 20 },
+      { t: "We have opinions but they're not consistently expressed in our content.", s: 10 },
+      { t: "We mostly talk about our products or services without a strong editorial POV.", s: 0 },
+    ]
+  },
+  { p: 0, text: "Is there a founder or leader voice that the brand publishes under?",
+    opts: [
+      { t: "Yes — a named founder or leader has an established voice and publishes regularly.", s: 20 },
+      { t: "There's a potential founder voice but it hasn't been developed or used consistently.", s: 10 },
+      { t: "Content is published without a named voice or editorial identity.", s: 0 },
+    ]
+  },
+  { p: 0, text: "How well does the brand's content reflect its mission or values — not just its products?",
+    opts: [
+      { t: "Our content is clearly mission-driven — even product content is tied to a larger purpose.", s: 20 },
+      { t: "We talk about our values sometimes, but most content is product or promotion-focused.", s: 10 },
+      { t: "Content is primarily promotional. Mission and values rarely show up.", s: 0 },
+    ]
+  },
+  { p: 0, text: "If someone consumed only your brand's content for 30 days, could they articulate what you stand for?",
+    opts: [
+      { t: "Absolutely — our narrative is consistent and cumulative.", s: 20 },
+      { t: "They'd get a partial picture — some signal, but also a lot of noise.", s: 10 },
+      { t: "Probably not — our content is scattered and doesn't build toward a coherent story.", s: 0 },
+    ]
+  },
+  // Pillar 1 — Content Engine
+  { p: 1, text: "How would you describe your current content production capacity?",
+    opts: [
+      { t: "We have a defined team, process, and editorial calendar with consistent output.", s: 20 },
+      { t: "We produce content but it's reactive — when someone has time or an idea.", s: 10 },
+      { t: "Content production is ad hoc and often falls through the cracks.", s: 0 },
+    ]
+  },
+  { p: 1, text: "Does the brand have a defined content format strategy — specific formats matched to specific goals and platforms?",
+    opts: [
+      { t: "Yes — we've chosen formats intentionally (e.g., video series, podcast, newsletter) and produce them on a schedule.", s: 20 },
+      { t: "We use a few formats but haven't been strategic about which formats serve which goals.", s: 10 },
+      { t: "We post whatever's easiest in the moment without a format strategy.", s: 0 },
+    ]
+  },
+  { p: 1, text: "How would you rate the production quality of your content relative to your competitive set?",
+    opts: [
+      { t: "Above average — our content is visually and editorially differentiated.", s: 20 },
+      { t: "Comparable — we're roughly on par with what others in our category produce.", s: 10 },
+      { t: "Below average — we know quality is a gap but resources have been the constraint.", s: 0 },
+    ]
+  },
+  { p: 1, text: "Do you have a documented content brief or brand voice guide that anyone producing content can reference?",
+    opts: [
+      { t: "Yes — we have documented standards that ensure consistency across creators and formats.", s: 20 },
+      { t: "There are informal guidelines but nothing documented that a new creator could use.", s: 10 },
+      { t: "No documented standards exist.", s: 0 },
+    ]
+  },
+  { p: 1, text: "How far in advance is your content planned?",
+    opts: [
+      { t: "4+ weeks — we operate from a planned editorial calendar.", s: 20 },
+      { t: "1–2 weeks — we plan loosely but not far ahead.", s: 10 },
+      { t: "Day-of or week-of — content is almost always reactive.", s: 0 },
+    ]
+  },
+  // Pillar 2 — Distribution & Audience
+  { p: 2, text: "How would you describe the brand's owned audience assets (email list, SMS list, community)?",
+    opts: [
+      { t: "Substantial and growing — owned audiences are a core channel we actively invest in.", s: 20 },
+      { t: "We have a list or community but it's not a primary focus or growing consistently.", s: 10 },
+      { t: "We have minimal owned audience. We rely primarily on rented platforms.", s: 0 },
+    ]
+  },
+  { p: 2, text: "How many distribution platforms does the brand actively publish on?",
+    opts: [
+      { t: "4 or more platforms with consistent, platform-native content.", s: 20 },
+      { t: "2–3 platforms — some adaptation for each but not fully platform-native.", s: 10 },
+      { t: "1–2 platforms, or we cross-post the same content everywhere.", s: 0 },
+    ]
+  },
+  { p: 2, text: "Does the brand have a strategy for earned media or PR that amplifies original content?",
+    opts: [
+      { t: "Yes — we actively pitch content to press, partners, and platforms and have a track record of placement.", s: 20 },
+      { t: "We occasionally get coverage but don't have a proactive earned media strategy.", s: 10 },
+      { t: "We rely entirely on paid or owned channels — earned media isn't part of the plan.", s: 0 },
+    ]
+  },
+  { p: 2, text: "Does the brand work with creators, influencers, or strategic partners to extend content reach?",
+    opts: [
+      { t: "Yes — we have an active influencer or partner program integrated into our content strategy.", s: 20 },
+      { t: "We've done some influencer or partnership work but it's not systematic.", s: 10 },
+      { t: "We haven't meaningfully activated creators or partners for content distribution.", s: 0 },
+    ]
+  },
+  { p: 2, text: "How well does the brand understand its audience — demographics, behaviors, platform preferences, content consumption habits?",
+    opts: [
+      { t: "Very well — we have research, data, and feedback loops that inform content decisions.", s: 20 },
+      { t: "We have a general sense of our audience but limited data to validate assumptions.", s: 10 },
+      { t: "We're largely guessing about who our audience is and what they want.", s: 0 },
+    ]
+  },
+  // Pillar 3 — Commerce Connection
+  { p: 3, text: "Can you draw a clear line between specific content and specific revenue outcomes?",
+    opts: [
+      { t: "Yes — we have attribution data that connects content to conversions, sales, or pipeline.", s: 20 },
+      { t: "We believe content drives results but we can't measure it directly.", s: 10 },
+      { t: "We treat content as brand-building and don't attempt to connect it to revenue.", s: 0 },
+    ]
+  },
+  { p: 3, text: "Does the brand have a DTC or direct commerce channel that content can drive traffic to?",
+    opts: [
+      { t: "Yes — we have a functioning DTC channel optimized to convert content-driven traffic.", s: 20 },
+      { t: "We have a DTC channel but it's not optimized for content-to-commerce conversion.", s: 10 },
+      { t: "We don't have a direct commerce channel — we sell through retail or third-party platforms only.", s: 0 },
+      { t: "We're not a DTC brand / Not applicable.", s: 0 },
+    ]
+  },
+  { p: 3, text: "Does the brand use shoppable content formats, or content that directly enables purchase?",
+    opts: [
+      { t: "Yes — we actively produce shoppable content integrated into the purchase journey.", s: 20 },
+      { t: "We link to products from some content but haven't built shoppable formats deliberately.", s: 10 },
+      { t: "Content and commerce are entirely separate.", s: 0 },
+    ]
+  },
+  { p: 3, text: "How well does the brand use content to build and monetize its email or SMS list?",
+    opts: [
+      { t: "Content is a primary driver of list growth, and the list is actively monetized through campaigns.", s: 20 },
+      { t: "We capture some emails through content but the list isn't actively monetized.", s: 10 },
+      { t: "We don't use content to build or monetize an email or SMS list.", s: 0 },
+    ]
+  },
+  { p: 3, text: "Does the brand track content performance with metrics tied to business goals — not just engagement?",
+    opts: [
+      { t: "Yes — we track content against revenue, pipeline, LTV, or other business KPIs.", s: 20 },
+      { t: "We track engagement (likes, views, clicks) but not business outcomes.", s: 10 },
+      { t: "We don't consistently track content performance at all.", s: 0 },
+    ]
+  },
+];
+
+const NARRATIVES = {
+  narrative: {
+    publisher:   "Your brand narrative is a genuine asset. You have a documented story, an editorial POV, and a voice that compounds over time. This is the foundation the rest of the flywheel runs on.",
+    builder:     "You have the raw material for a strong brand narrative, but it's not fully systematized yet. The story exists — it just needs to be documented, sharpened, and used consistently as a publishing foundation.",
+    emerging:    "There are signals of a real story here, but content is getting produced without a clear narrative anchor. Without that foundation, content becomes noise rather than an asset that builds over time.",
+    'pre-launch':"The narrative foundation hasn't been built yet. Before investing in content production or distribution, the brand story needs to be defined — who you are, what you stand for, and why only you can tell this story.",
+  },
+  engine: {
+    publisher:   "You have a content machine: defined formats, consistent production, documented standards, and a forward-looking calendar. This is what separates brands that publish from brands that post.",
+    builder:     "The production infrastructure is taking shape, but consistency and quality are probably uneven. A few structural investments — in process, standards, or capacity — would unlock significantly more output.",
+    emerging:    "Content gets made, but the process is reactive. There's no engine yet — just a series of one-off efforts. Building a repeatable production system is the unlock at this stage.",
+    'pre-launch':"The content engine hasn't been built. Without a production process, format strategy, and editorial calendar, content will remain sporadic and won't compound into audience or authority.",
+  },
+  distribution: {
+    publisher:   "You've built real audience infrastructure — owned channels, platform diversity, and reach that doesn't entirely depend on rented platforms. This is a durable competitive advantage.",
+    builder:     "You have distribution reach but it's concentrated or underdeveloped in key areas. The priority is building owned audience assets and platform-native strategies before the rented platforms shift on you.",
+    emerging:    "Content is being produced but distribution is thin. You're publishing into a limited reach without the audience infrastructure to amplify it. Growing owned channels and activating earned media should be the immediate focus.",
+    'pre-launch':"Distribution infrastructure is largely absent. Owned audiences are minimal, and there's no systematic approach to earned or partner-driven reach. Building this layer is foundational before more content investment makes sense.",
+  },
+  commerce: {
+    publisher:   "Content is connected to commerce. You can measure what's working, you have direct channels to convert, and content is pulling real business weight — not just building brand.",
+    builder:     "There's a commerce layer, but content and conversion aren't fully connected yet. Attribution is fuzzy, shoppable formats are underused, or the DTC infrastructure isn't optimized for content-driven traffic.",
+    emerging:    "Content and commerce are operating in separate lanes. Content may be building awareness, but it's not systematically driving revenue — and there's no measurement in place to close that gap.",
+    'pre-launch':"Content isn't connected to commercial outcomes at all. Before investing further in content, the commerce infrastructure — DTC channel, attribution, list monetization — needs to be in place.",
+  },
+};
+
+const HEADLINES = {
+  'engine+narrative':       "You have ambition without architecture. The story and the machine both need to be built.",
+  'distribution+narrative': "You're producing content without a foundation or an audience to receive it.",
+  'commerce+narrative':     "Content is being made, but it's not anchored to a story or connected to revenue.",
+  'distribution+engine':    "You have a brand story — now it needs a production system and a platform strategy to carry it.",
+  'commerce+engine':        "The narrative is there. Building the production engine and the commerce connection will unlock the flywheel.",
+  'commerce+distribution':  "You can create content. Now build the audience infrastructure and commerce layer to make it work.",
+  'all-low':  "Every layer of the content flywheel is an opportunity. The good news: a clear playbook exists.",
+  'all-high': "You're operating near full flywheel capacity. The work now is optimization and scale.",
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════════
+
+const st = {
+  mode: null,
+  answers: Array(20).fill(null),
+  qIdx: 0,
+  selOpt: null,
+  name: '',
+  email: '',
+};
+
+// ═══════════════════════════════════════════════════════════════════
+// SCORING
+// ═══════════════════════════════════════════════════════════════════
+
+function pillarScores() {
+  return [0,1,2,3].map(pi =>
+    QS.reduce((sum, q, i) => q.p === pi ? sum + (st.answers[i] ?? 0) : sum, 0)
+  );
+}
+
+function overall(ps) {
+  return Math.round(ps.reduce((a,b) => a+b, 0) / 4);
+}
+
+function tier(s) {
+  if (s >= 80) return 'publisher';
+  if (s >= 55) return 'builder';
+  if (s >= 30) return 'emerging';
+  return 'pre-launch';
+}
+
+function tierLabel(t) {
+  return { publisher: 'Publisher', builder: 'Builder', emerging: 'Emerging', 'pre-launch': 'Pre-Launch' }[t];
+}
+
+function headline(ps) {
+  const ov = overall(ps);
+  const mn = Math.min(...ps), mx = Math.max(...ps);
+  const allSimilar = (mx - mn) <= 20;
+  if (allSimilar && ov < 50)  return HEADLINES['all-low'];
+  if (allSimilar && ov >= 70) return HEADLINES['all-high'];
+  const sorted = ps.map((s,i) => ({ s, id: PILLARS[i].id })).sort((a,b) => a.s - b.s);
+  const key = [sorted[0].id, sorted[1].id].sort().join('+');
+  return HEADLINES[key] || HEADLINES['all-low'];
+}
+
+function cta(ps) {
+  const ov = overall(ps);
+  const [narr, eng, dist] = ps;
+  if (narr >= 70 && (eng < 40 || dist < 40)) {
+    return { type: 'Content + Commerce', hed: "The story is there. Build the machine.", body: "You have the narrative asset. Now build the production engine and distribution infrastructure to put it to work at scale." };
+  }
+  if (ov >= 70 && ps.every(s => s >= 55)) {
+    return { type: 'Content + Commerce', hed: "You're ready to scale.", body: "Your foundation is solid. The next move is connecting content directly to commerce and activating the full flywheel. Let's talk about what that looks like for your brand." };
+  }
+  if (ov < 40 || narr < 30) {
+    return { type: 'Studio Development', hed: "Start with the story.", body: "Before production scale or distribution investment, the narrative foundation needs to be built. That's where we start — and it's the fastest path to everything else working." };
+  }
+  if (ov >= 40 && ov <= 69 && ps.filter(s => s < 55).length >= 2) {
+    return { type: 'Full-Stack Retainer', hed: "The gaps are structural — and fixable.", body: "A brand at your stage benefits most from integrated strategy across narrative, production, distribution, and commerce — not point solutions. Let's map the full picture together." };
+  }
+  return { type: 'Full-Stack Retainer', hed: "The gaps are structural — and fixable.", body: "A brand at your stage benefits most from integrated strategy across narrative, production, distribution, and commerce — not point solutions. Let's map the full picture together." };
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════════════
+
+function goTo(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// ENTRY
+// ═══════════════════════════════════════════════════════════════════
+
+function pickMode(m) {
+  st.mode = m;
+  document.getElementById('mode-own').classList.toggle('selected', m === 'own');
+  document.getElementById('mode-client').classList.toggle('selected', m === 'client');
+  document.getElementById('entry-btn').disabled = false;
+}
+
+function beginQuiz() {
+  st.qIdx = 0;
+  st.selOpt = null;
+  renderQ();
+  goTo('screen-q');
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// QUESTION
+// ═══════════════════════════════════════════════════════════════════
+
+function renderQ() {
+  const q    = QS[st.qIdx];
+  const qNum = st.qIdx + 1;
+  const pi   = q.p;
+
+  document.getElementById('prog-pillar').textContent = `Pillar ${pi+1} of 4 — ${PILLARS[pi].name}`;
+  document.getElementById('prog-q').textContent      = `Question ${qNum} of 20`;
+  document.getElementById('prog-bar').style.width    = `${(qNum / 20) * 100}%`;
+
+  const ghostNum = String(qNum).padStart(2, '0');
+  const letters  = ['A','B','C'];
+  const saved    = st.answers[st.qIdx];
+
+  const optsHtml = q.opts.map((o, i) => `
+    <li>
+      <div class="opt${(saved === o.s && st.selOpt === i) ? ' selected' : ''}"
+           onclick="pickOpt(${i}, ${o.s})">
+        <span class="opt-key">${letters[i]}</span>
+        <span class="opt-label">${o.t}</span>
+      </div>
+    </li>
+  `).join('');
+
+  document.getElementById('q-body').innerHTML = `
+    <div class="q-wrap">
+      <div class="q-ghost">${ghostNum}</div>
+      <p class="q-text">${q.text}</p>
+      <ul class="options">${optsHtml}</ul>
+    </div>
+  `;
+
+  const btn = document.getElementById('q-btn');
+  btn.disabled    = saved === null;
+  btn.textContent = st.qIdx === 19 ? 'see my results →' : 'continue →';
+}
+
+function pickOpt(idx, score) {
+  st.selOpt = idx;
+  st.answers[st.qIdx] = score;
+  document.querySelectorAll('.opt').forEach((el, i) => el.classList.toggle('selected', i === idx));
+  document.getElementById('q-btn').disabled = false;
+}
+
+function advance() {
+  if (st.answers[st.qIdx] === null) return;
+  if (st.qIdx < 19) {
+    st.qIdx++;
+    st.selOpt = null;
+    const scr = document.getElementById('screen-q');
+    scr.classList.remove('active');
+    void scr.offsetWidth;
+    scr.classList.add('active');
+    renderQ();
+  } else {
+    goTo('screen-email');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// EMAIL GATE
+// ═══════════════════════════════════════════════════════════════════
+
+function submitGate() {
+  st.name  = document.getElementById('f-name').value.trim();
+  st.email = document.getElementById('f-email').value.trim();
+  if (!st.email) { document.getElementById('f-email').focus(); return; }
+  // ── Integration point: POST { name, email, mode: st.mode } to your email platform ──
+  showCalc();
+}
+
+function skipGate() { showCalc(); }
+
+function showCalc() {
+  goTo('screen-calc');
+  setTimeout(buildAndShowResults, 1800);
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// RESULTS
+// ═══════════════════════════════════════════════════════════════════
+
+function buildAndShowResults() {
+  const ps  = pillarScores();
+  const ov  = overall(ps);
+  const ovt = tier(ov);
+  const hed = headline(ps);
+  const ct  = cta(ps);
+
+  const barsHtml = PILLARS.map((pl, i) => {
+    const sc = ps[i], t = tier(sc);
+    return `
+      <div class="bar-row">
+        <div class="bar-meta">
+          <span class="bar-name">${pl.name}</span>
+          <div class="bar-right">
+            <span class="bar-score">${sc}</span>
+            <span class="bar-tier-tag">${tierLabel(t)}</span>
+          </div>
+        </div>
+        <div class="track">
+          <div class="fill" data-w="${sc}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const narrHtml = PILLARS.map((pl, i) => {
+    const sc = ps[i], t = tier(sc);
+    return `
+      <div class="narr-card">
+        <div class="narr-pillar">${pl.name}</div>
+        <div class="narr-tier">${tierLabel(t)}</div>
+        <p class="narr-copy">${NARRATIVES[pl.id][t]}</p>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('screen-results').innerHTML = `
+    <span class="r-wordmark">Jeff Hallstead / Brand Content Readiness Assessment</span>
+
+    <p class="r-headline">&ldquo;${hed}&rdquo;</p>
+
+    <div class="score-block">
+      <span class="sec-eyebrow">Your Results</span>
+      <span class="sec-rule"></span>
+      <div class="score-row">
+        <span class="score-num">${ov}</span>
+        <span class="score-denom">/ 100</span>
+      </div>
+      <span class="tier-badge">${tierLabel(ovt)}</span>
+    </div>
+
+    <div class="bars-section">
+      <span class="sec-eyebrow">Pillar Breakdown</span>
+      <span class="sec-rule"></span>
+      ${barsHtml}
+    </div>
+
+    <div class="narratives-section">
+      <span class="sec-eyebrow">Readiness Profile</span>
+      <span class="sec-rule"></span>
+      ${narrHtml}
+    </div>
+
+    <div class="cta-block">
+      <span class="sec-eyebrow">${ct.type}</span>
+      <span class="sec-rule" style="max-width:80px"></span>
+      <h2 class="cta-hed">${ct.hed}</h2>
+      <p class="cta-body">${ct.body}</p>
+      <div class="cta-actions">
+        <a href="https://jeffhallstead.com/contact"
+           class="btn btn-lg"
+           target="_blank" rel="noopener">book a strategy call →</a>
+        <a href="https://jeffhallstead.com/content-studio"
+           class="cta-link"
+           target="_blank" rel="noopener">learn how the studio works</a>
+      </div>
+    </div>
+
+    <div class="r-footer">
+      <p>The Publisher Test — a tool by
+        <a href="https://jeffhallstead.com" target="_blank" rel="noopener">Jeff Hallstead</a>
+        / Brand Content Readiness Assessment</p>
+    </div>
+  `;
+
+  goTo('screen-results');
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.querySelectorAll('.fill').forEach(el => {
+        el.style.width = el.dataset.w + '%';
+      });
+    }, 80);
+  });
+}
+</script>
+</body>
+</html>

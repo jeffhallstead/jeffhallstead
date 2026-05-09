@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: SustainAble Exchange · Jeff Hallstead</title>
+<meta name="description" content="How Jeff Hallstead built SustainAble Exchange — an integrated brand, marketplace, and institutional platform connecting ESG-aligned organizations across sectors.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jeff Hallstead">
+<meta property="og:title" content="SustainAble Exchange · Jeff Hallstead">
+<meta property="og:description" content="How Jeff Hallstead built SustainAble Exchange — an integrated brand, marketplace, and institutional platform connecting ESG-aligned organizations across sectors.">
+<meta property="og:url" content="https://jeffhallstead.com/case-study-sae.html">
+<meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SustainAble Exchange · Jeff Hallstead">
+<meta name="twitter:description" content="How Jeff Hallstead built SustainAble Exchange — an integrated brand, marketplace, and institutional platform connecting ESG-aligned organizations across sectors.">
+<meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-deep:#040c1b; --bg-mid:#071426; --bg-card:#0d1e3c;
+  --accent-cyan:#22d4f5; --accent-cyan-dim:rgba(34,212,245,0.10);
+  --accent-orange:#e84c2b;
+  --text-primary:#ffffff; --text-secondary:rgba(255,255,255,0.65);
+  --text-tertiary:rgba(255,255,255,0.35);
+  --border-subtle:rgba(255,255,255,0.10);
+  --border-interactive:rgba(100,200,255,0.45);
+  --border-bright:rgba(34,212,245,0.70);
+  --font-wordmark:'Rajdhani',sans-serif;
+  --font-display:'Barlow',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg-deep); color:var(--text-secondary); font-family:var(--font-body); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 80px; height:64px; background:rgba(4,12,27,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); }
+.wordmark { font-family:var(--font-wordmark); font-weight:700; font-size:15px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-primary); text-decoration:none; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { font-family:var(--font-display); font-size:13px; color:var(--text-secondary); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text-primary); }
+.nav-links a.active { color:var(--text-primary); text-decoration:underline; text-underline-offset:4px; }
+.nav-links a.nav-quiz { color:var(--accent-cyan); border:1px solid rgba(34,212,245,0.35); padding:5px 14px; border-radius:2px; transition:background 0.2s,border-color 0.2s,color 0.2s; }
+.nav-links a.nav-quiz:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); color:var(--text-primary); }
+
+/* HERO */
+#hero { padding:140px 80px 80px; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
+.constellation { position:absolute; top:0; right:0; width:50%; height:100%; pointer-events:none; opacity:0.15; }
+.eyebrow { font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:16px; }
+hr.rule { width:200px; height:1px; background:rgba(255,255,255,0.15); border:none; margin:0 0 32px; }
+h1 { font-family:var(--font-display); font-weight:300; font-size:clamp(34px,4.5vw,60px); line-height:1.1; color:var(--text-primary); text-wrap:pretty; letter-spacing:-0.01em; max-width:700px; }
+.hero-sub { font-family:var(--font-display); font-style:italic; font-weight:300; font-size:18px; color:rgba(255,255,255,0.5); margin-top:12px; }
+
+/* PROOF STRIP */
+#proof-strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--border-subtle); }
+.proof-stat { padding:32px 40px; border-right:1px solid var(--border-subtle); }
+.proof-stat:last-child { border-right:none; }
+.proof-num { font-family:var(--font-display); font-weight:300; font-size:44px; line-height:1; color:var(--text-primary); margin-bottom:8px; }
+.proof-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); line-height:1.5; }
+
+/* CONTENT */
+.content-wrap { max-width:1200px; margin:0 auto; padding:0 80px; }
+.article-section { padding:72px 0; border-bottom:1px solid var(--border-subtle); }
+.article-section:last-child { border-bottom:none; }
+.section-intro { display:grid; grid-template-columns:240px 1fr; gap:72px; align-items:start; }
+.section-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-tertiary); padding-top:6px; position:sticky; top:88px; }
+.section-label span { display:block; color:var(--accent-cyan); font-size:9px; margin-bottom:6px; }
+h2 { font-family:var(--font-display); font-weight:400; font-size:clamp(22px,2.5vw,34px); line-height:1.15; color:var(--text-primary); text-wrap:pretty; margin-bottom:20px; letter-spacing:-0.01em; }
+h3 { font-family:var(--font-display); font-weight:500; font-size:17px; line-height:1.3; color:var(--text-primary); margin-bottom:10px; margin-top:28px; }
+h3:first-child { margin-top:0; }
+.body-text { font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:640px; }
+.body-text + .body-text { margin-top:16px; }
+.body-text strong { color:var(--text-primary); font-weight:500; }
+
+/* CHAPTER */
+.chapter { margin-top:32px; padding-top:32px; border-top:1px solid var(--border-subtle); }
+.chapter-label { font-family:var(--font-mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:12px; }
+
+/* KEY LIST */
+.key-list { list-style:none; display:flex; flex-direction:column; gap:0; margin-top:16px; }
+.key-list li { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:14px; color:var(--text-secondary); line-height:1.6; display:flex; gap:12px; align-items:flex-start; }
+.key-list li:last-child { border-bottom:none; }
+.key-list li::before { content:'—'; color:var(--accent-cyan); flex-shrink:0; margin-top:1px; }
+
+/* PARTNER GRID */
+.partner-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; border:1px solid var(--border-subtle); margin-top:24px; }
+.partner-card { background:var(--bg-card); padding:24px; }
+.partner-name { font-family:var(--font-display); font-weight:500; font-size:14px; color:var(--text-primary); margin-bottom:8px; }
+.partner-desc { font-size:13px; color:var(--text-secondary); line-height:1.65; }
+
+/* CONTENT GRID */
+.content-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; border:1px solid var(--border-subtle); margin-top:24px; }
+.content-cell { background:var(--bg-card); padding:20px 24px; font-size:13px; color:var(--text-secondary); line-height:1.6; }
+.content-cell strong { display:block; color:var(--text-primary); font-size:12px; font-weight:500; font-family:var(--font-display); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+
+/* CTA BAND */
+.cta-band { background:var(--bg-mid); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); padding:64px 80px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px; }
+.cta-band h2 { font-size:clamp(22px,2.8vw,38px); font-weight:300; max-width:560px; }
+.btn { font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:0.05em; text-transform:lowercase; color:var(--text-primary); padding:13px 32px; border-radius:2px; background:transparent; border:1px solid var(--border-interactive); cursor:pointer; transition:background 0.2s,border-color 0.2s; text-decoration:none; display:inline-flex; align-items:center; }
+.btn:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); }
+
+/* FOOTER */
+footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); padding:32px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-copy { font-size:12px; color:var(--text-tertiary); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* FADE */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:960px) { nav{padding:0 32px;} .nav-links{gap:16px;} #hero{padding:120px 32px 64px;} .content-wrap{padding:0 32px;} .section-intro{grid-template-columns:1fr;gap:20px;} .section-label{position:static;} #proof-strip{grid-template-columns:repeat(2,1fr);} .proof-stat:nth-child(2){border-right:none;} .proof-stat:nth-child(3){border-top:1px solid var(--border-subtle);} .proof-stat:nth-child(4){border-top:1px solid var(--border-subtle);border-right:none;} .partner-grid{grid-template-columns:1fr;} .content-grid{grid-template-columns:1fr;} .cta-band{padding:56px 32px;} footer{padding:28px 32px;flex-direction:column;gap:16px;} }
+@media(max-width:600px) { nav{padding:0 20px;} .nav-links{gap:12px;} .nav-links a{font-size:12px;} #hero{padding:100px 24px 56px;} .content-wrap{padding:0 24px;} .article-section{padding:52px 0;} #proof-strip{grid-template-columns:repeat(2,1fr);} .proof-stat{padding:24px 20px;} .cta-band{padding:48px 24px;} footer{padding:24px;} }
+
+/* ── HAMBURGER NAV ────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px; height: 16px;
+  background: none; border: none;
+  cursor: pointer; padding: 0; flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: rgba(255,255,255,0.75); border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 64px; left: 0; right: 0;
+    height: calc(100vh - 64px);
+    background: #040c1b;
+    flex-direction: column; padding: 32px 24px 64px;
+    gap: 0; z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > a {
+    font-size: 16px; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+  }
+  .nav-links > a.nav-quiz {
+    margin-top: 20px; margin-bottom: 12px; padding: 14px 0;
+    text-align: center; justify-content: center;
+    display: flex; border: none;
+  }
+  .nav-dropdown {
+    flex-direction: column; align-items: flex-start; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-dropdown-toggle {
+    font-size: 16px; padding: 14px 0; width: 100%;
+    justify-content: space-between;
+  }
+  .nav-dropdown-menu {
+    display: none;
+    position: static; transform: none; left: auto;
+    width: 100%; background: transparent; border: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding-left: 16px; min-width: 0;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: flex; }
+  .nav-dropdown-menu a {
+    font-size: 15px; padding: 10px 0; white-space: normal;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Jeff</a>
+    <a href="content-studio.html">Content Studio</a>
+  <div class="nav-dropdown">
+    <button class="nav-dropdown-toggle active">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <div class="nav-dropdown-menu">
+      <a href="case-study-plf.html">Pour Les Femmes</a>
+      <a href="case-study-sae.html" class="active">SustainAble Exchange</a>
+      <a href="case-study-founders-ceiling-quiz.html">Founder's Ceiling Quiz</a>
+      <a href="case-study-sdg-advisor.html">SDG Alignment Advisor</a>
+    </div>
+  </div>
+    <a href="contact.html">Contact</a>
+    <a href="uploads/founders-ceiling-quiz.html" class="nav-quiz">Founder's Ceiling Quiz</a>
+    <a href="uploads/sdg-alignment-advisor.html" class="nav-quiz">SDG Alignment Advisor</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" data-screen-label="01 Hero">
+  <svg class="constellation" viewBox="0 0 700 500" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+      <line x1="80" y1="60" x2="280" y2="150"/><line x1="280" y1="150" x2="440" y2="90"/>
+      <line x1="440" y1="90" x2="620" y2="200"/><line x1="160" y1="280" x2="380" y2="230"/>
+      <line x1="380" y1="230" x2="580" y2="310"/><line x1="100" y1="420" x2="320" y2="380"/>
+    </g>
+    <g fill="#22d4f5" opacity="0.7">
+      <circle cx="80" cy="60" r="2"/><circle cx="280" cy="150" r="2.5"/>
+      <circle cx="440" cy="90" r="2"/><circle cx="620" cy="200" r="1.5"/>
+      <circle cx="160" cy="280" r="2"/><circle cx="380" cy="230" r="2.5"/>
+      <circle cx="580" cy="310" r="2"/><circle cx="100" cy="420" r="1.5"/>
+      <circle cx="320" cy="380" r="2"/>
+    </g>
+  </svg>
+
+  <div class="eyebrow fade-up">Case Study</div>
+  <hr class="rule fade-up">
+  <h1 class="fade-up" style="transition-delay:0.1s">SustainAble Exchange</h1>
+  <div class="hero-sub fade-up" style="transition-delay:0.2s">Brand. Platform. Market.</div>
+</section>
+
+<!-- PROOF STRIP -->
+<div id="proof-strip" data-screen-label="02 Results">
+  <div class="proof-stat fade-up">
+    <div class="proof-num">0→1</div>
+    <div class="proof-label">Full company created<br>from concept to platform</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.1s">
+    <div class="proof-num">10+</div>
+    <div class="proof-label">Affiliate member organizations<br>onboarded across sectors</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.2s">
+    <div class="proof-num">2</div>
+    <div class="proof-label">Major global summits<br>activated — Cannes &amp; UNGA</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.3s">
+    <div class="proof-num">17</div>
+    <div class="proof-label">UN SDG framework integrated<br>into the trading platform</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- OVERVIEW -->
+  <div class="article-section fade-up" data-screen-label="03 Overview">
+    <div class="section-intro">
+      <div class="section-label"><span>The Brief</span>Building a company from concept.</div>
+      <div>
+        <h2>The Brief</h2>
+        <p class="body-text">SustainAble Exchange is a fintech tokenization platform for the ESG market — a digital marketplace where corporations, municipalities, universities, foundations, and NGOs can create, track, and trade EnAble Tokens: digital contracts representing verified commitments to environmental and social impact across the 17 UN Sustainable Development Goals.</p>
+        <p class="body-text">The concept was ready. The capital was in place. What the company needed was someone to build it — to turn a compelling idea and an investor commitment into a functioning platform with a brand, a market presence, and a member network.</p>
+        <p class="body-text">As Co-Founder and operational lead, I came in to make it happen. That meant building everything from the ground up: product documentation, brand identity, animated explainer film, website, marketing infrastructure, social media, email, YouTube, PR, and a global events strategy that put SustainAble Exchange in the room with the world's most influential institutions working at the intersection of commerce and sustainability.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAND FILM -->
+  <div class="article-section fade-up" data-screen-label="04 Brand Film">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 01</span>Brand Film &amp; Content Strategy</div>
+      <div>
+        <h2>Telling the Story First</h2>
+        <p class="body-text">The first challenge with any new fintech platform — especially one operating in the emerging space of ESG tokenization — is the need for explanation. The product is genuinely novel. Before you can build a market, you have to build understanding.</p>
+        <p class="body-text">The strategic decision was to lead with a story. Before pitching members, before launching on social, before approaching institutional partners, we produced an original <strong>animated brand film</strong> to explain what SustainAble Exchange is, why it matters, and how EnAble Tokens work — in language that corporate ESG officers, family office investors, and NGO leaders could immediately connect with.</p>
+        <p class="body-text">The film anchored the website, anchored every in-person presentation, and gave the brand a visual and narrative identity it could build from. It established the tone that everything else — social, email, events — would follow.</p>
+
+        <div class="chapter">
+          <div class="chapter-label">Content Distribution Infrastructure</div>
+          <div class="content-grid">
+            <div class="content-cell"><strong>YouTube</strong>Brand channel with film &amp; updates</div>
+            <div class="content-cell"><strong>LinkedIn</strong>Institutional audience &amp; ESG community</div>
+            <div class="content-cell"><strong>Website</strong>sustainableexchange.com</div>
+            <div class="content-cell"><strong>Email</strong>Member &amp; prospect communications</div>
+            <div class="content-cell"><strong>Press &amp; PR</strong>Trade and sustainability media</div>
+            <div class="content-cell"><strong>Social Media</strong>Ongoing brand presence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAND BUILDING -->
+  <div class="article-section fade-up" data-screen-label="05 Brand Building">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 02</span>Brand Building</div>
+      <div>
+        <h2>Building the Identity</h2>
+        <p class="body-text">There was no brand when we started. No name treatment, no logo system, no design language, no visual vocabulary. The identity had to work across contexts that don't usually sit in the same room: a Cannes Lions networking event, a UN General Assembly side session, a corporate procurement conversation, an investor deck.</p>
+        <p class="body-text">It needed to signal credibility in financial markets while connecting to the values-driven language of ESG and sustainability.</p>
+
+        <div class="chapter">
+          <div class="chapter-label">Brand Deliverables</div>
+          <ul class="key-list">
+            <li>Logo and full visual identity system</li>
+            <li>Brand guidelines covering color, typography, and tone</li>
+            <li>Website design and build — sustainableexchange.com</li>
+            <li>Animated brand film — concept, script, production, and delivery</li>
+            <li>Social media presence — channel setup, content strategy, and ongoing management</li>
+            <li>Email marketing — list architecture, template design, and campaign infrastructure</li>
+            <li>PR strategy — media outreach and trade press positioning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKET PRESENCE -->
+  <div class="article-section fade-up" data-screen-label="06 Market Presence">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 03</span>Market Presence &amp; Events</div>
+      <div>
+        <h2>Taking the Brand to Market</h2>
+        <p class="body-text">A platform in the ESG space earns credibility by showing up where the world's most serious sustainability conversations are happening. The events strategy was built around two of the most significant annual convergence points for brands, corporations, and global institutions.</p>
+
+        <div class="chapter">
+          <div class="chapter-label">Cannes Lions International Festival of Creativity</div>
+          <p class="body-text">Cannes Lions is where the world's largest brands come together to discuss the future of marketing, purpose, and corporate responsibility. For SustainAble Exchange, it was the right room: global CMOs, sustainability leads, and brand partners exploring how to demonstrate genuine environmental and social commitment — exactly the audience for EnAble Token adoption.</p>
+        </div>
+
+        <div class="chapter">
+          <div class="chapter-label">UN General Assembly — Climate Week, New York</div>
+          <p class="body-text">UNGA and Climate Week represent the highest-level annual gathering of governments, institutions, NGOs, and corporate leaders working on the global sustainability agenda. SustainAble Exchange was present across multiple events, including:</p>
+          <ul class="key-list" style="margin-top:12px">
+            <li>The Nest Campus — a curated sustainability activation hub convening impact-driven organizations</li>
+            <li>The Clinton Global Initiative — bringing together heads of state, CEOs, and foundation leaders committed to action on global challenges</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATFORM & TECHNOLOGY -->
+  <div class="article-section fade-up" data-screen-label="07 Platform">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 04</span>Platform &amp; Technology</div>
+      <div>
+        <h2>The Infrastructure</h2>
+        <p class="body-text">Alongside brand and market presence, the company required a technology infrastructure capable of supporting institutional-grade transactions in a regulated environment. We assembled the technology and service partnerships to underpin a platform that could operate at scale and meet the compliance requirements of corporate and government members.</p>
+        <div class="partner-grid">
+          <div class="partner-card">
+            <div class="partner-name">Raptor Trading Systems</div>
+            <div class="partner-desc">Institutional-grade trading and settlement infrastructure, certified for securities trading environments</div>
+          </div>
+          <div class="partner-card">
+            <div class="partner-name">NVIDIA Inception Program</div>
+            <div class="partner-desc">Strategic support and access to AI and data technology for platform development</div>
+          </div>
+          <div class="partner-card">
+            <div class="partner-name">Invennium</div>
+            <div class="partner-desc">Technology development and platform engineering for the core trading infrastructure</div>
+          </div>
+        </div>
+        <p class="body-text" style="margin-top:24px">The platform supports creation, holding, and transfer of EnAble Tokens on a private, secure cloud network — with reporting available on a daily, hourly, and real-time basis to support internal tracking and external disclosure obligations under ESG and CSRD frameworks.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMBER NETWORK -->
+  <div class="article-section fade-up" data-screen-label="08 Member Network">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 05</span>Member Network</div>
+      <div>
+        <h2>Building the Community</h2>
+        <p class="body-text">A marketplace is only as valuable as the network it connects. Building SustainAble Exchange's member community meant identifying organizations whose missions, operations, and sustainability commitments aligned with the platform — and structuring engagement that would grow the network across sectors.</p>
+        <p class="body-text">Affiliate members span health and wellness, dental and sleep medicine, sustainable fashion, telehealth, senior care, financial advisory, environmental monitoring, and decontamination technology — reflecting the breadth of organizations across which ESG and SDG commitments are now embedded in commercial strategy.</p>
+        <p class="body-text">NGO and charitable members include Environmental Media Association (EMA) and Earthshot, extending the platform's reach into the impact and advocacy community. Technology and service partners provide the operational backbone for the marketplace.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band fade-up" data-screen-label="09 CTA">
+  <h2>SustainAble Exchange is a blueprint for what's possible when brand strategy, content, institutional presence, and platform infrastructure are built as a single integrated system.</h2>
+  <a href="contact.html" class="btn">book a strategy call</a>
+</div>
+
+<footer>
+  <span class="footer-copy">&copy; 2025 Jeff Hallstead · Momentive Ventures LLC</span>
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const fadeEls = document.querySelectorAll('.fade-up');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+fadeEls.forEach(el => obs.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    dd.classList.remove('open');
+  });
+});
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

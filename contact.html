@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact · Jeff Hallstead</title>
+<meta name="description" content="Book a strategy call with Jeff Hallstead. A focused session to map where you are, where you want to go, and where the strategic gap is.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jeff Hallstead">
+<meta property="og:title" content="Contact · Jeff Hallstead">
+<meta property="og:description" content="Book a strategy call with Jeff Hallstead. A focused session to map where you are, where you want to go, and where the strategic gap is.">
+<meta property="og:url" content="https://jeffhallstead.com/contact.html">
+<meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact · Jeff Hallstead">
+<meta name="twitter:description" content="Book a strategy call with Jeff Hallstead. A focused session to map where you are, where you want to go, and where the strategic gap is.">
+<meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
+<template id="__bundler_thumbnail" data-bg-color="#040c1b">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#040c1b"/>
+    <rect width="600" height="800" fill="#071426"/>
+    <rect x="80" y="180" width="300" height="40" rx="2" fill="rgba(255,255,255,0.10)"/>
+    <rect x="80" y="240" width="240" height="14" rx="2" fill="rgba(255,255,255,0.06)"/>
+    <rect x="80" y="262" width="260" height="14" rx="2" fill="rgba(255,255,255,0.05)"/>
+    <rect x="680" y="160" width="440" height="36" rx="2" fill="rgba(255,255,255,0.08)"/>
+    <rect x="680" y="220" width="440" height="40" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+    <rect x="680" y="280" width="440" height="40" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+    <rect x="680" y="340" width="440" height="80" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+    <rect x="680" y="440" width="160" height="40" rx="2" fill="none" stroke="rgba(100,200,255,0.45)" stroke-width="1.5"/>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-deep:    #040c1b;
+  --bg-mid:     #071426;
+  --bg-card:    #0d1e3c;
+  --accent-cyan:     #22d4f5;
+  --accent-cyan-dim: rgba(34,212,245,0.12);
+  --text-primary:   #ffffff;
+  --text-secondary: rgba(255,255,255,0.65);
+  --text-tertiary:  rgba(255,255,255,0.35);
+  --border-subtle:      rgba(255,255,255,0.10);
+  --border-interactive: rgba(100,200,255,0.45);
+  --border-bright:      rgba(34,212,245,0.70);
+  --font-wordmark: 'Rajdhani', sans-serif;
+  --font-display:  'Barlow', sans-serif;
+  --font-body:     'Inter', sans-serif;
+  --font-mono:     'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── NAV ──────────────────────────────────── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 80px; height: 64px;
+  background: rgba(4,12,27,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 700; font-size: 15px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-primary); text-decoration: none;
+}
+.nav-links { display:flex; gap:32px; }
+.nav-links a {
+  font-family: var(--font-display); font-size:13px;
+  color: var(--text-secondary); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a.active { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
+.nav-links a.nav-quiz {
+  color: var(--accent-cyan);
+  border: 1px solid rgba(34,212,245,0.35);
+  padding: 5px 14px; border-radius: 2px;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.nav-links a.nav-quiz:hover {
+  background: var(--accent-cyan-dim);
+  border-color: var(--border-bright);
+  color: var(--text-primary);
+}
+
+/* ── PAGE ─────────────────────────────────── */
+.page-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  padding-top: 64px;
+}
+
+/* ── LEFT ─────────────────────────────────── */
+.contact-left {
+  background: var(--bg-mid);
+  padding: 100px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--border-subtle);
+  position: relative; overflow: hidden;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-bottom: 16px;
+}
+hr.rule {
+  width: 200px; height: 1px; background: rgba(255,255,255,0.15);
+  border: none; margin: 0 0 32px;
+}
+h1 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(32px, 3.5vw, 52px); line-height: 1.1;
+  color: var(--text-primary); text-wrap: pretty;
+  margin-bottom: 24px; letter-spacing: -0.01em;
+}
+.left-body {
+  font-size: 15px; line-height: 1.75; max-width: 400px;
+  color: var(--text-secondary);
+}
+.left-detail {
+  margin-top: 48px; padding-top: 32px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.detail-row {
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.detail-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-tertiary); min-width: 80px; margin-top: 2px;
+}
+.detail-val { font-size: 14px; color: var(--text-secondary); }
+
+/* Constellation bg */
+.constellation {
+  position: absolute; top:0; right:0; width:60%; height:100%;
+  pointer-events: none; opacity: 0.12;
+}
+
+/* ── RIGHT (form) ─────────────────────────── */
+.contact-right {
+  background: var(--bg-deep);
+  padding: 100px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.form-heading {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 22px; color: var(--text-primary);
+  margin-bottom: 40px; letter-spacing: -0.01em;
+}
+
+/* Form */
+form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
+
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.field input,
+.field textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px;
+  color: var(--text-primary);
+  font-family: var(--font-body); font-size: 15px;
+  padding: 12px 16px;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--text-tertiary); }
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--border-interactive);
+  background: rgba(34,212,245,0.04);
+}
+.field textarea {
+  resize: vertical; min-height: 120px; line-height: 1.6;
+}
+
+/* Error states */
+.field.error input,
+.field.error textarea { border-color: rgba(232,76,43,0.6); }
+.field-error {
+  font-size: 11px; color: rgba(232,76,43,0.8);
+  font-family: var(--font-mono); letter-spacing: 0.05em;
+  display: none;
+}
+.field.error .field-error { display: block; }
+
+.submit-btn {
+  font-family: var(--font-display); font-weight:400; font-size:13px;
+  letter-spacing: 0.05em; text-transform: lowercase;
+  color: var(--text-primary); padding: 13px 32px;
+  border-radius: 2px; background: transparent;
+  border: 1px solid var(--border-interactive);
+  cursor: pointer; transition: background 0.2s, border-color 0.2s;
+  align-self: flex-start; margin-top: 8px;
+}
+.submit-btn:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Success state */
+.success-msg {
+  display: none; flex-direction: column; gap: 16px;
+  padding: 32px; background: rgba(34,212,245,0.06);
+  border: 1px solid rgba(34,212,245,0.2); border-radius: 2px;
+  max-width: 480px;
+}
+.success-msg.visible { display: flex; }
+.success-title {
+  font-family: var(--font-display); font-weight:500;
+  font-size: 18px; color: var(--text-primary);
+}
+.success-body { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+/* ── FOOTER ───────────────────────────────── */
+footer {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border-subtle);
+  padding: 32px 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-copy { font-size: 12px; color: var(--text-tertiary); }
+.footer-center {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-tertiary); text-align: center;
+}
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 0 32px; }
+  .page-wrap { grid-template-columns: 1fr; }
+  .contact-left { padding: 80px 32px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  .contact-right { padding: 64px 32px; }
+  footer { padding: 28px 32px; flex-direction: column; text-align: center; gap: 16px; }
+}
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 20px; }
+  .contact-left, .contact-right { padding: 60px 24px; }
+}
+
+/* Fade-up */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* ── HAMBURGER NAV ────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px; height: 16px;
+  background: none; border: none;
+  cursor: pointer; padding: 0; flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: rgba(255,255,255,0.75); border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 64px; left: 0; right: 0;
+    height: calc(100vh - 64px);
+    background: #040c1b;
+    flex-direction: column; padding: 32px 24px 64px;
+    gap: 0; z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > a {
+    font-size: 16px; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+  }
+  .nav-links > a.nav-quiz {
+    margin-top: 20px; margin-bottom: 12px; padding: 14px 0;
+    text-align: center; justify-content: center;
+    display: flex; border: none;
+  }
+  .nav-dropdown {
+    flex-direction: column; align-items: flex-start; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-dropdown-toggle {
+    font-size: 16px; padding: 14px 0; width: 100%;
+    justify-content: space-between;
+  }
+  .nav-dropdown-menu {
+    display: none;
+    position: static; transform: none; left: auto;
+    width: 100%; background: transparent; border: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding-left: 16px; min-width: 0;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: flex; }
+  .nav-dropdown-menu a {
+    font-size: 15px; padding: 10px 0; white-space: normal;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Jeff</a>
+    <a href="content-studio.html">Content Studio</a>
+  <div class="nav-dropdown">
+    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <div class="nav-dropdown-menu">
+      <a href="case-study-plf.html">Pour Les Femmes</a>
+      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="case-study-founders-ceiling-quiz.html">Founder's Ceiling Quiz</a>
+      <a href="case-study-sdg-advisor.html">SDG Alignment Advisor</a>
+    </div>
+  </div>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="uploads/founders-ceiling-quiz.html" class="nav-quiz">Founder's Ceiling Quiz</a>
+    <a href="uploads/sdg-alignment-advisor.html" class="nav-quiz">SDG Alignment Advisor</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- LEFT COLUMN -->
+  <div class="contact-left">
+    <svg class="constellation" viewBox="0 0 500 800" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+        <line x1="200" y1="100" x2="380" y2="200"/><line x1="380" y1="200" x2="460" y2="140"/>
+        <line x1="300" y1="350" x2="450" y2="280"/><line x1="250" y1="500" x2="420" y2="450"/>
+        <line x1="420" y1="450" x2="490" y2="520"/><line x1="180" y1="650" x2="360" y2="600"/>
+        <line x1="360" y1="600" x2="470" y2="680"/>
+      </g>
+      <g fill="#22d4f5" opacity="0.8">
+        <circle cx="200" cy="100" r="2"/><circle cx="380" cy="200" r="2.5"/>
+        <circle cx="460" cy="140" r="1.5"/><circle cx="300" cy="350" r="2"/>
+        <circle cx="450" cy="280" r="2"/><circle cx="250" cy="500" r="2.5"/>
+        <circle cx="420" cy="450" r="1.5"/><circle cx="490" cy="520" r="2"/>
+        <circle cx="180" cy="650" r="2"/><circle cx="360" cy="600" r="2.5"/>
+        <circle cx="470" cy="680" r="1.5"/>
+      </g>
+    </svg>
+
+    <div class="fade-up">
+      <div class="eyebrow">Get in Touch</div>
+      <hr class="rule">
+      <h1>Let's Start a Conversation.</h1>
+      <p class="left-body">Share a bit about what you're working on, and Jeff will follow up directly to schedule a strategy call.</p>
+    </div>
+
+    <div class="left-detail fade-up" style="transition-delay:0.15s">
+      <div class="detail-row">
+        <span class="detail-label">Response</span>
+        <span class="detail-val">Within 48 hours</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">First Call</span>
+        <span class="detail-val">45-minute clarity conversation — no pitch, no obligation</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Who</span>
+        <span class="detail-val">Brands, social enterprises, and media companies</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT COLUMN — FORM -->
+  <div class="contact-right">
+    <div class="form-heading fade-up">Book a Strategy Call</div>
+
+    <form id="contact-form" novalidate class="fade-up" style="transition-delay:0.1s">
+      <div class="field" id="field-name">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name">
+        <span class="field-error">Please enter your name.</span>
+      </div>
+      <div class="field" id="field-email">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@organization.com" autocomplete="email">
+        <span class="field-error">Please enter a valid email address.</span>
+      </div>
+      <div class="field" id="field-org">
+        <label for="org">Organization</label>
+        <input type="text" id="org" name="org" placeholder="Company or project name">
+        <span class="field-error">Please enter your organization.</span>
+      </div>
+      <div class="field" id="field-message">
+        <label for="message">What are you working on?</label>
+        <textarea id="message" name="message" placeholder="Briefly describe what you're building and where you're stuck — the more context, the better."></textarea>
+        <span class="field-error">Please tell us what you're working on.</span>
+      </div>
+      <button type="submit" class="submit-btn">send my message</button>
+    </form>
+
+    <div class="success-msg" id="success-msg">
+      <div class="success-title">Message received.</div>
+      <p class="success-body">Jeff will follow up within 48 hours to schedule your clarity conversation. In the meantime, feel free to <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank" style="color:#22d4f5;text-decoration:none;border-bottom:1px solid rgba(34,212,245,0.35);">connect on LinkedIn</a>.</p>
+      <a href="index.html" style="font-family:'Barlow',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;margin-top:8px;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">← Back to home</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-copy">&copy; 2025 Jeff Hallstead · Momentive Ventures LLC</span>
+  <span class="footer-center">Advisory services for brands, social enterprises, and media companies.</span>
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+// Fade-up
+const fadeEls = document.querySelectorAll('.fade-up');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+fadeEls.forEach(el => obs.observe(el));
+
+// Form validation
+const form = document.getElementById('contact-form');
+const successMsg = document.getElementById('success-msg');
+
+function validate() {
+  let valid = true;
+  const name = document.getElementById('name');
+  const email = document.getElementById('email');
+  const org = document.getElementById('org');
+  const message = document.getElementById('message');
+
+  [['field-name', name, v => v.trim().length > 0],
+   ['field-email', email, v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())],
+   ['field-org', org, v => v.trim().length > 0],
+   ['field-message', message, v => v.trim().length > 10]
+  ].forEach(([id, el, test]) => {
+    const field = document.getElementById(id);
+    if (!test(el.value)) { field.classList.add('error'); valid = false; }
+    else field.classList.remove('error');
+  });
+  return valid;
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  if (!validate()) return;
+  const btn = form.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'sending...';
+  setTimeout(() => {
+    // Build mailto link with form data
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const org = document.getElementById('org').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const subject = encodeURIComponent('Strategy Call Request — ' + name);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Organization: ' + org + '\n\n' +
+      message
+    );
+    window.location.href = 'mailto:jeff@jeffhallstead.com?subject=' + subject + '&body=' + body;
+    form.style.display = 'none';
+    successMsg.classList.add('visible');
+  }, 800);
+});
+
+// Clear error on input
+document.querySelectorAll('input, textarea').forEach(el => {
+  el.addEventListener('input', () => {
+    const field = el.closest('.field');
+    if (field) field.classList.remove('error');
+  });
+});
+</script>
+
+<script>
+document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    dd.classList.remove('open');
+  });
+});
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

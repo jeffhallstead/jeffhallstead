@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Pour Les Femmes · Jeff Hallstead</title>
+<meta name="description" content="How Jeff Hallstead led the digital transformation of Pour Les Femmes, growing DTC revenue 4x in the first year and expanding the brand to customers in over 50 countries.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jeff Hallstead">
+<meta property="og:title" content="Pour Les Femmes · Jeff Hallstead">
+<meta property="og:description" content="How Jeff Hallstead led the digital transformation of Pour Les Femmes, growing DTC revenue 4x in the first year and expanding the brand to customers in over 50 countries.">
+<meta property="og:url" content="https://jeffhallstead.com/case-study-plf.html">
+<meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pour Les Femmes · Jeff Hallstead">
+<meta name="twitter:description" content="How Jeff Hallstead led the digital transformation of Pour Les Femmes, growing DTC revenue 4x in the first year and expanding the brand to customers in over 50 countries.">
+<meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-deep:#040c1b; --bg-mid:#071426; --bg-card:#0d1e3c;
+  --accent-cyan:#22d4f5; --accent-cyan-dim:rgba(34,212,245,0.10);
+  --accent-orange:#e84c2b;
+  --text-primary:#ffffff; --text-secondary:rgba(255,255,255,0.65);
+  --text-tertiary:rgba(255,255,255,0.35);
+  --border-subtle:rgba(255,255,255,0.10);
+  --border-interactive:rgba(100,200,255,0.45);
+  --border-bright:rgba(34,212,245,0.70);
+  --font-wordmark:'Rajdhani',sans-serif;
+  --font-display:'Barlow',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg-deep); color:var(--text-secondary); font-family:var(--font-body); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 80px; height:64px; background:rgba(4,12,27,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); }
+.wordmark { font-family:var(--font-wordmark); font-weight:700; font-size:15px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-primary); text-decoration:none; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { font-family:var(--font-display); font-size:13px; color:var(--text-secondary); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text-primary); }
+.nav-links a.active { color:var(--text-primary); text-decoration:underline; text-underline-offset:4px; }
+.nav-links a.nav-quiz { color:var(--accent-cyan); border:1px solid rgba(34,212,245,0.35); padding:5px 14px; border-radius:2px; transition:background 0.2s,border-color 0.2s,color 0.2s; }
+.nav-links a.nav-quiz:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); color:var(--text-primary); }
+
+/* HERO */
+#hero { padding:140px 80px 80px; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
+.constellation { position:absolute; top:0; right:0; width:50%; height:100%; pointer-events:none; opacity:0.15; }
+.eyebrow { font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:16px; }
+hr.rule { width:200px; height:1px; background:rgba(255,255,255,0.15); border:none; margin:0 0 32px; }
+h1 { font-family:var(--font-display); font-weight:300; font-size:clamp(34px,4.5vw,60px); line-height:1.1; color:var(--text-primary); text-wrap:pretty; letter-spacing:-0.01em; max-width:700px; }
+.hero-tag { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-tertiary); margin-top:20px; }
+
+/* PROOF STRIP */
+#proof-strip { display:grid; grid-template-columns:repeat(4,1fr); border-bottom:1px solid var(--border-subtle); }
+.proof-stat { padding:32px 40px; border-right:1px solid var(--border-subtle); }
+.proof-stat:last-child { border-right:none; }
+.proof-num { font-family:var(--font-display); font-weight:300; font-size:44px; line-height:1; color:var(--text-primary); margin-bottom:8px; }
+.proof-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); line-height:1.5; }
+
+/* CONTENT */
+.content-wrap { max-width:1200px; margin:0 auto; padding:0 80px; }
+.article-section { padding:72px 0; border-bottom:1px solid var(--border-subtle); }
+.article-section:last-child { border-bottom:none; }
+.section-intro { display:grid; grid-template-columns:240px 1fr; gap:72px; align-items:start; }
+.section-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-tertiary); padding-top:6px; position:sticky; top:88px; }
+.section-label span { display:block; color:var(--accent-cyan); font-size:9px; margin-bottom:6px; }
+h2 { font-family:var(--font-display); font-weight:400; font-size:clamp(22px,2.5vw,34px); line-height:1.15; color:var(--text-primary); text-wrap:pretty; margin-bottom:20px; letter-spacing:-0.01em; }
+h3 { font-family:var(--font-display); font-weight:500; font-size:17px; line-height:1.3; color:var(--text-primary); margin-bottom:10px; margin-top:28px; }
+h3:first-child { margin-top:0; }
+.body-text { font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:640px; }
+.body-text + .body-text { margin-top:16px; }
+.body-text strong { color:var(--text-primary); font-weight:500; }
+
+/* CHAPTER BLOCKS */
+.chapter { margin-top:32px; padding-top:32px; border-top:1px solid var(--border-subtle); }
+.chapter-label { font-family:var(--font-mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:12px; }
+
+/* KEY POINTS LIST */
+.key-list { list-style:none; display:flex; flex-direction:column; gap:0; margin-top:16px; }
+.key-list li { padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.07); font-size:14px; color:var(--text-secondary); line-height:1.6; display:flex; gap:12px; align-items:flex-start; }
+.key-list li:last-child { border-bottom:none; }
+.key-list li::before { content:'—'; color:var(--accent-cyan); flex-shrink:0; margin-top:1px; }
+
+/* CTA BAND */
+.cta-band { background:var(--bg-mid); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); padding:64px 80px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px; }
+.cta-band h2 { font-size:clamp(22px,2.8vw,38px); font-weight:300; max-width:520px; }
+.btn { font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:0.05em; text-transform:lowercase; color:var(--text-primary); padding:13px 32px; border-radius:2px; background:transparent; border:1px solid var(--border-interactive); cursor:pointer; transition:background 0.2s,border-color 0.2s; text-decoration:none; display:inline-flex; align-items:center; }
+.btn:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); }
+
+/* FOOTER */
+footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); padding:32px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-copy { font-size:12px; color:var(--text-tertiary); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* FADE */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:960px) { nav{padding:0 32px;} .nav-links{gap:16px;} #hero{padding:120px 32px 64px;} .content-wrap{padding:0 32px;} .section-intro{grid-template-columns:1fr;gap:20px;} .section-label{position:static;} #proof-strip{grid-template-columns:repeat(2,1fr);} .proof-stat:nth-child(2){border-right:none;} .proof-stat:nth-child(3){border-top:1px solid var(--border-subtle);} .proof-stat:nth-child(4){border-top:1px solid var(--border-subtle);border-right:none;} .cta-band{padding:56px 32px;} footer{padding:28px 32px;flex-direction:column;gap:16px;} }
+@media(max-width:600px) { nav{padding:0 20px;} .nav-links{gap:12px;} .nav-links a{font-size:12px;} #hero{padding:100px 24px 56px;} .content-wrap{padding:0 24px;} .article-section{padding:52px 0;} #proof-strip{grid-template-columns:repeat(2,1fr);} .proof-stat{padding:24px 20px;} .cta-band{padding:48px 24px;} footer{padding:24px;} }
+
+/* ── HAMBURGER NAV ────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px; height: 16px;
+  background: none; border: none;
+  cursor: pointer; padding: 0; flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 1.5px;
+  background: rgba(255,255,255,0.75); border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); }
+@media (max-width: 960px) {
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 64px; left: 0; right: 0;
+    height: calc(100vh - 64px);
+    background: #040c1b;
+    flex-direction: column; padding: 32px 24px 64px;
+    gap: 0; z-index: 99;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    overflow-y: auto;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links > a {
+    font-size: 16px; padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.75);
+  }
+  .nav-links > a.nav-quiz {
+    margin-top: 20px; margin-bottom: 12px; padding: 14px 0;
+    text-align: center; justify-content: center;
+    display: flex; border: none;
+  }
+  .nav-dropdown {
+    flex-direction: column; align-items: flex-start; width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-dropdown-toggle {
+    font-size: 16px; padding: 14px 0; width: 100%;
+    justify-content: space-between;
+  }
+  .nav-dropdown-menu {
+    display: none;
+    position: static; transform: none; left: auto;
+    width: 100%; background: transparent; border: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding-left: 16px; min-width: 0;
+  }
+  .nav-dropdown.open .nav-dropdown-menu { display: flex; }
+  .nav-dropdown-menu a {
+    font-size: 15px; padding: 10px 0; white-space: normal;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Jeff</a>
+    <a href="content-studio.html">Content Studio</a>
+  <div class="nav-dropdown">
+    <button class="nav-dropdown-toggle active">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <div class="nav-dropdown-menu">
+      <a href="case-study-plf.html" class="active">Pour Les Femmes</a>
+      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="case-study-founders-ceiling-quiz.html">Founder's Ceiling Quiz</a>
+      <a href="case-study-sdg-advisor.html">SDG Alignment Advisor</a>
+    </div>
+  </div>
+    <a href="contact.html">Contact</a>
+    <a href="uploads/founders-ceiling-quiz.html" class="nav-quiz">Founder's Ceiling Quiz</a>
+    <a href="uploads/sdg-alignment-advisor.html" class="nav-quiz">SDG Alignment Advisor</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" data-screen-label="01 Hero">
+  <svg class="constellation" viewBox="0 0 700 500" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+      <line x1="80" y1="60" x2="280" y2="150"/><line x1="280" y1="150" x2="440" y2="90"/>
+      <line x1="440" y1="90" x2="620" y2="200"/><line x1="160" y1="280" x2="380" y2="230"/>
+      <line x1="380" y1="230" x2="580" y2="310"/><line x1="100" y1="420" x2="320" y2="380"/>
+    </g>
+    <g fill="#22d4f5" opacity="0.7">
+      <circle cx="80" cy="60" r="2"/><circle cx="280" cy="150" r="2.5"/>
+      <circle cx="440" cy="90" r="2"/><circle cx="620" cy="200" r="1.5"/>
+      <circle cx="160" cy="280" r="2"/><circle cx="380" cy="230" r="2.5"/>
+      <circle cx="580" cy="310" r="2"/><circle cx="100" cy="420" r="1.5"/>
+      <circle cx="320" cy="380" r="2"/>
+    </g>
+  </svg>
+
+  <div class="eyebrow fade-up">Case Study</div>
+  <hr class="rule fade-up">
+  <h1 class="fade-up" style="transition-delay:0.1s">Pour Les Femmes</h1>
+  <div class="hero-tag fade-up" style="transition-delay:0.2s">Commerce · Community · Content</div>
+</section>
+
+<!-- PROOF STRIP -->
+<div id="proof-strip" data-screen-label="02 Results">
+  <div class="proof-stat fade-up">
+    <div class="proof-num">4x</div>
+    <div class="proof-label">DTC revenue growth,<br>year one</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.1s">
+    <div class="proof-num">20%</div>
+    <div class="proof-label">Continued growth,<br>year two</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.2s">
+    <div class="proof-num">50+</div>
+    <div class="proof-label">Countries reached<br>via DTC</div>
+  </div>
+  <div class="proof-stat fade-up" style="transition-delay:0.3s">
+    <div class="proof-num">6+</div>
+    <div class="proof-label">Distribution platforms<br>launched</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- OVERVIEW -->
+  <div class="article-section fade-up" data-screen-label="03 Overview">
+    <div class="section-intro">
+      <div class="section-label"><span>The Brief</span>An apparel brand on a mission.</div>
+      <div>
+        <h2>An Apparel Brand on a Mission</h2>
+        <p class="body-text">Pour Les Femmes is a sleep/loungewear company co-founded by Robin Wright. Prior to working with us, the brand had focused on its wholesale business, selling to retailers such as Saks, Neiman-Marcus, and Harrods.</p>
+        <p class="body-text">We understood that the brand was missing a huge opportunity to capture the growing online market for sleep and loungewear and leverage the audience and credibility of the brand's own celebrity co-founder. Starting in 2019, we partnered with Pour Les Femmes to re-launch their DTC business and activate their global audience of conscious customers interested in luxurious and sustainably made garments.</p>
+        <p class="body-text">We leveraged best-in-class marketing technology, the brand's own first-party data, and expertise in content strategy and audience targeting to build brand equity and drive revenue. As an outsourced CMO, we drove all aspects of marketing procurement, brand strategy, creative, marketing technology, social media, paid media, email/SMS, and globalization of the customer experience.</p>
+        <p class="body-text">The result? We grew DTC revenue 4x in the first year and 20% in the following year, while launching and growing the addressable audience across multiple platforms including Facebook, Instagram, TikTok, and YouTube.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT STRATEGY -->
+  <div class="article-section fade-up" data-screen-label="04 Content Strategy">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 01</span>Content Strategy, Development &amp; Distribution</div>
+      <div>
+        <h2>Content Strategy, Development &amp; Distribution</h2>
+        <p class="body-text">We developed, produced, and distributed <strong>Pillow Talk by Pour Les Femmes</strong> — an original series to extend the ethos of safety and comfort, especially as it extends to women helping other women. Hosted by Robin Wright, guests included Chelsea Handler, Jamie Lee Curtis, and Amber Valletta.</p>
+        <div class="chapter">
+          <div class="chapter-label">Media Distribution</div>
+          <ul class="key-list">
+            <li>Monetized YouTube channel in partnership with YouTube's team</li>
+            <li>Available on <a href="https://vimeo.com/pourlesfemmes" target="_blank" style="color:var(--accent-cyan);text-decoration:none;">Vimeo</a> and as a dedicated <a href="https://channelstore.roku.com/details/9979719459c58f8f8280b045641e0370/pour-les-femmes-tv" target="_blank" style="color:var(--accent-cyan);text-decoration:none;">Roku</a> channel</li>
+            <li>Podcast on <a href="https://podcasts.apple.com/us/podcast/pillow-talk-by-pour-les-femmes/id1625912535" target="_blank" style="color:var(--accent-cyan);text-decoration:none;">Apple iTunes</a>, <a href="https://open.spotify.com/show/3MJWgTxkv5d7yLnsSBNV4T" target="_blank" style="color:var(--accent-cyan);text-decoration:none;">Spotify</a>, <a href="https://www.iheart.com/podcast/867-pillow-talk-by-pour-les-fe-101734221/" target="_blank" style="color:var(--accent-cyan);text-decoration:none;">iHeart Radio</a>, Google Play, and more</li>
+          </ul>
+        </div>
+        <div class="chapter">
+          <div class="chapter-label">Influencer Marketing &amp; UGC</div>
+          <p class="body-text">We launched a community-building and collaboration platform to grow and manage affiliate relationships with influencers. We managed and measured the impact of our celebrity gifting program across some of the biggest names in the entertainment business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BRAND BUILDING -->
+  <div class="article-section fade-up" data-screen-label="05 Brand Building">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 02</span>Brand Building</div>
+      <div>
+        <h2>Brand Building</h2>
+        <p class="body-text">The Pour Les Femmes brand represents a beautiful, sustainably made, and high-quality product. Our activation strategy was built on this brand identity to create emotional connections with customers — increasing loyalty and growing sales.</p>
+        <div class="chapter">
+          <div class="chapter-label">Community</div>
+          <p class="body-text">We conducted focus groups and customer surveys to understand Pour Les Femmes's buyers — socially conscious, interested in luxury, and in giving back. With this persona in mind, we set about growing the audience across social and paid media.</p>
+        </div>
+        <div class="chapter">
+          <div class="chapter-label">Social &amp; Paid Media</div>
+          <p class="body-text">We launched and managed campaigns across Facebook Ads, Google Ads, and TikTok to grow brand awareness and revenue — reaching PLF's customers where they spend their time and growing the addressable audience.</p>
+        </div>
+        <div class="chapter">
+          <div class="chapter-label">SEO / SEM</div>
+          <p class="body-text">We worked with technical SEO partners to audit the Pour Les Femmes e-commerce site and implement recommendations to grow organic traffic, built around the key customer personas we were attracting.</p>
+        </div>
+        <div class="chapter">
+          <div class="chapter-label">Brand Partnerships</div>
+          <p class="body-text">Jeff initiated partnerships with NBCUniversal Ad Sales to launch Pour Les Femmes on the NBCU Shoppable TV platform. He also managed the Mastercard Europe relationship — including a co-branded awareness campaign in the UK, France, and Ireland that drove over 250,000 website visits and introduced the brand to new customers across three markets.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETING TECHNOLOGY -->
+  <div class="article-section fade-up" data-screen-label="06 Marketing Technology">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 03</span>Marketing Technology Integration</div>
+      <div>
+        <h2>Marketing Technology Integration</h2>
+        <div class="chapter">
+          <div class="chapter-label">CDP, CRM, Email &amp; SMS</div>
+          <p class="body-text">Centralized customer data is the key to informed marketing decisions. We implemented a customer database for a full lifetime view of customers' engagement with the brand. We used best-in-class e-commerce CRM technology from Klaviyo and Attentive to launch and grow the Pour Les Femmes email and SMS programs — increasing conversions and building brand loyalty.</p>
+        </div>
+        <div class="chapter">
+          <div class="chapter-label">Direct Response</div>
+          <p class="body-text">We launched and managed direct mail campaigns that drove significant results using customer segmentation based on past purchase history.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E-COMMERCE -->
+  <div class="article-section fade-up" data-screen-label="07 E-Commerce">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 04</span>E-Commerce Launch &amp; Technology</div>
+      <div>
+        <h2>E-Commerce Launch &amp; Technology Integration</h2>
+        <ul class="key-list" style="margin-top:0">
+          <li><strong style="color:var(--text-primary);font-weight:500">E-Commerce Platform</strong> — Launched Pour Les Femmes on Shopify Plus with full development support</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Mobile App</strong> — Launched mobile shopping apps on Apple iOS and Google Play</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Marketplaces</strong> — Integrated into Google Merchant Center, Facebook Commerce, Pinterest, Lyst, TikTok, NBCU Shopping, and JD.com (China)</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Globalization</strong> — Partnered with Global-E for cross-border delivery to 200+ countries via DHL, including all sales taxes and VAT</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Payment Systems</strong> — Launched Apple Pay, Klarna, Stripe, PayPal, and more</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Web3 / Traceability</strong> — Created a blockchain-enabled product journey; customers scan a QR code to trace their garment from craftsperson to delivery</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Global Fulfillment</strong> — Led the evaluation, selection, tech integration, and launch of a new global fulfillment partner to improve last-mile delivery and customer satisfaction</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Customer Support</strong> — Launched customer support technology enabling the service team to increase customer satisfaction and drive loyalty</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">B2B Platform</strong> — Implemented digital e-commerce for order management, virtual showroom, and catalog access</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA & ANALYTICS -->
+  <div class="article-section fade-up" data-screen-label="08 Analytics">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 05</span>Data, Analytics &amp; Measurement</div>
+      <div>
+        <h2>First-Party Data, Analytics &amp; Attribution</h2>
+        <p class="body-text">Customer data and analytics were at the heart of our approach to growth. With a deep background in media measurement using first-party data, we constantly evaluated attribution platforms to ensure paid budgets were effective and correctly correlated to the customer journey.</p>
+        <ul class="key-list" style="margin-top:20px">
+          <li><strong style="color:var(--text-primary);font-weight:500">Consumer Insights</strong> — Focus group and online research translated into creative identity, audience targeting, and product development</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">Marketing Attribution</strong> — Best-in-class reporting using first-party data to track channel performance and the path to purchase</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">PR / Brand Tracking</strong> — Monitored media coverage and influencer campaigns for measurable dollar value of placements</li>
+          <li><strong style="color:var(--text-primary);font-weight:500">E-Commerce Analytics</strong> — Google Analytics, Shopify Plus, and Klaviyo to track revenue, AOV, CTR, and more</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDATION -->
+  <div class="article-section fade-up" data-screen-label="09 Foundation">
+    <div class="section-intro">
+      <div class="section-label"><span>Chapter 06</span>Social Impact</div>
+      <div>
+        <h2>Amplifying the Brand's Social Impact: Pour Les Femmes Foundation</h2>
+        <p class="body-text">To expand the founding mission of Pour Les Femmes — providing comfort and security to women — we created the <strong>Pour Les Femmes Foundation</strong>, a 501(c)(3) public charity, and launched it publicly in 2022.</p>
+        <p class="body-text">The Foundation allows Pour Les Femmes to provide support for capacity building with local partners in the Democratic Republic of the Congo — helping lift women and children out of poverty, advancing gender equality, and protecting them from gender-based violence.</p>
+        <ul class="key-list" style="margin-top:20px">
+          <li>UNGA Week launch at Tavern on the Green / Goals House in partnership with Freuds Group / Project Everyone, sponsored by Salesforce in New York, September 2022</li>
+          <li>Panel at the Clinton Global Initiative with welcome remarks by Secretary Clinton on <em>Still Unfinished Business: How We Can Improve Economic Outcomes for Women</em></li>
+          <li>Partnered with Google.org for their UNGA gala event</li>
+          <li>Secured a $250,000 grant from Jack Dorsey's #startsmall fund in 2023 to support local partners in Eastern DRC</li>
+          <li>First grant made to the Congo Peace School in Bukavu, DRC, via Action Kivu</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band fade-up" data-screen-label="10 CTA">
+  <h2>Ready to build something like this?</h2>
+  <a href="contact.html" class="btn">book a strategy call</a>
+</div>
+
+<footer>
+  <span class="footer-copy">&copy; 2025 Jeff Hallstead · Momentive Ventures LLC</span>
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const fadeEls = document.querySelectorAll('.fade-up');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+fadeEls.forEach(el => obs.observe(el));
+</script>
+
+<script>
+document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    dd.classList.remove('open');
+  });
+});
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

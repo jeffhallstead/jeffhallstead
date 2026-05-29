@@ -468,6 +468,64 @@ footer {
   }
   .nav-dropdown-menu a:last-child { border-bottom: none; }
 }
+
+/* ── SUBSCRIBE BAND ───────────────────────── */
+.subscribe-band {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--border-subtle);
+  padding: 48px 80px;
+}
+.subscribe-band-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+}
+.subscribe-pub-name {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-bottom: 8px;
+}
+.subscribe-tagline {
+  font-size: 15px; color: var(--text-secondary);
+  max-width: 420px; line-height: 1.6; margin: 0;
+}
+.subscribe-form { display: flex; gap: 0; }
+.subscribe-form input[type="email"] {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-interactive); border-right: none;
+  color: var(--text-primary); font-family: var(--font-body); font-size: 14px;
+  padding: 11px 16px; border-radius: 2px 0 0 2px;
+  outline: none; width: 220px; transition: border-color 0.2s;
+}
+.subscribe-form input[type="email"]::placeholder { color: var(--text-tertiary); }
+.subscribe-form input[type="email"]:focus { border-color: var(--border-bright); }
+.subscribe-form button {
+  font-family: var(--font-display); font-weight: 400; font-size: 13px;
+  letter-spacing: 0.05em; color: var(--text-primary);
+  background: transparent; border: 1px solid var(--border-interactive);
+  padding: 11px 20px; border-radius: 0 2px 2px 0;
+  cursor: pointer; white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.subscribe-form button:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.subscribe-sent {
+  display: none; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-top: 10px;
+}
+ (max-width: 960px) {
+  .subscribe-band { padding: 40px 32px; }
+  .subscribe-band-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
+ (max-width: 600px) {
+  .subscribe-band { padding: 36px 24px; }
+  .subscribe-form { flex-direction: column; gap: 8px; }
+  .subscribe-form input[type="email"] {
+    border-right: 1px solid var(--border-interactive);
+    border-radius: 2px; width: 100%;
+  }
+  .subscribe-form button { border-radius: 2px; }
+}
 </style>
   <script type="application/ld+json">
 {
@@ -628,6 +686,7 @@ footer {
     <a href="index.html" class="active">Home</a>
     <a href="about.html">About Jeff</a>
     <a href="content-studio.html">Content Studio</a>
+    <a href="newsletter.html">Newsletter</a>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
     <div class="nav-dropdown-menu">
@@ -769,6 +828,24 @@ footer {
   </div>
 </section>
 
+<!-- ── NEWSLETTER ─────────────────────────── -->
+<section id="newsletter" data-screen-label="06b Newsletter">
+  <div class="content-col">
+    <div class="eyebrow fade-up">Newsletter</div>
+    <hr class="rule fade-up">
+    <h2 class="fade-up">The Branded Entertainment Brief</h2>
+    <p class="fade-up" style="margin-top:20px;max-width:480px">A weekly digest of branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
+    <div style="margin-top:32px" class="fade-up">
+      <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="subscribe-sent">Check your inbox to confirm →</div>
+    </div>
+    <a href="newsletter.html" class="text-link fade-up" style="display:inline-block;margin-top:20px">Browse recent issues →</a>
+  </div>
+</section>
+
 <!-- ── STAKES ──────────────────────────────── -->
 <section id="stakes" class="alt" data-screen-label="07 Stakes">
   <div class="stakes-inner">
@@ -792,6 +869,23 @@ footer {
 </section>
 
 <!-- ── FOOTER ──────────────────────────────── -->
+<!-- ── SUBSCRIBE BAND ─────────────────────── -->
+<div class="subscribe-band">
+  <div class="subscribe-band-inner">
+    <div>
+      <div class="subscribe-pub-name">The Branded Entertainment Brief</div>
+      <p class="subscribe-tagline">Weekly branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
+    </div>
+    <div>
+      <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
+        <input type="email" name="email" placeholder="your.com" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="subscribe-sent">Check your inbox to confirm →</div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <span class="footer-center">Brand strategy, content leadership, and advisory services for brands, social enterprises, and media companies.</span>
@@ -843,6 +937,15 @@ function showTweaks() {
 }
 function hideTweaks() {
   document.getElementById('tweaks-panel').style.display = 'none';
+}
+
+function substackSubscribe(e, form) {
+  e.preventDefault();
+  var email = form.querySelector("input[type=email]").value;
+  window.open("https://jeffhallstead.substack.com/subscribe?email=" + encodeURIComponent(email), "_blank");
+  form.style.display = "none";
+  var sent = form.nextElementSibling;
+  if (sent) sent.style.display = "block";
 }
 </script>
 

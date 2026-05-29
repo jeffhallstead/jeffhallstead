@@ -199,6 +199,64 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   }
   .nav-dropdown-menu a:last-child { border-bottom: none; }
 }
+
+/* ── SUBSCRIBE BAND ───────────────────────── */
+.subscribe-band {
+  background: var(--bg-mid);
+  border-top: 1px solid var(--border-subtle);
+  padding: 48px 80px;
+}
+.subscribe-band-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+}
+.subscribe-pub-name {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-bottom: 8px;
+}
+.subscribe-tagline {
+  font-size: 15px; color: var(--text-secondary);
+  max-width: 420px; line-height: 1.6; margin: 0;
+}
+.subscribe-form { display: flex; gap: 0; }
+.subscribe-form input[type="email"] {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-interactive); border-right: none;
+  color: var(--text-primary); font-family: var(--font-body); font-size: 14px;
+  padding: 11px 16px; border-radius: 2px 0 0 2px;
+  outline: none; width: 220px; transition: border-color 0.2s;
+}
+.subscribe-form input[type="email"]::placeholder { color: var(--text-tertiary); }
+.subscribe-form input[type="email"]:focus { border-color: var(--border-bright); }
+.subscribe-form button {
+  font-family: var(--font-display); font-weight: 400; font-size: 13px;
+  letter-spacing: 0.05em; color: var(--text-primary);
+  background: transparent; border: 1px solid var(--border-interactive);
+  padding: 11px 20px; border-radius: 0 2px 2px 0;
+  cursor: pointer; white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s;
+}
+.subscribe-form button:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.subscribe-sent {
+  display: none; font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-cyan); margin-top: 10px;
+}
+ (max-width: 960px) {
+  .subscribe-band { padding: 40px 32px; }
+  .subscribe-band-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
+ (max-width: 600px) {
+  .subscribe-band { padding: 36px 24px; }
+  .subscribe-form { flex-direction: column; gap: 8px; }
+  .subscribe-form input[type="email"] {
+    border-right: 1px solid var(--border-interactive);
+    border-radius: 2px; width: 100%;
+  }
+  .subscribe-form button { border-radius: 2px; }
+}
 </style>
 </head>
 <body>
@@ -209,6 +267,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
     <a href="index.html">Home</a>
     <a href="about.html">About Jeff</a>
     <a href="content-studio.html">Content Studio</a>
+    <a href="newsletter.html">Newsletter</a>
     <div class="nav-dropdown">
       <button class="nav-dropdown-toggle active">Case Studies <span class="nav-dropdown-chevron"></span></button>
       <div class="nav-dropdown-menu">
@@ -379,8 +438,25 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   </div>
 </div>
 
+<!-- ── SUBSCRIBE BAND ─────────────────────── -->
+<div class="subscribe-band">
+  <div class="subscribe-band-inner">
+    <div>
+      <div class="subscribe-pub-name">The Branded Entertainment Brief</div>
+      <p class="subscribe-tagline">Weekly branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
+    </div>
+    <div>
+      <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
+        <input type="email" name="email" placeholder="your.com" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="subscribe-sent">Check your inbox to confirm →</div>
+    </div>
+  </div>
+</div>
+
 <footer>
-  <span class="footer-copy">&copy; 2025 Jeff Hallstead · Momentive Ventures LLC</span>
+  <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <div class="footer-links">
     <a href="contact.html">Contact</a>
     <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>

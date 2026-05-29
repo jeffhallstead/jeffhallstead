@@ -3,21 +3,28 @@
 
   <url>
     <loc>https://jeffhallstead.com/</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://jeffhallstead.com/about</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
+    <loc>https://jeffhallstead.com/newsletter</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://jeffhallstead.com/content-studio</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

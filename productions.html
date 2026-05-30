@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productions · Jeff Hallstead</title>
+<meta name="description" content="Jeff Hallstead — executive producer across documentary, branded series, podcasts, animation, and short-form narrative. From concept to platform, from financing to premiere.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jeff Hallstead">
+<meta property="og:title" content="Productions · Jeff Hallstead">
+<meta property="og:description" content="Executive producer across documentary, branded series, podcasts, animation, and short-form narrative. From concept to platform, from financing to premiere.">
+<meta property="og:url" content="https://jeffhallstead.com/productions">
+<meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Productions · Jeff Hallstead">
+<meta name="twitter:description" content="Executive producer across documentary, branded series, podcasts, animation, and short-form narrative.">
+<meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
+<link rel="canonical" href="https://jeffhallstead.com/productions">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-deep:#040c1b; --bg-mid:#071426; --bg-card:#0d1e3c;
+  --accent-cyan:#22d4f5; --accent-cyan-dim:rgba(34,212,245,0.10);
+  --accent-orange:#e84c2b;
+  --text-primary:#ffffff; --text-secondary:rgba(255,255,255,0.65);
+  --text-tertiary:rgba(255,255,255,0.35);
+  --border-subtle:rgba(255,255,255,0.10);
+  --border-interactive:rgba(100,200,255,0.45);
+  --border-bright:rgba(34,212,245,0.70);
+  --font-wordmark:'Rajdhani',sans-serif;
+  --font-display:'Barlow',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+html { scroll-behavior:smooth; }
+body { background:var(--bg-deep); color:var(--text-secondary); font-family:var(--font-body); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 80px; height:64px; background:rgba(4,12,27,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); }
+.wordmark { font-family:var(--font-wordmark); font-weight:700; font-size:15px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-primary); text-decoration:none; }
+.nav-links { display:flex; gap:28px; align-items:center; }
+.nav-links a { font-family:var(--font-display); font-size:13px; color:var(--text-secondary); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--text-primary); }
+.nav-links a.active { color:var(--text-primary); text-decoration:underline; text-underline-offset:4px; }
+.nav-links a.nav-quiz { color:var(--accent-cyan); border:1px solid rgba(34,212,245,0.35); padding:5px 14px; border-radius:2px; transition:background 0.2s,border-color 0.2s,color 0.2s; }
+.nav-links a.nav-quiz:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); color:var(--text-primary); }
+
+/* DROPDOWN */
+.nav-dropdown { position:relative; display:flex; align-items:center; }
+.nav-dropdown-toggle { font-family:var(--font-display); font-size:13px; color:rgba(255,255,255,0.65); cursor:pointer; display:flex; align-items:center; gap:5px; background:none; border:none; padding:0; transition:color 0.2s; }
+.nav-dropdown-toggle:hover, .nav-dropdown.open .nav-dropdown-toggle { color:#ffffff; }
+.nav-dropdown-toggle.active { color:#ffffff; text-decoration:underline; text-underline-offset:4px; }
+.nav-dropdown-chevron { display:inline-block; width:8px; height:8px; border-right:1px solid currentColor; border-bottom:1px solid currentColor; transform:rotate(45deg) translateY(-2px); transition:transform 0.2s; }
+.nav-dropdown.open .nav-dropdown-chevron { transform:rotate(-135deg) translateY(-2px); }
+.nav-dropdown-menu { display:none; position:absolute; top:calc(100% + 16px); left:50%; transform:translateX(-50%); background:rgba(7,20,38,0.97); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.10); min-width:200px; z-index:200; flex-direction:column; }
+.nav-dropdown.open .nav-dropdown-menu, .nav-dropdown:hover .nav-dropdown-menu { display:flex; }
+.nav-dropdown-menu a { font-family:var(--font-display); font-size:13px; color:rgba(255,255,255,0.65); text-decoration:none; padding:12px 20px; border-bottom:1px solid rgba(255,255,255,0.07); transition:background 0.15s,color 0.15s; white-space:nowrap; }
+.nav-dropdown-menu a:last-child { border-bottom:none; }
+.nav-dropdown-menu a:hover { background:rgba(34,212,245,0.08); color:#ffffff; }
+.nav-dropdown-menu a.active { color:#22d4f5; }
+
+/* HERO */
+#hero { padding:140px 80px 80px; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
+.constellation { position:absolute; top:0; right:0; width:50%; height:100%; pointer-events:none; opacity:0.15; }
+.eyebrow { font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:16px; }
+hr.rule { width:200px; height:1px; background:rgba(255,255,255,0.15); border:none; margin:0 0 32px; }
+h1 { font-family:var(--font-display); font-weight:300; font-size:clamp(34px,4.5vw,60px); line-height:1.1; color:var(--text-primary); text-wrap:pretty; letter-spacing:-0.01em; max-width:700px; }
+h1 em { font-style:italic; font-weight:300; color:rgba(255,255,255,0.75); }
+.hero-sub { margin-top:24px; font-size:16px; line-height:1.75; color:var(--text-secondary); max-width:620px; }
+.hero-actions { margin-top:36px; display:flex; gap:20px; flex-wrap:wrap; align-items:center; }
+
+/* CONTENT */
+.content-wrap { max-width:1200px; margin:0 auto; padding:0 80px; }
+.article-section { padding:72px 0; border-bottom:1px solid var(--border-subtle); }
+.article-section:last-child { border-bottom:none; }
+.section-intro { display:grid; grid-template-columns:240px 1fr; gap:72px; align-items:start; }
+.section-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-tertiary); padding-top:6px; position:sticky; top:88px; }
+.section-label span { display:block; color:var(--accent-cyan); font-size:9px; margin-bottom:6px; }
+h2 { font-family:var(--font-display); font-weight:400; font-size:clamp(22px,2.5vw,34px); line-height:1.15; color:var(--text-primary); text-wrap:pretty; margin-bottom:20px; letter-spacing:-0.01em; }
+h3 { font-family:var(--font-display); font-weight:500; font-size:17px; line-height:1.3; color:var(--text-primary); margin-bottom:10px; margin-top:28px; }
+h3:first-child { margin-top:0; }
+.body-text { font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:640px; }
+.body-text + .body-text { margin-top:16px; }
+.body-text strong { color:var(--text-primary); font-weight:500; }
+.body-text em { font-style:italic; color:rgba(255,255,255,0.75); }
+
+/* BUTTONS */
+.btn { font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:0.05em; text-transform:lowercase; color:var(--text-primary); padding:13px 32px; border-radius:2px; background:transparent; border:1px solid var(--border-interactive); cursor:pointer; transition:background 0.2s,border-color 0.2s; text-decoration:none; display:inline-flex; align-items:center; }
+.btn:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); }
+
+/* FORMAT GRID */
+.format-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border-subtle); border:1px solid var(--border-subtle); margin-top:32px; }
+.format-card { background:var(--bg-card); padding:32px 28px; transition:background 0.2s; }
+.format-card:hover { background:#0f2248; }
+.format-card.format-featured { grid-column:span 2; background:rgba(34,212,245,0.04); }
+.format-card.format-featured:hover { background:rgba(34,212,245,0.07); }
+.format-num { font-family:var(--font-mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:12px; }
+.format-card h3 { font-family:var(--font-display); font-weight:500; font-size:16px; color:var(--text-primary); margin-bottom:10px; margin-top:0; }
+.format-card p { font-size:14px; line-height:1.75; color:var(--text-secondary); max-width:none; margin:0; }
+.format-link { display:inline-block; margin-top:16px; font-family:var(--font-display); font-size:13px; color:var(--accent-cyan); text-decoration:none; opacity:0.85; transition:opacity 0.2s; }
+.format-link:hover { opacity:1; }
+
+/* PARTNER CARD */
+.partner-card { margin-top:32px; background:var(--bg-card); border:1px solid var(--border-subtle); padding:36px 40px; }
+.partner-tag { font-family:var(--font-mono); font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:16px; display:block; }
+.partner-card h3 { font-size:20px; font-weight:400; margin-bottom:16px; margin-top:0; }
+.partner-card .body-text { max-width:580px; }
+
+/* STUDIO BAND */
+.studio-band { margin-top:32px; background:rgba(34,212,245,0.05); border:1px solid rgba(34,212,245,0.15); padding:36px 40px; }
+.studio-band p { font-size:15px; line-height:1.8; color:var(--text-secondary); max-width:580px; margin:0; }
+.studio-link { display:inline-flex; align-items:center; margin-top:20px; font-family:var(--font-display); font-size:14px; color:var(--accent-cyan); text-decoration:none; transition:color 0.2s; }
+.studio-link:hover { color:var(--text-primary); }
+
+/* CREDITS LIST */
+.credits-list { margin-top:32px; display:flex; flex-direction:column; }
+.credit-item { padding:24px 0; border-bottom:1px solid var(--border-subtle); }
+.credit-item:first-child { border-top:1px solid var(--border-subtle); }
+.credit-tag { font-family:var(--font-mono); font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:8px; display:block; }
+.credit-title { font-family:var(--font-display); font-weight:500; font-size:16px; color:var(--text-primary); margin-bottom:10px; line-height:1.3; }
+.credit-title em { font-style:italic; font-weight:300; color:rgba(255,255,255,0.8); }
+.credit-desc { font-size:14px; color:var(--text-secondary); line-height:1.7; max-width:540px; }
+.credit-platforms { margin-top:10px; font-family:var(--font-mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-tertiary); }
+
+/* CTA BAND */
+.cta-band { background:var(--bg-mid); border-top:1px solid var(--border-subtle); border-bottom:1px solid var(--border-subtle); padding:72px 80px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:24px; }
+.cta-band h2 { font-size:clamp(24px,3vw,40px); font-weight:300; max-width:560px; }
+.cta-sub { font-size:16px; line-height:1.7; color:var(--text-secondary); max-width:520px; text-align:center; }
+
+/* FOOTER */
+footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); padding:32px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-copy { font-size:12px; color:var(--text-tertiary); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:rgba(255,255,255,0.5); }
+
+/* FADE */
+.fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:960px) {
+  nav{padding:0 32px;} .nav-links{gap:16px;} #hero{padding:120px 32px 64px;} .content-wrap{padding:0 32px;}
+  .section-intro{grid-template-columns:1fr;gap:20px;} .section-label{position:static;}
+  .format-grid{grid-template-columns:repeat(2,1fr);}
+  .format-card.format-featured{grid-column:span 2;}
+  .cta-band{padding:56px 32px;} footer{padding:28px 32px;flex-direction:column;gap:16px;}
+  .partner-card,.studio-band{padding:28px;}
+}
+@media(max-width:600px) {
+  nav{padding:0 20px;} .nav-links{gap:12px;} .nav-links a{font-size:12px;}
+  #hero{padding:100px 24px 56px;} .content-wrap{padding:0 24px;} .article-section{padding:52px 0;}
+  .format-grid{grid-template-columns:1fr;}
+  .format-card.format-featured{grid-column:span 1;}
+  .cta-band{padding:48px 24px;} footer{padding:24px;}
+}
+
+/* HAMBURGER */
+.nav-hamburger { display:none; flex-direction:column; justify-content:space-between; width:24px; height:16px; background:none; border:none; cursor:pointer; padding:0; flex-shrink:0; }
+.nav-hamburger span { display:block; width:100%; height:1.5px; background:rgba(255,255,255,0.75); border-radius:1px; transition:transform 0.25s ease,opacity 0.25s ease; }
+.nav-hamburger.open span:nth-child(1) { transform:translateY(7.25px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform:translateY(-7.25px) rotate(-45deg); }
+@media(max-width:960px) {
+  .nav-hamburger{display:flex;}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;height:calc(100vh - 64px);background:#040c1b;flex-direction:column;padding:32px 24px 64px;gap:0;z-index:99;border-top:1px solid rgba(255,255,255,0.08);overflow-y:auto;}
+  .nav-links.open{display:flex;}
+  .nav-links > a{font-size:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.75);}
+  .nav-links > a.nav-quiz{margin-top:20px;margin-bottom:12px;padding:14px 0;text-align:center;justify-content:center;display:flex;border:none;}
+  .nav-dropdown{flex-direction:column;align-items:flex-start;width:100%;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .nav-dropdown-toggle{font-size:16px;padding:14px 0;width:100%;justify-content:space-between;}
+  .nav-dropdown-menu{display:none;position:static;transform:none;left:auto;width:100%;background:transparent;border:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding-left:16px;min-width:0;}
+  .nav-dropdown.open .nav-dropdown-menu{display:flex;}
+  .nav-dropdown-menu a{font-size:15px;padding:10px 0;white-space:normal;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .nav-dropdown-menu a:last-child{border-bottom:none;}
+}
+
+/* SUBSCRIBE BAND */
+.subscribe-band { background:var(--bg-mid); border-top:1px solid var(--border-subtle); padding:48px 80px; }
+.subscribe-band-inner { max-width:1040px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+.subscribe-pub-name { font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:8px; }
+.subscribe-tagline { font-size:15px; color:var(--text-secondary); max-width:420px; line-height:1.6; margin:0; }
+.subscribe-form { display:flex; gap:0; }
+.subscribe-form input[type="email"] { background:rgba(255,255,255,0.05); border:1px solid var(--border-interactive); border-right:none; color:var(--text-primary); font-family:var(--font-body); font-size:14px; padding:11px 16px; border-radius:2px 0 0 2px; outline:none; width:220px; transition:border-color 0.2s; }
+.subscribe-form input[type="email"]::placeholder { color:var(--text-tertiary); }
+.subscribe-form input[type="email"]:focus { border-color:var(--border-bright); }
+.subscribe-form button { font-family:var(--font-display); font-weight:400; font-size:13px; letter-spacing:0.05em; color:var(--text-primary); background:transparent; border:1px solid var(--border-interactive); padding:11px 20px; border-radius:0 2px 2px 0; cursor:pointer; white-space:nowrap; transition:background 0.2s,border-color 0.2s; }
+.subscribe-form button:hover { background:var(--accent-cyan-dim); border-color:var(--border-bright); }
+.subscribe-sent { display:none; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent-cyan); margin-top:10px; }
+@media(max-width:960px) { .subscribe-band{padding:40px 32px;} .subscribe-band-inner{flex-direction:column;align-items:flex-start;gap:24px;} }
+@media(max-width:600px) { .subscribe-band{padding:36px 24px;} .subscribe-form{flex-direction:column;gap:8px;} .subscribe-form input[type="email"]{border-right:1px solid var(--border-interactive);border-radius:2px;width:100%;} .subscribe-form button{border-radius:2px;} }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Jeff</a>
+    <a href="productions.html" class="active">Productions</a>
+    <a href="newsletter.html">Newsletter</a>
+  <div class="nav-dropdown">
+    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <div class="nav-dropdown-menu">
+      <a href="case-study-plf.html">Pour Les Femmes</a>
+      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="case-study-founders-ceiling-quiz.html">Founder's Ceiling Quiz</a>
+      <a href="case-study-sdg-advisor.html">SDG Alignment Advisor</a>
+    </div>
+  </div>
+    <a href="contact.html">Contact</a>
+    <a href="uploads/brand-content-readiness.html" class="nav-quiz">Content Assessment Quiz</a>
+    <a href="uploads/founders-ceiling-quiz.html" class="nav-quiz">Founder's Ceiling Quiz</a>
+    <a href="uploads/sdg-alignment-advisor.html" class="nav-quiz">SDG Alignment Advisor</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero" data-screen-label="01 Hero">
+  <svg class="constellation" viewBox="0 0 700 500" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+      <line x1="80" y1="60" x2="280" y2="150"/><line x1="280" y1="150" x2="440" y2="90"/>
+      <line x1="440" y1="90" x2="620" y2="200"/><line x1="160" y1="280" x2="380" y2="230"/>
+      <line x1="380" y1="230" x2="580" y2="310"/><line x1="100" y1="420" x2="320" y2="380"/>
+      <line x1="320" y1="380" x2="500" y2="450"/>
+    </g>
+    <g fill="#22d4f5" opacity="0.7">
+      <circle cx="80" cy="60" r="2"/><circle cx="280" cy="150" r="2.5"/>
+      <circle cx="440" cy="90" r="2"/><circle cx="620" cy="200" r="1.5"/>
+      <circle cx="160" cy="280" r="2"/><circle cx="380" cy="230" r="2.5"/>
+      <circle cx="580" cy="310" r="2"/><circle cx="100" cy="420" r="1.5"/>
+      <circle cx="320" cy="380" r="2"/><circle cx="500" cy="450" r="1.5"/>
+    </g>
+  </svg>
+  <div class="eyebrow fade-up">Executive Producer</div>
+  <hr class="rule fade-up">
+  <h1 class="fade-up" style="transition-delay:0.1s">The Content Doesn't Make Itself.<br><em>Neither Does the Greenlight.</em></h1>
+  <p class="hero-sub fade-up" style="transition-delay:0.2s">Jeff Hallstead works as an executive producer across non-fiction, documentary, branded series, podcasts, animation, and emerging short-form formats — bringing creative development, production partnerships, and distribution strategy together in one place. From concept to platform, from financing to premiere.</p>
+  <div class="hero-actions fade-up" style="transition-delay:0.3s">
+    <a href="contact.html" class="btn">discuss a project</a>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- FORMAT CAPABILITIES -->
+  <div class="article-section fade-up" data-screen-label="02 Formats">
+    <div class="section-intro">
+      <div class="section-label"><span>01 · Format Capabilities</span>What we develop and produce.</div>
+      <div>
+        <h2>Format Capabilities</h2>
+        <p class="body-text">Developed and produced across formats, audiences, and distribution models — with active production partnerships and platform relationships built over time.</p>
+        <div class="format-grid">
+          <div class="format-card">
+            <div class="format-num">01</div>
+            <h3>Documentary &amp; Non-Fiction</h3>
+            <p>Long-form and series documentary across sports, culture, social impact, and brand narrative. Developed and distributed with production partners who have active relationships with Netflix, HBO Max, and Amazon.</p>
+          </div>
+          <div class="format-card">
+            <div class="format-num">02</div>
+            <h3>Branded Series</h3>
+            <p>Original entertainment built around brand identity — not advertising dressed up as content. Developed for brands ready to own their audience rather than rent it.</p>
+          </div>
+          <div class="format-card">
+            <div class="format-num">03</div>
+            <h3>Podcasts</h3>
+            <p>Audio series developed for brand, media, and talent clients — including monetization strategy and multi-platform distribution across Apple Podcasts, Spotify, iHeart Radio, and emerging audio platforms.</p>
+          </div>
+          <div class="format-card">
+            <div class="format-num">04</div>
+            <h3>Animation</h3>
+            <p>Original and co-produced animated content across formats and audiences. Developed through established production relationships with animation studios.</p>
+          </div>
+          <div class="format-card format-featured">
+            <div class="format-num">05</div>
+            <h3>Microdramas</h3>
+            <p>Short-form serialized narrative developed for brand clients and emerging streaming platforms. Co-developed with Brett Staneart, a writer-producer whose credits include <em>Guiding Light</em> and <em>The Real Housewives of Beverly Hills</em>.</p>
+            <a href="microdramas.html" class="format-link">Learn more about branded microdramas →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTION PARTNERS -->
+  <div class="article-section fade-up" data-screen-label="03 Partners">
+    <div class="section-intro">
+      <div class="section-label"><span>02 · Production Partners</span>Infrastructure and platform access.</div>
+      <div>
+        <h2>Production Partners</h2>
+        <p class="body-text">Projects developed through this office are supported by established production partnerships that provide infrastructure, catalog depth, and direct platform relationships.</p>
+        <div class="partner-card">
+          <span class="partner-tag">Active Partnership · Sports &amp; Entertainment</span>
+          <h3>Bombo Sports &amp; Entertainment</h3>
+          <p class="body-text">Jeff serves as Executive Producer and Strategic Advisor to Bombo Sports &amp; Entertainment, a sports film and entertainment production company with an established library of produced sports documentaries and active distribution relationships with Netflix, HBO Max, and Amazon. Bombo provides production infrastructure, catalog depth, and platform access for projects developed through this office.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE CONTENT STUDIO -->
+  <div class="article-section fade-up" data-screen-label="04 Content Studio">
+    <div class="section-intro">
+      <div class="section-label"><span>03 · For Brands</span>The full-stack engagement model.</div>
+      <div>
+        <h2>The Content Studio</h2>
+        <p class="body-text">For brands ready to move beyond advertising, the Content Studio is the full-stack engagement model — original series development, multi-platform distribution, and the audience-building infrastructure that turns content into a compounding asset.</p>
+        <div class="studio-band">
+          <p>Built on the Pour Les Femmes playbook: <em>Pillow Talk</em>, an original series hosted by Robin Wright featuring Chelsea Handler, Jamie Lee Curtis, and Amber Valletta, distributed across YouTube, Roku, Spotify, Apple Podcasts, iHeart Radio, and Vimeo.</p>
+          <a href="content-studio.html" class="studio-link">Explore the Content Studio model →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SELECTED CREDITS -->
+  <div class="article-section fade-up" data-screen-label="05 Credits">
+    <div class="section-intro">
+      <div class="section-label"><span>04 · Credits &amp; Development</span>Produced and in development.</div>
+      <div>
+        <h2>Selected Credits &amp; Development</h2>
+        <div class="credits-list">
+          <div class="credit-item">
+            <span class="credit-tag">Executive Producer · Produced</span>
+            <div class="credit-title"><em>Pillow Talk by Pour Les Femmes</em></div>
+            <div class="credit-desc">Original series on sustainability and slow fashion hosted by Robin Wright. Guests include Chelsea Handler, Jamie Lee Curtis, and Amber Valletta.</div>
+            <div class="credit-platforms">YouTube · Roku · Spotify · Apple Podcasts · iHeart Radio · Vimeo</div>
+          </div>
+          <div class="credit-item">
+            <span class="credit-tag">In Development</span>
+            <div class="credit-title">Documentary, Branded Series, Podcast, Animation &amp; Microdrama Projects</div>
+            <div class="credit-desc">Active development across sports, culture, and brand entertainment. Available for co-production, brand partnership, and distribution conversations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+
+<!-- CTA BAND -->
+<div class="cta-band fade-up" data-screen-label="06 CTA">
+  <div class="eyebrow">Let's Build It</div>
+  <h2>Bring Me Your Greenlight Problem.</h2>
+  <p class="cta-sub">Whether you have a concept that needs a production partner, a brand that needs an original series, or a project that needs someone who can hold creative and commercial in the same hand — this is the conversation to start.</p>
+  <a href="contact.html" class="btn">discuss a project →</a>
+</div>
+
+<!-- SUBSCRIBE BAND -->
+<div class="subscribe-band">
+  <div class="subscribe-band-inner">
+    <div>
+      <div class="subscribe-pub-name">The Branded Entertainment Brief</div>
+      <p class="subscribe-tagline">Weekly branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
+    </div>
+    <div>
+      <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <div class="subscribe-sent">Check your inbox to confirm →</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
+  <div class="footer-links">
+    <a href="contact.html">Contact</a>
+    <a href="https://jeffhallstead.substack.com/" target="_blank">Newsletter</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+const fadeEls = document.querySelectorAll('.fade-up');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.08 });
+fadeEls.forEach(el => obs.observe(el));
+
+function substackSubscribe(e, form) {
+  e.preventDefault();
+  var email = form.querySelector("input[type=email]").value;
+  window.open("https://jeffhallstead.substack.com/subscribe?email=" + encodeURIComponent(email), "_blank");
+  form.style.display = "none";
+  var sent = form.nextElementSibling;
+  if (sent) sent.style.display = "block";
+}
+</script>
+
+<script>
+document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
+  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) { dd.classList.remove('open'); });
+});
+var hamburger = document.querySelector('.nav-hamburger');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var isOpen = navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+</body>
+</html>

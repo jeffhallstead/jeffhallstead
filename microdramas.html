@@ -407,60 +407,10 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
         <h2>Is Your Brand Ready for a Microdrama?</h2>
         <p class="body-text">The brands that will own this format are moving now — before it becomes the default and the advantage disappears. If you're a brand marketing director, CMO, or agency partner evaluating original content, this is the conversation to start early.</p>
 
-        <form
-          id="brand-inquiry-form"
-          name="brand-inquiry"
-          class="inquiry-form"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="brand-inquiry">
-          <p class="form-hp"><label>Don't fill this out: <input name="bot-field"></label></p>
-
-          <div class="form-grid">
-            <div class="form-group">
-              <label class="form-label" for="inq-name">Name &amp; Title</label>
-              <input class="form-input" type="text" id="inq-name" name="name-title" placeholder="Jane Smith · VP Marketing" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="inq-brand">Brand or Agency Name</label>
-              <input class="form-input" type="text" id="inq-brand" name="brand-agency" placeholder="Brand or Agency" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="inq-category">Brand Category</label>
-              <input class="form-input" type="text" id="inq-category" name="brand-category" placeholder="e.g. Consumer Goods, Finance, Retail…">
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="inq-contact">Preferred Way to Connect</label>
-              <input class="form-input" type="text" id="inq-contact" name="preferred-contact" placeholder="Email, phone, or LinkedIn">
-            </div>
-            <div class="form-group full">
-              <label class="form-label" for="inq-audience">What audience are you trying to reach?</label>
-              <textarea class="form-textarea" id="inq-audience" name="audience" placeholder="Describe the audience you're trying to build a relationship with…"></textarea>
-            </div>
-            <fieldset class="form-fieldset">
-              <legend class="form-legend">What outcome are you trying to drive? (select all that apply)</legend>
-              <div class="form-checks">
-                <label class="form-check"><input type="checkbox" name="outcome" value="awareness"><span>Awareness</span></label>
-                <label class="form-check"><input type="checkbox" name="outcome" value="engagement"><span>Engagement</span></label>
-                <label class="form-check"><input type="checkbox" name="outcome" value="conversion"><span>Conversion</span></label>
-                <label class="form-check"><input type="checkbox" name="outcome" value="loyalty"><span>Loyalty</span></label>
-              </div>
-            </fieldset>
-            <fieldset class="form-fieldset">
-              <legend class="form-legend">Where are you in your content planning?</legend>
-              <div class="form-radios">
-                <label class="form-radio"><input type="radio" name="planning-stage" value="exploring"><span>Exploring</span></label>
-                <label class="form-radio"><input type="radio" name="planning-stage" value="actively-planning"><span>Actively planning</span></label>
-                <label class="form-radio"><input type="radio" name="planning-stage" value="ready-to-move"><span>Ready to move</span></label>
-              </div>
-            </fieldset>
-            <div class="form-submit-row">
-              <button type="submit" class="btn">Tell us about your brand →</button>
-              <span class="form-sent-msg" id="form-sent-msg">Message received. We'll be in touch.</span>
-            </div>
-          </div>
-        </form>
+        <div style="margin-top:36px;">
+          <a href="https://airtable.com/appdSy16I4RKDDyEz/shrDA4iJWYMRYTv0V" target="_blank" class="btn" style="font-size:14px;padding:14px 36px;">Tell us about your brand →</a>
+          <p style="margin-top:14px;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-tertiary);">Opens a short form · Takes about 2 minutes</p>
+        </div>
       </div>
     </div>
   </div>
@@ -509,25 +459,7 @@ function substackSubscribe(e, form) {
   if (sent) sent.style.display = "block";
 }
 
-// Netlify form submission via fetch
-document.getElementById('brand-inquiry-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  var form = e.target;
-  var data = new FormData(form);
-  try {
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
-    });
-    form.querySelectorAll('.form-input,.form-textarea,.form-select').forEach(function(el){ el.disabled = true; });
-    form.querySelectorAll('input[type="checkbox"],input[type="radio"]').forEach(function(el){ el.disabled = true; });
-    form.querySelector('.btn[type="submit"]').style.display = 'none';
-    document.getElementById('form-sent-msg').style.display = 'inline';
-  } catch(err) {
-    form.submit();
-  }
-});
+
 </script>
 
 <script>

@@ -38,6 +38,21 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: 12px; top: -48px;
+  background: #0d1e3c; color: #fff;
+  padding: 10px 18px; border-radius: 2px;
+  font-family: 'Barlow', sans-serif; font-size: 13px;
+  z-index: 1000; transition: top 0.2s;
+  border: 1px solid rgba(34,212,245,0.7);
+}
+.skip-link:focus { top: 12px; }
+
 :root {
   --bg-deep:    #040c1b;
   --bg-mid:     #071426;
@@ -46,8 +61,8 @@
   --accent-cyan-dim: rgba(34,212,245,0.12);
   --accent-orange:   #e84c2b;
   --text-primary:   #ffffff;
-  --text-secondary: rgba(255,255,255,0.65);
-  --text-tertiary:  rgba(255,255,255,0.35);
+  --text-secondary: rgba(255,255,255,0.72);
+  --text-tertiary:  rgba(255,255,255,0.6);
   --border-subtle:      rgba(255,255,255,0.10);
   --border-interactive: rgba(100,200,255,0.45);
   --border-bright:      rgba(34,212,245,0.70);
@@ -679,6 +694,8 @@ footer {
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- ── NAV ────────────────────────────────── -->
 <nav>
   <a href="index.html" class="wordmark">Jeff Hallstead</a>
@@ -688,7 +705,7 @@ footer {
     <a href="productions.html">Productions</a>
     <a href="newsletter.html">Newsletter</a>
   <div class="nav-dropdown">
-    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
       <a href="case-study-plf.html">Pour Les Femmes</a>
       <a href="case-study-sae.html">SustainAble Exchange</a>
@@ -706,9 +723,11 @@ footer {
   </button>
 </nav>
 
+<main id="main" tabindex="-1">
+
 <!-- ── HERO ───────────────────────────────── -->
 <section id="hero" data-screen-label="01 Hero">
-  <svg class="constellation" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+  <svg class="constellation" aria-hidden="true" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#22d4f5" stroke-width="0.6" fill="none">
       <line x1="800" y1="100" x2="1050" y2="220"/><line x1="1050" y1="220" x2="1200" y2="160"/>
       <line x1="1200" y1="160" x2="1350" y2="280"/><line x1="900" y1="350" x2="1100" y2="300"/>
@@ -837,7 +856,8 @@ footer {
     <p class="fade-up" style="margin-top:20px;max-width:480px">A weekly digest of branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
     <div style="margin-top:32px" class="fade-up">
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label for="newsletter-email-hero" class="sr-only">Email address</label>
+        <input type="email" id="newsletter-email-hero" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -868,6 +888,8 @@ footer {
   </div>
 </section>
 
+</main>
+
 <!-- ── FOOTER ──────────────────────────────── -->
 <!-- ── SUBSCRIBE BAND ─────────────────────── -->
 <div class="subscribe-band">
@@ -878,7 +900,8 @@ footer {
     </div>
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your.com" required>
+        <label for="newsletter-email-footer" class="sr-only">Email address</label>
+        <input type="email" id="newsletter-email-footer" name="email" placeholder="your.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -891,7 +914,7 @@ footer {
   <span class="footer-center">Brand strategy, content leadership, and advisory services for brands, social enterprises, and media companies.</span>
   <div class="footer-links">
     <a href="contact.html">Contact</a>
-    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank" rel="noopener">LinkedIn <span class="sr-only">(opens in a new tab)</span></a>
   </div>
 </footer>
 
@@ -956,7 +979,7 @@ function substackSubscribe(e, form) {
   box-shadow:0 8px 40px rgba(0,0,0,0.6);">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
     <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Tweaks</span>
-    <button onclick="hideTweaks();window.parent.postMessage({type:'__edit_mode_dismissed'},'*')"
+    <button aria-label="Close tweaks panel" onclick="hideTweaks();window.parent.postMessage({type:'__edit_mode_dismissed'},'*')"
       style="background:none;border:none;color:rgba(255,255,255,0.3);cursor:pointer;font-size:18px;line-height:1;padding:0">&times;</button>
   </div>
   <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:rgba(255,255,255,0.5);">
@@ -983,15 +1006,31 @@ function substackSubscribe(e, form) {
 
 
 <script>
+function setDropdownOpen(dd, open) {
+  dd.classList.toggle('open', open);
+  dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', String(open));
+}
 document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+  var toggle = dd.querySelector('.nav-dropdown-toggle');
+  toggle.addEventListener('click', function(e) {
     e.stopPropagation();
-    dd.classList.toggle('open');
+    setDropdownOpen(dd, !dd.classList.contains('open'));
+  });
+  dd.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      setDropdownOpen(dd, false);
+      toggle.focus();
+    }
+  });
+  dd.addEventListener('focusout', function(e) {
+    if (!dd.contains(e.relatedTarget)) {
+      setDropdownOpen(dd, false);
+    }
   });
 });
 document.addEventListener('click', function() {
   document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
-    dd.classList.remove('open');
+    setDropdownOpen(dd, false);
   });
 });
 var hamburgerBtn = document.querySelector('.nav-hamburger');

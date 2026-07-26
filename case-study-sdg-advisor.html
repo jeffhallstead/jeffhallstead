@@ -475,6 +475,15 @@ const obs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.08 });
 fadeEls.forEach(function(el) { obs.observe(el); });
 
+function substackSubscribe(e, form) {
+  e.preventDefault();
+  var email = form.querySelector("input[type=email]").value;
+  window.open("https://www.brandedentertainmentbrief.com/subscribe?email=" + encodeURIComponent(email), "_blank");
+  form.style.display = "none";
+  var sent = form.nextElementSibling;
+  if (sent) sent.style.display = "block";
+}
+
 // Nav dropdown
 document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
   dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {

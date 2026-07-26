@@ -373,7 +373,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <div class="footer-links">
     <a href="contact.html">Contact</a>
-    <a href="https://jeffhallstead.substack.com/" target="_blank">Newsletter</a>
+    <a href="https://www.brandedentertainmentbrief.com" target="_blank">Newsletter</a>
     <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
   </div>
 </footer>
@@ -388,7 +388,7 @@ fadeEls.forEach(el => obs.observe(el));
 function substackSubscribe(e, form) {
   e.preventDefault();
   var email = form.querySelector("input[type=email]").value;
-  window.open("https://jeffhallstead.substack.com/subscribe?email=" + encodeURIComponent(email), "_blank");
+  window.open("https://www.brandedentertainmentbrief.com/subscribe?email=" + encodeURIComponent(email), "_blank");
   form.style.display = "none";
   var sent = form.nextElementSibling;
   if (sent) sent.style.display = "block";

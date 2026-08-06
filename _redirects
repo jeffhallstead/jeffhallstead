@@ -1,1 +1,15 @@
+# The Publisher Test moved to the standalone Publisher Blueprint app.
+# The `!` force flag is required: tools/brand-content-readiness.html is
+# intentionally kept in the publish directory as a fallback, and without
+# the flag Netlify would serve that file instead of honoring the redirect.
+# Listed before /uploads/* so old /uploads links resolve in a single hop.
+#
+# TO REVERT to the old on-site tool: delete the four rules below, then
+# repoint the nav links in all 12 top-level pages + tools/ back to
+# tools/brand-content-readiness.html and restore the sitemap.xml entry.
+/uploads/brand-content-readiness        https://blueprint.jeffhallstead.com/  301!
+/uploads/brand-content-readiness.html   https://blueprint.jeffhallstead.com/  301!
+/tools/brand-content-readiness          https://blueprint.jeffhallstead.com/  301!
+/tools/brand-content-readiness.html     https://blueprint.jeffhallstead.com/  301!
+
 /uploads/*  /tools/:splat  301

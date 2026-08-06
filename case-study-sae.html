@@ -224,11 +224,11 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent-cyan); margin-top: 10px;
 }
- (max-width: 960px) {
+@media (max-width: 960px) {
   .subscribe-band { padding: 40px 32px; }
   .subscribe-band-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
 }
- (max-width: 600px) {
+@media (max-width: 600px) {
   .subscribe-band { padding: 36px 24px; }
   .subscribe-form { flex-direction: column; gap: 8px; }
   .subscribe-form input[type="email"] {
@@ -257,7 +257,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
     </div>
   </div>
     <a href="contact.html">Contact</a>
-    <a href="tools/brand-content-readiness.html" class="nav-quiz">The Publisher Test</a>
+    <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -454,7 +454,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
     </div>
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your.com" required>
+        <input type="email" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -479,11 +479,41 @@ fadeEls.forEach(el => obs.observe(el));
 
 function substackSubscribe(e, form) {
   e.preventDefault();
-  var email = form.querySelector("input[type=email]").value;
-  window.open("https://www.brandedentertainmentbrief.com/subscribe?email=" + encodeURIComponent(email), "_blank");
-  form.style.display = "none";
-  var sent = form.nextElementSibling;
-  if (sent) sent.style.display = "block";
+  var input = form.querySelector("input[type=email]");
+  var btn   = form.querySelector("button");
+  var sent  = form.nextElementSibling;
+  var label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "subscribing...";
+  fetch("/.netlify/functions/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: input.value.trim(), page: location.pathname })
+  })
+  .then(function (res) {
+    return res.json().catch(function () { return {}; }).then(function (data) {
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
+      return data;
+    });
+  })
+  .then(function (data) {
+    if (sent) {
+      sent.textContent = data.status === "active"
+        ? "You're subscribed \u2192"
+        : "Check your inbox to confirm \u2192";
+      sent.style.display = "block";
+    }
+    form.style.display = "none";
+  })
+  .catch(function (err) {
+    btn.disabled = false;
+    btn.textContent = label;
+    if (sent) {
+      sent.textContent = err.message;
+      sent.style.color = "rgba(232,76,43,0.9)";
+      sent.style.display = "block";
+    }
+  });
 }
 </script>
 

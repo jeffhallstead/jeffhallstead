@@ -210,6 +210,22 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 }
 .field.error .field-error { display: block; }
 
+/* Honeypot — hidden from humans, visible to bots */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Submission failure — only shown when the POST actually fails */
+.form-error {
+  display: none; margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(232,76,43,0.08);
+  border: 1px solid rgba(232,76,43,0.35);
+  border-radius: 2px;
+  font-size: 13px; line-height: 1.6;
+  color: rgba(255,255,255,0.8); max-width: 480px;
+}
+.form-error.visible { display: block; }
+.form-error a { color: var(--accent-cyan); text-decoration: none; border-bottom: 1px solid rgba(34,212,245,0.35); }
+
 .submit-btn {
   font-family: var(--font-display); font-weight:400; font-size:13px;
   letter-spacing: 0.05em; text-transform: lowercase;
@@ -379,11 +395,11 @@ footer {
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent-cyan); margin-top: 10px;
 }
- (max-width: 960px) {
+@media (max-width: 960px) {
   .subscribe-band { padding: 40px 32px; }
   .subscribe-band-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
 }
- (max-width: 600px) {
+@media (max-width: 600px) {
   .subscribe-band { padding: 36px 24px; }
   .subscribe-form { flex-direction: column; gap: 8px; }
   .subscribe-form input[type="email"] {
@@ -412,7 +428,7 @@ footer {
     </div>
   </div>
     <a href="contact.html" class="active">Contact</a>
-    <a href="tools/brand-content-readiness.html" class="nav-quiz">The Publisher Test</a>
+    <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -467,7 +483,10 @@ footer {
   <div class="contact-right">
     <div class="form-heading fade-up">Book a Strategy Call</div>
 
-    <form id="contact-form" novalidate class="fade-up" style="transition-delay:0.1s">
+    <form id="contact-form" name="contact" method="POST" data-netlify="true"
+          data-netlify-honeypot="bot-field" novalidate class="fade-up" style="transition-delay:0.1s">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp-field"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="field" id="field-name">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your full name" autocomplete="name">
@@ -489,6 +508,7 @@ footer {
         <span class="field-error">Please tell us what you're working on.</span>
       </div>
       <button type="submit" class="submit-btn">send my message</button>
+      <div class="form-error" id="form-error" role="alert"></div>
     </form>
 
     <div class="success-msg" id="success-msg">
@@ -509,7 +529,7 @@ footer {
     </div>
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your.com" required>
+        <input type="email" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -536,11 +556,41 @@ fadeEls.forEach(el => obs.observe(el));
 
 function substackSubscribe(e, form) {
   e.preventDefault();
-  var email = form.querySelector("input[type=email]").value;
-  window.open("https://www.brandedentertainmentbrief.com/subscribe?email=" + encodeURIComponent(email), "_blank");
-  form.style.display = "none";
-  var sent = form.nextElementSibling;
-  if (sent) sent.style.display = "block";
+  var input = form.querySelector("input[type=email]");
+  var btn   = form.querySelector("button");
+  var sent  = form.nextElementSibling;
+  var label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "subscribing...";
+  fetch("/.netlify/functions/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: input.value.trim(), page: location.pathname })
+  })
+  .then(function (res) {
+    return res.json().catch(function () { return {}; }).then(function (data) {
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
+      return data;
+    });
+  })
+  .then(function (data) {
+    if (sent) {
+      sent.textContent = data.status === "active"
+        ? "You're subscribed \u2192"
+        : "Check your inbox to confirm \u2192";
+      sent.style.display = "block";
+    }
+    form.style.display = "none";
+  })
+  .catch(function (err) {
+    btn.disabled = false;
+    btn.textContent = label;
+    if (sent) {
+      sent.textContent = err.message;
+      sent.style.color = "rgba(232,76,43,0.9)";
+      sent.style.display = "block";
+    }
+  });
 }
 
 // Form validation
@@ -566,29 +616,35 @@ function validate() {
   return valid;
 }
 
-form.addEventListener('submit', e => {
+// Submits to Netlify Forms. The success state is shown ONLY after Netlify
+// accepts the POST — a failure re-enables the button and surfaces a fallback.
+form.addEventListener('submit', async e => {
   e.preventDefault();
   if (!validate()) return;
+
   const btn = form.querySelector('.submit-btn');
+  const errBox = document.getElementById('form-error');
+  errBox.classList.remove('visible');
   btn.disabled = true;
   btn.textContent = 'sending...';
-  setTimeout(() => {
-    // Build mailto link with form data
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const org = document.getElementById('org').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const subject = encodeURIComponent('Strategy Call Request — ' + name);
-    const body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Organization: ' + org + '\n\n' +
-      message
-    );
-    window.location.href = 'mailto:jeff@jeffhallstead.com?subject=' + subject + '&body=' + body;
+
+  try {
+    const res = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
     form.style.display = 'none';
     successMsg.classList.add('visible');
-  }, 800);
+    successMsg.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'send my message';
+    errBox.innerHTML = 'Something went wrong sending your message. Please try again, or email ' +
+      '<a href="mailto:jeff@jeffhallstead.com">jeff@jeffhallstead.com</a> directly.';
+    errBox.classList.add('visible');
+  }
 });
 
 // Clear error on input

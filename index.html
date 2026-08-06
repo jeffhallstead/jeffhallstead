@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jeff Hallstead · Momentive Ventures</title>
-<meta name="description" content="Jeff Hallstead works with media companies, brands, and social enterprises that have vision and genuine purpose but need the strategic clarity to turn that into positioning, partnerships, and growth.">
+<meta name="description" content="Your brand doesn't need to run more ads. It needs an audience it owns. Jeff Hallstead helps brand and marketing leaders connect what people watch with what they buy.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Jeff Hallstead">
 <meta property="og:title" content="Jeff Hallstead">
-<meta property="og:description" content="Jeff Hallstead works with media companies, brands, and social enterprises that have vision and genuine purpose but need the strategic clarity to turn that into positioning, partnerships, and growth.">
+<meta property="og:description" content="Your brand doesn't need to run more ads. It needs an audience it owns. Jeff Hallstead helps brand and marketing leaders connect what people watch with what they buy.">
 <meta property="og:url" content="https://jeffhallstead.com/">
 <meta property="og:image" content="https://jeffhallstead.com/og-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jeff Hallstead">
-<meta name="twitter:description" content="Jeff Hallstead works with media companies, brands, and social enterprises that have vision and genuine purpose but need the strategic clarity to turn that into positioning, partnerships, and growth.">
+<meta name="twitter:description" content="Your brand doesn't need to run more ads. It needs an audience it owns. Jeff Hallstead helps brand and marketing leaders connect what people watch with what they buy.">
 <meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
 <template id="__bundler_thumbnail" data-bg-color="#040c1b">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -350,6 +350,92 @@ p + p { margin-top: 16px; }
 }
 .text-link:hover { color: var(--accent-cyan); }
 
+/* ── PROBLEM LIST ─────────────────────────── */
+.problem-list { margin-top: 36px; max-width: 600px; }
+.problem-item {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 18px 0; border-bottom: 1px solid var(--border-subtle);
+}
+.problem-item:first-child { border-top: 1px solid var(--border-subtle); }
+.problem-dash {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 20px; color: var(--accent-orange);
+  margin-top: -2px; flex-shrink: 0;
+}
+.problem-text { font-size: 15px; color: var(--text-secondary); line-height: 1.6; }
+
+/* ── RESULTS / SOCIAL PROOF ───────────────── */
+#results .results-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 1px; margin-top: 48px;
+  border: 1px solid var(--border-subtle);
+}
+.result-card { background: var(--bg-card); padding: 44px 40px 48px; }
+.result-metric {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 56px; line-height: 1;
+  color: var(--accent-cyan); margin-bottom: 6px;
+}
+.result-metric-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-tertiary); margin-bottom: 26px;
+}
+.result-card h3 {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 22px; color: var(--text-primary);
+  line-height: 1.25; margin-bottom: 18px;
+}
+.result-card p { font-size: 15px; line-height: 1.8; max-width: 680px; }
+.result-kicker {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 19px; line-height: 1.6;
+  color: var(--text-primary); margin-top: 24px;
+}
+.result-stats {
+  display: flex; flex-wrap: wrap; gap: 24px 56px;
+  margin-top: 32px; padding-top: 28px;
+  border-top: 1px solid var(--border-subtle);
+}
+.result-stat { display: flex; flex-direction: column; gap: 6px; }
+.result-stat-num {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: 28px; line-height: 1; color: var(--text-primary);
+}
+.result-stat-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-tertiary); line-height: 1.5;
+}
+.result-card .text-link { margin-top: 28px; font-size: 13px; }
+.logo-strip {
+  margin-top: 56px; padding-top: 32px;
+  border-top: 1px solid var(--border-subtle); max-width: 900px;
+}
+.logo-strip-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-tertiary); margin-bottom: 20px; line-height: 1.7;
+}
+.logo-strip-names { display: flex; flex-wrap: wrap; gap: 14px 28px; }
+.logo-strip-names span {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 16px; color: rgba(255,255,255,0.55);
+}
+
+/* Testimonial styling — markup is commented out in the Results section
+   until real, attributed client quotes are available. */
+.testimonial-quote {
+  font-family: var(--font-display); font-weight: 300; font-style: italic;
+  font-size: 17px; line-height: 1.7;
+  color: rgba(255,255,255,0.8); max-width: none;
+}
+.testimonial-attrib {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-tertiary); margin-top: 20px;
+}
+
 /* ── STAKES ───────────────────────────────── */
 #stakes {
   display: flex; flex-direction: column; align-items: center;
@@ -360,14 +446,14 @@ p + p { margin-top: 16px; }
 #stakes p { max-width: 480px; margin: 24px auto 0; text-align: center; }
 
 /* ── SUCCESS / FINAL CTA ──────────────────── */
-#success {
+#success, #final-cta {
   display: flex; flex-direction: column;
   align-items: center; text-align: center;
   padding: 140px 80px;
 }
-#success h2 { max-width: 680px; margin: 0 auto; }
-#success p { max-width: 520px; margin: 28px auto 0; text-align: center; }
-#success .btn-group { justify-content: center; margin-top: 48px; }
+#success h2, #final-cta h2 { max-width: 680px; margin: 0 auto; }
+#success p, #final-cta p { max-width: 520px; margin: 28px auto 0; text-align: center; }
+#success .btn-group, #final-cta .btn-group { justify-content: center; margin-top: 48px; }
 
 /* ── FOOTER ───────────────────────────────── */
 footer {
@@ -402,25 +488,29 @@ footer {
   nav { padding: 0 32px !important; }
   section { padding: 80px 32px; }
   #hero { padding: 0 32px !important; }
-  #mid-cta, #success { padding: 80px 32px; }
+  #mid-cta, #success, #final-cta { padding: 80px 32px; }
   footer { padding: 32px; flex-direction: column; text-align: center; gap: 20px; }
   .footer-center { order: -1; }
   #process .panels-grid { grid-template-columns: 1fr; }
   .panel { padding: 32px 28px; }
   .hero-content { padding-top: 80px; padding-bottom: 48px; }
+  .result-card { padding: 32px 28px 36px; }
+  .result-stats { gap: 22px 36px; }
 }
 @media (max-width: 600px) {
   nav { padding: 0 20px !important; }
   .nav-links { gap: 20px; }
   section { padding: 64px 24px; }
   #hero { padding: 0 24px !important; }
-  #mid-cta, #success { padding: 64px 24px; }
+  #mid-cta, #success, #final-cta { padding: 64px 24px; }
   .hero-content { padding-top: 88px; gap: 0; }
   .hero-subhead { font-size: 15px; margin-top: 20px; }
   .btn-group { gap: 16px; margin-top: 28px; flex-direction: column; align-items: flex-start; }
   h2 { font-size: clamp(26px, 7vw, 44px); }
   .panels-grid { margin-top: 36px; }
   footer { padding: 28px 24px; }
+  .logo-strip-names { gap: 10px 20px; }
+  .logo-strip-names span { font-size: 15px; }
 }
 
 /* ── HAMBURGER NAV ────────────────────────── */
@@ -528,11 +618,11 @@ footer {
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent-cyan); margin-top: 10px;
 }
- (max-width: 960px) {
+@media (max-width: 960px) {
   .subscribe-band { padding: 40px 32px; }
   .subscribe-band-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
 }
- (max-width: 600px) {
+@media (max-width: 600px) {
   .subscribe-band { padding: 36px 24px; }
   .subscribe-form { flex-direction: column; gap: 8px; }
   .subscribe-form input[type="email"] {
@@ -712,7 +802,7 @@ footer {
     </div>
   </div>
     <a href="contact.html">Contact</a>
-    <a href="tools/brand-content-readiness.html" class="nav-quiz">The Publisher Test</a>
+    <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -742,12 +832,12 @@ footer {
   </svg>
   <div class="v-line"></div>
   <div class="hero-content">
-    <div class="hero-label fade-up">Advisory Services · Brand Strategy · Content Leadership · Media</div>
-    <h1 class="fade-up" style="transition-delay:0.1s">The Brands Building Lasting Audiences Aren't Running Ads.<br><em style="font-style:italic;font-weight:300;color:rgba(255,255,255,0.75)">They're Creating Entertainment. Here's How to Do It.</em></h1>
-    <p class="hero-subhead fade-up" style="transition-delay:0.2s">Jeff Hallstead works with brand teams ready to move beyond advertising, building branded entertainment strategies, <a href="productions.html" style="color:var(--accent-cyan);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--accent-cyan)'">executive producing original content</a>, and developing the distribution infrastructure that turns content into a competitive asset.</p>
+    <div class="hero-label fade-up">For CMOs, brand leaders, and founders building owned audiences</div>
+    <h1 class="fade-up" style="transition-delay:0.1s">Your Brand Doesn't Need to Run More Ads.<br><em style="font-style:italic;font-weight:300;color:rgba(255,255,255,0.75)">It Needs an Audience It Owns.</em></h1>
+    <p class="hero-subhead fade-up" style="transition-delay:0.2s">Every quarter, you pay more to reach the same people — and it disappears the moment the campaign ends. Jeff helps brand and marketing leaders connect what people watch with what they buy, including creating content strategies and platforms so that they own the audience.</p>
     <div class="btn-group fade-up" style="transition-delay:0.3s">
       <a href="contact.html" class="btn">book a strategy call</a>
-      <a href="#track" class="btn-ghost btn">see the work →</a>
+      <a href="#results" class="btn-ghost btn">see the results →</a>
     </div>
   </div>
 </section>
@@ -755,129 +845,182 @@ footer {
 <!-- ── PROBLEM ─────────────────────────────── -->
 <section id="problem" class="alt" data-screen-label="02 Problem">
   <div class="content-col">
-    <div class="eyebrow fade-up">The Challenge</div>
+    <div class="eyebrow fade-up">The Problem</div>
     <hr class="rule fade-up">
-    <h2 class="fade-up">The Opportunity Is Real. The Hard Part Is Building It.</h2>
-    <p class="problem-body fade-up">Most brand teams already know that branded entertainment is where attention is going. The gap isn't awareness of the opportunity; it's the ability to execute it. Building a content strategy, producing original programming, and developing the distribution infrastructure to get it seen requires a specific combination of creative, strategic, and operational experience that's hard to find in one place. That's the gap Jeff fills.</p>
+    <h2 class="fade-up">You're Paying More Every Year to Rent an Audience You'll Never Own.</h2>
+    <p class="problem-body fade-up">Media costs climb. Returns flatten. And the audience you just paid for belongs to the platform, not to you.</p>
+    <div class="problem-list">
+      <div class="problem-item fade-up">
+        <span class="problem-dash">—</span>
+        <span class="problem-text">Leadership expects measurable growth, and the numbers are getting harder to defend.</span>
+      </div>
+      <div class="problem-item fade-up" style="transition-delay:0.08s">
+        <span class="problem-dash">—</span>
+        <span class="problem-text">Your budget is under more scrutiny than it has ever been.</span>
+      </div>
+      <div class="problem-item fade-up" style="transition-delay:0.16s">
+        <span class="problem-dash">—</span>
+        <span class="problem-text">Agencies keep delivering campaigns that expire instead of assets that compound.</span>
+      </div>
+      <div class="problem-item fade-up" style="transition-delay:0.24s">
+        <span class="problem-dash">—</span>
+        <span class="problem-text">Your team is already stretched, with no in-house production or distribution experience.</span>
+      </div>
+      <div class="problem-item fade-up" style="transition-delay:0.32s">
+        <span class="problem-dash">—</span>
+        <span class="problem-text">Getting the exec team aligned on a multi-quarter content bet feels harder than the bet itself.</span>
+      </div>
+    </div>
+    <p class="problem-body fade-up" style="margin-top:32px">You already know branded entertainment is where attention is going. Knowing that isn't the same as knowing how to build it — and you're being asked to build something most marketing teams never have.</p>
     <div class="btn-group fade-up" style="transition-delay:0.15s">
-      <a href="tools/brand-content-readiness.html" class="btn">take the content readiness assessment →</a>
+      <a href="https://blueprint.jeffhallstead.com/" class="btn">not ready to talk? take the publisher test →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── GUIDE (formerly About) ──────────────── -->
+<section id="about" data-screen-label="03 Guide">
+  <div class="content-col">
+    <div class="eyebrow fade-up">Your Guide</div>
+    <hr class="rule fade-up">
+    <h2 class="fade-up">You Need Someone Who's Already Built This.</h2>
+    <p class="fade-up" style="margin-top:28px">Most brand leaders exploring branded entertainment have no in-house production experience, no distribution relationships, and a board that wants returns in two quarters. That's a hard place to stand — and it's the exact place Jeff Hallstead keeps getting brought into.</p>
+    <p class="fade-up">He's built the content function from the inside, as fractional Chief Content Officer and executive producer, and negotiated brand partnerships with NBCUniversal and Mastercard Europe. He's also co-founded a company outright — SustainAble Exchange, built from concept to operating platform. All of it grounded in 15+ years in audience measurement at Nielsen, Comscore, and Kantar — so the decisions rest on how audiences actually behave, not on what a creative deck promises.</p>
+    <p class="fade-up">Which means you're not paying someone to learn on your budget.</p>
+    <div class="credential-line fade-up">15+ Years · Branded Entertainment · Audience Measurement · Media Distribution</div>
+  </div>
+</section>
+
+<!-- ── RESULTS / SOCIAL PROOF ──────────────── -->
+<section id="results" class="alt" data-screen-label="04 Results">
+  <div class="eyebrow fade-up">Proof</div>
+  <hr class="rule fade-up">
+  <h2 class="fade-up">What It Looks Like When It Works.</h2>
+  <div class="results-grid">
+    <div class="result-card fade-up">
+      <div class="result-metric">4x</div>
+      <div class="result-metric-label">DTC revenue growth, year one</div>
+      <h3>Pour Les Femmes — original content that sold product.</h3>
+      <p>A wholesale brand in Saks, Neiman Marcus, and Harrods, with no direct relationship to its own customers. Jeff built the direct-to-consumer business end to end — ecommerce, marketing, and content.</p>
+      <p>That included <em>Pillow Talk</em>, an original series hosted by co-founder Robin Wright with Jamie Lee Curtis, Chelsea Handler, and Amber Valletta, distributed across YouTube, Roku, Vimeo, Spotify, Apple Podcasts, and iHeart Radio. An NBCUniversal partnership put the brand on Shoppable TV.</p>
+      <p class="result-kicker">The content built the audience. The audience bought.</p>
+      <div class="result-stats">
+        <div class="result-stat">
+          <span class="result-stat-num">+20%</span>
+          <span class="result-stat-label">Growth again,<br>year two</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-stat-num">50+</span>
+          <span class="result-stat-label">Countries reached<br>via DTC</span>
+        </div>
+        <div class="result-stat">
+          <span class="result-stat-num">250K+</span>
+          <span class="result-stat-label">Visits from one<br>brand campaign</span>
+        </div>
+      </div>
+      <a href="case-study-plf.html" class="text-link">Read the case study →</a>
+    </div>
+  </div>
+
+  <!--
+    ═══════════════════════════════════════════════════════════════════
+    TESTIMONIAL SLOTS — INTENTIONALLY EMPTY, READY TO FILL
+    ═══════════════════════════════════════════════════════════════════
+    No client testimonials currently exist anywhere on this site, so
+    none were written here. Do not fill these with invented quotes.
+
+    Ask 2-3 past clients for a sentence answering: "What changed for
+    your business as a result of this work?" Then uncomment and fill.
+    Strongest placement is right here, directly beneath the results
+    cards and above the partner strip.
+
+  <div class="results-grid">
+    <div class="result-card fade-up">
+      <p class="testimonial-quote">"[Real client quote — one or two sentences on the business outcome.]"</p>
+      <div class="testimonial-attrib">[Name] · [Title], [Company]</div>
+    </div>
+    <div class="result-card fade-up">
+      <p class="testimonial-quote">"[Real client quote — one or two sentences on the business outcome.]"</p>
+      <div class="testimonial-attrib">[Name] · [Title], [Company]</div>
+    </div>
+  </div>
+    ═══════════════════════════════════════════════════════════════════
+  -->
+
+  <div class="logo-strip fade-up">
+    <div class="logo-strip-label">Where Jeff has worked and who he's worked with</div>
+    <div class="logo-strip-names">
+      <span>Nielsen</span>
+      <span>Warner Bros</span>
+      <span>Comcast/NBCU</span>
+      <span>Amazon Studios</span>
+      <span>Disney</span>
+      <span>Paramount</span>
+      <span>YouTube</span>
     </div>
   </div>
 </section>
 
 <!-- ── PROCESS ─────────────────────────────── -->
-<section id="process" data-screen-label="03 Process">
-  <div class="eyebrow fade-up">The Process</div>
+<section id="process" data-screen-label="05 Process">
+  <div class="eyebrow fade-up">The Plan</div>
   <hr class="rule fade-up">
-  <h2 class="fade-up">A Clear Path Forward</h2>
+  <h2 class="fade-up">Three Steps. No Ambiguity.</h2>
   <div class="panels-grid fade-up" style="transition-delay:0.15s">
     <div class="panel">
       <div class="panel-top-rule"></div>
-      <div class="panel-label">01 · The Clarity Conversation</div>
-      <p>A focused 45-minute session to map where you are, where you want to go, and where the strategic gap is. No pitch. No obligation. Just clear thinking.</p>
+      <div class="panel-label">01 · Book a Strategy Call</div>
+      <p>Forty-five minutes on your business — where you are, what's blocking you, and whether there's an opportunity worth pursuing. No pitch.</p>
       <div class="panel-number-bg">01</div>
     </div>
     <div class="panel">
       <div class="panel-top-rule"></div>
-      <div class="panel-label">02 · The Strategic Roadmap</div>
-      <p>Jeff delivers a clear plan: the content formats that fit your brand, the production approach that matches your timeline and budget, and the distribution infrastructure needed to build a real audience.</p>
+      <div class="panel-label">02 · Get Your Strategic Roadmap</div>
+      <p>You get a prioritized plan: the formats that fit your brand, the production approach that fits your budget, and the distribution to get it seen.</p>
       <div class="panel-number-bg">02</div>
     </div>
     <div class="panel">
       <div class="panel-top-rule"></div>
-      <div class="panel-label">03 · Build and Execute</div>
-      <p>Jeff stays in the room as you build, executive producing content, managing platform relationships, and measuring what's working so the strategy compounds over time.</p>
+      <div class="panel-label">03 · Build It With Jeff in the Room</div>
+      <p>Jeff stays hands-on through execution — producing the work, managing platform relationships, and measuring what performs so it compounds.</p>
       <div class="panel-number-bg">03</div>
     </div>
   </div>
 </section>
 
 <!-- ── MID CTA ─────────────────────────────── -->
-<section id="mid-cta" data-screen-label="04 Mid CTA">
-  <div class="cta-question fade-up">Ready to close the gap?</div>
+<section id="mid-cta" data-screen-label="06 Mid CTA">
+  <div class="cta-question fade-up">Ready to own your audience instead of renting it?</div>
   <div class="btn-group fade-up" style="transition-delay:0.1s; justify-content:center;">
     <a href="contact.html" class="btn">book a strategy call</a>
-    <a href="content-studio.html" class="btn btn-ghost">looking for a fractional CCO? see the content studio →</a>
+    <a href="content-studio.html" class="btn btn-ghost">need a fractional CCO? see services →</a>
   </div>
 </section>
 
-<!-- ── ABOUT ───────────────────────────────── -->
-<section id="about" class="alt" data-screen-label="05 About">
-  <div class="content-col">
-    <div class="eyebrow fade-up">About Jeff</div>
-    <hr class="rule fade-up">
-    <h2 class="fade-up">He's Built Branded Content Programs. He Knows How to Distribute Them.</h2>
-    <p class="fade-up" style="margin-top:28px">Jeff Hallstead has spent 15+ years inside the organizations doing the real work — as CEO, co-founder, fractional Chief Content Officer, and trusted advisor across brands, social enterprises, and media companies on three continents. He's navigated the exact gap between branded entertainment opportunity and execution that his clients face.</p>
-    <p class="fade-up">That includes serving as the senior content leader, owning editorial strategy, brand voice, and the content studio function for brands that needed that thinking without the full-time hire. That experience is grounded in 15+ years in audience measurement and media analytics — work that taught him how content actually performs, not just how it should in theory.</p>
-    <p class="fade-up">Which means when you work with Jeff, you're not getting theory. You're getting someone who has built content programs, executive produced original series, and developed the distribution infrastructure to get them seen.</p>
-    <div class="credential-line fade-up">15+ Years · Branded Entertainment · Audience Measurement · Media Distribution</div>
-  </div>
-</section>
-
-<!-- ── TRACK RECORD ────────────────────────── -->
-<section id="track" data-screen-label="06 Track Record">
-  <div class="content-col">
-    <div class="eyebrow fade-up">Track Record</div>
-    <hr class="rule fade-up">
-    <h2 class="fade-up">A Proven Track Record of Building Where Others Speculate.</h2>
-    <p class="fade-up" style="margin-top:28px">15+ years building branded content programs, measuring what works, and developing the distribution infrastructure to scale it. Whether serving as fractional CCO, executive producing original content, or building platform strategy, Jeff brings the creative and operational experience to move from idea to execution.</p>
-    <div class="credentials">
-      <div class="cred-item fade-up">
-        <span class="cred-dash">—</span>
-        <span class="cred-text">15+ years in audience measurement, media analytics, and content strategy across linear, VOD, and digital platforms</span>
-      </div>
-      <div class="cred-item fade-up" style="transition-delay:0.1s">
-        <span class="cred-dash">—</span>
-        <span class="cred-text">Fractional content and brand leadership for DTC, media, and entertainment brands</span>
-      </div>
-      <div class="cred-item fade-up" style="transition-delay:0.2s">
-        <span class="cred-dash">—</span>
-        <span class="cred-text">Executive producer of original branded series and social content programs</span>
-      </div>
-      <div class="cred-item fade-up" style="transition-delay:0.3s">
-        <span class="cred-dash">—</span>
-        <span class="cred-text">Known for bridging content strategy with the distribution infrastructure that makes it perform</span>
-      </div>
-    </div>
-    <a href="case-study-plf.html" class="text-link fade-up" style="transition-delay:0.3s">Read a Case Study →</a>
-  </div>
-</section>
-
-<!-- ── NEWSLETTER ─────────────────────────── -->
-<section id="newsletter" data-screen-label="06b Newsletter">
-  <div class="content-col">
-    <div class="eyebrow fade-up">Newsletter</div>
-    <hr class="rule fade-up">
-    <h2 class="fade-up">The Branded Entertainment Brief</h2>
-    <p class="fade-up" style="margin-top:20px;max-width:480px">A weekly digest of branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
-    <div style="margin-top:32px" class="fade-up">
-      <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <label for="newsletter-email-hero" class="sr-only">Email address</label>
-        <input type="email" id="newsletter-email-hero" name="email" placeholder="your@email.com" required>
-        <button type="submit">Subscribe →</button>
-      </form>
-      <div class="subscribe-sent">Check your inbox to confirm →</div>
-    </div>
-    <a href="newsletter.html" class="text-link fade-up" style="display:inline-block;margin-top:20px">Browse recent issues →</a>
-  </div>
+<!-- ── OUTCOMES ────────────────────────────── -->
+<section id="success" data-screen-label="07 Outcomes">
+  <div class="eyebrow fade-up">The Outcome</div>
+  <hr class="rule fade-up" style="margin:16px auto 32px">
+  <h2 class="fade-up" style="text-align:center;max-width:700px;margin:0 auto">A Year From Now, Your Best Marketing Asset Could Be One You Own.</h2>
+  <p class="fade-up" style="margin:28px auto 0;text-align:center;max-width:520px">Original entertainment your audience chooses to watch. A content library that grows more valuable each quarter instead of expiring with the media buy. Distribution on the platforms where your customers already are, with measurement that proves it's building brand equity. Less dependence on paid media — and an executive team that's aligned, because the results are finally legible.</p>
 </section>
 
 <!-- ── STAKES ──────────────────────────────── -->
-<section id="stakes" class="alt" data-screen-label="07 Stakes">
+<section id="stakes" class="alt" data-screen-label="08 Stakes">
   <div class="stakes-inner">
     <div class="eyebrow fade-up" style="text-align:center">The Cost of Waiting</div>
     <hr class="rule fade-up" style="margin:16px auto 32px">
-    <h2 class="fade-up" style="text-align:center;font-weight:300;font-size:clamp(26px,3vw,42px)">The Brands That Win Aren't Always Making the Best Products.</h2>
-    <p class="fade-up" style="text-align:center;margin:24px auto 0;max-width:520px">They're the ones that figured out how to own their audience's attention before their competitors did. The window for branded entertainment is open right now, but it won't stay that way. The brands that move first build the audience relationship, the distribution infrastructure, and the content library that compounds in value over time. The ones that wait find themselves paying to reach an audience someone else already owns.</p>
+    <h2 class="fade-up" style="text-align:center;font-weight:300;font-size:clamp(26px,3vw,42px)">The Brands That Win Aren't Always the Ones With the Best Product.</h2>
+    <p class="fade-up" style="text-align:center;margin:24px auto 0;max-width:520px">They're the ones that built the audience relationship before their competitors did. Every quarter you wait, reaching your own customers gets more expensive — while someone else's content library keeps compounding.</p>
   </div>
 </section>
 
-<!-- ── SUCCESS + FINAL CTA ─────────────────── -->
-<section id="success" data-screen-label="08 Success">
-  <div class="eyebrow fade-up">The Outcome</div>
+<!-- ── FINAL CTA ───────────────────────────── -->
+<section id="final-cta" data-screen-label="09 Final CTA">
+  <div class="eyebrow fade-up">Next Step</div>
   <hr class="rule fade-up" style="margin:16px auto 32px">
-  <h2 class="fade-up" style="text-align:center;max-width:700px;margin:0 auto">Imagine Knowing Exactly How to Tell Your Story — and Having the Market Actually Listen.</h2>
-  <p class="fade-up" style="margin:28px auto 0;text-align:center;max-width:520px">Your brand has a content program that's working: original entertainment your audience chooses to watch, distributed across the platforms where they spend time, with the measurement in place to prove it's building equity. Your team is aligned. The conversations you're having are the right ones, with the right partners, at the right moment. That's what working with Jeff makes possible.</p>
+  <h2 class="fade-up" style="text-align:center;max-width:680px;margin:0 auto">Stop Renting Attention. Start Building an Audience You Own.</h2>
+  <p class="fade-up" style="margin:28px auto 0;text-align:center;max-width:520px">If you're a brand or marketing leader who knows paid media alone won't get you there, one 45-minute conversation will tell you whether branded entertainment is the right move — and what it would take to build it.</p>
   <div class="btn-group fade-up" style="justify-content:center;margin-top:52px;transition-delay:0.15s">
     <a href="contact.html" class="btn">book a strategy call</a>
     <a href="case-study-plf.html" class="btn-ghost btn">read a case study →</a>
@@ -897,7 +1040,7 @@ footer {
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
         <label for="newsletter-email-footer" class="sr-only">Email address</label>
-        <input type="email" id="newsletter-email-footer" name="email" placeholder="your.com" required>
+        <input type="email" id="newsletter-email-footer" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -960,11 +1103,41 @@ function hideTweaks() {
 
 function substackSubscribe(e, form) {
   e.preventDefault();
-  var email = form.querySelector("input[type=email]").value;
-  window.open("https://www.brandedentertainmentbrief.com/subscribe?email=" + encodeURIComponent(email), "_blank");
-  form.style.display = "none";
-  var sent = form.nextElementSibling;
-  if (sent) sent.style.display = "block";
+  var input = form.querySelector("input[type=email]");
+  var btn   = form.querySelector("button");
+  var sent  = form.nextElementSibling;
+  var label = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "subscribing...";
+  fetch("/.netlify/functions/subscribe", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email: input.value.trim(), page: location.pathname })
+  })
+  .then(function (res) {
+    return res.json().catch(function () { return {}; }).then(function (data) {
+      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
+      return data;
+    });
+  })
+  .then(function (data) {
+    if (sent) {
+      sent.textContent = data.status === "active"
+        ? "You're subscribed \u2192"
+        : "Check your inbox to confirm \u2192";
+      sent.style.display = "block";
+    }
+    form.style.display = "none";
+  })
+  .catch(function (err) {
+    btn.disabled = false;
+    btn.textContent = label;
+    if (sent) {
+      sent.textContent = err.message;
+      sent.style.color = "rgba(232,76,43,0.9)";
+      sent.style.display = "block";
+    }
+  });
 }
 </script>
 

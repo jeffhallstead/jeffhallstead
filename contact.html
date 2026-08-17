@@ -34,6 +34,12 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 :root {
   --bg-deep:    #040c1b;
   --bg-mid:     #071426;
@@ -421,7 +427,7 @@ footer {
     <a href="productions.html">Productions</a>
     <a href="newsletter.html">Newsletter</a>
   <div class="nav-dropdown">
-    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
       <a href="case-study-plf.html">Pour Les Femmes</a>
       <a href="case-study-sae.html">SustainAble Exchange</a>
@@ -529,7 +535,8 @@ footer {
     </div>
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label for="newsletter-email-footer" class="sr-only">Email address</label>
+        <input type="email" id="newsletter-email-footer" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -657,15 +664,31 @@ document.querySelectorAll('input, textarea').forEach(el => {
 </script>
 
 <script>
+function setDropdownOpen(dd, open) {
+  dd.classList.toggle('open', open);
+  dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', String(open));
+}
 document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+  var toggle = dd.querySelector('.nav-dropdown-toggle');
+  toggle.addEventListener('click', function(e) {
     e.stopPropagation();
-    dd.classList.toggle('open');
+    setDropdownOpen(dd, !dd.classList.contains('open'));
+  });
+  dd.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      setDropdownOpen(dd, false);
+      toggle.focus();
+    }
+  });
+  dd.addEventListener('focusout', function(e) {
+    if (!dd.contains(e.relatedTarget)) {
+      setDropdownOpen(dd, false);
+    }
   });
 });
 document.addEventListener('click', function() {
   document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
-    dd.classList.remove('open');
+    setDropdownOpen(dd, false);
   });
 });
 var hamburger = document.querySelector('.nav-hamburger');

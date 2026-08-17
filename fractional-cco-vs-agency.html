@@ -71,6 +71,12 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 :root {
   --bg-deep:    #040c1b;
   --bg-mid:     #071426;
@@ -481,7 +487,7 @@ footer {
     <a href="productions.html">Productions</a>
     <a href="newsletter.html">Newsletter</a>
   <div class="nav-dropdown">
-    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
       <a href="case-study-plf.html">Pour Les Femmes</a>
       <a href="case-study-sae.html">SustainAble Exchange</a>
@@ -548,7 +554,7 @@ footer {
         <h2>The Traditional Agency Model</h2>
         <p class="body-text">A full-service agency or content studio brings a team: creative directors, producers, strategists, account managers, editors. That infrastructure is valuable when you have a large-scale campaign with defined deliverables and a clear brief.</p>
         <p class="body-text">Agencies are built to execute. At scale, with the right direction, that's exactly what you need.</p>
-        <p class="body-text">The challenge is that branded entertainment isn't a campaign. It's a program. Building it well requires senior strategic leadership that can define the content formats, production approach, distribution infrastructure, and measurement framework before a single piece of content gets made. Many agencies are structured to execute once someone else has answered those questions — not to answer them.</p>
+        <p class="body-text">The challenge is that branded entertainment runs as an ongoing program. Building it well requires senior strategic leadership that can define the content formats, production approach, distribution infrastructure, and measurement framework before a single piece of content gets made. Many agencies are structured to execute once someone else has answered those questions.</p>
       </div>
     </div>
   </div>
@@ -662,7 +668,7 @@ footer {
 <!-- CTA BAND -->
 <div class="cta-band fade-up">
   <h2>Working with Jeff Hallstead</h2>
-  <p class="cta-desc">Jeff works with brand teams as a fractional Chief Content Officer and branded entertainment strategist — helping brands develop content strategies, executive produce original programming, and build the distribution infrastructure that turns content into a competitive asset. His background includes 15+ years in audience measurement and media analytics, which means the content programs he builds are grounded in how audiences actually behave, not just how they should in theory.</p>
+  <p class="cta-desc">Jeff works with brand teams as a fractional Chief Content Officer and branded entertainment strategist — helping brands develop content strategies, executive produce original programming, and build the distribution infrastructure that turns content into a competitive asset. His background includes 15+ years in audience measurement and media analytics, which means the content programs he builds are grounded in how audiences actually behave.</p>
   <p class="cta-desc" style="margin-top:0">If you're evaluating whether this model is the right fit for your brand's content initiative, the first conversation is a focused 45-minute session with no pitch and no obligation.</p>
   <div class="btn-group">
     <a href="contact.html" class="btn">book a strategy call</a>
@@ -679,7 +685,8 @@ footer {
     </div>
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label for="newsletter-email-footer" class="sr-only">Email address</label>
+        <input type="email" id="newsletter-email-footer" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -742,13 +749,32 @@ function substackSubscribe(e, form) {
   });
 }
 
+function setDropdownOpen(dd, open) {
+  dd.classList.toggle('open', open);
+  dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', String(open));
+}
 document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
-    e.stopPropagation(); dd.classList.toggle('open');
+  var toggle = dd.querySelector('.nav-dropdown-toggle');
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    setDropdownOpen(dd, !dd.classList.contains('open'));
+  });
+  dd.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      setDropdownOpen(dd, false);
+      toggle.focus();
+    }
+  });
+  dd.addEventListener('focusout', function(e) {
+    if (!dd.contains(e.relatedTarget)) {
+      setDropdownOpen(dd, false);
+    }
   });
 });
 document.addEventListener('click', function() {
-  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) { dd.classList.remove('open'); });
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    setDropdownOpen(dd, false);
+  });
 });
 var hamburger = document.querySelector('.nav-hamburger');
 var navLinks = document.querySelector('.nav-links');

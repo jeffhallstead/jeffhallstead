@@ -19,6 +19,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
 :root {
   --bg-deep:#040c1b; --bg-mid:#071426; --bg-card:#0d1e3c;
   --accent-cyan:#22d4f5; --accent-cyan-dim:rgba(34,212,245,0.10);
@@ -239,7 +245,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
     <a href="productions.html">Productions</a>
     <a href="newsletter.html">Newsletter</a>
   <div class="nav-dropdown">
-    <button class="nav-dropdown-toggle active">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <button class="nav-dropdown-toggle active" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
       <a href="case-study-plf.html" class="active">Pour Les Femmes</a>
       <a href="case-study-sae.html">SustainAble Exchange</a>
@@ -308,7 +314,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
         <p class="body-text">Pour Les Femmes is a sleep/loungewear company co-founded by Robin Wright. Prior to working with us, the brand had focused on its wholesale business, selling to retailers such as Saks, Neiman-Marcus, and Harrods.</p>
         <p class="body-text">We understood that the brand was missing a huge opportunity to capture the growing online market for sleep and loungewear and leverage the audience and credibility of the brand's own celebrity co-founder. Starting in 2019, we partnered with Pour Les Femmes to re-launch their DTC business and activate their global audience of conscious customers interested in luxurious and sustainably made garments.</p>
         <p class="body-text">We leveraged best-in-class marketing technology, the brand's own first-party data, and expertise in content strategy and audience targeting to build brand equity and drive revenue. As an outsourced CMO, we drove all aspects of marketing procurement, brand strategy, creative, marketing technology, social media, paid media, email/SMS, and globalization of the customer experience.</p>
-        <p class="body-text">The result? We grew DTC revenue 4x in the first year and 20% in the following year, while launching and growing the addressable audience across multiple platforms including Facebook, Instagram, TikTok, and YouTube.</p>
+        <p class="body-text">We grew DTC revenue 4x in the first year and 20% in the following year, while launching and growing the addressable audience across multiple platforms including Facebook, Instagram, TikTok, and YouTube.</p>
       </div>
     </div>
   </div>
@@ -457,7 +463,8 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
     </div>
     <div>
       <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
-        <input type="email" name="email" placeholder="your@email.com" required>
+        <label for="newsletter-email-footer" class="sr-only">Email address</label>
+        <input type="email" id="newsletter-email-footer" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
       <div class="subscribe-sent">Check your inbox to confirm →</div>
@@ -521,15 +528,31 @@ function substackSubscribe(e, form) {
 </script>
 
 <script>
+function setDropdownOpen(dd, open) {
+  dd.classList.toggle('open', open);
+  dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', String(open));
+}
 document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
+  var toggle = dd.querySelector('.nav-dropdown-toggle');
+  toggle.addEventListener('click', function(e) {
     e.stopPropagation();
-    dd.classList.toggle('open');
+    setDropdownOpen(dd, !dd.classList.contains('open'));
+  });
+  dd.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      setDropdownOpen(dd, false);
+      toggle.focus();
+    }
+  });
+  dd.addEventListener('focusout', function(e) {
+    if (!dd.contains(e.relatedTarget)) {
+      setDropdownOpen(dd, false);
+    }
   });
 });
 document.addEventListener('click', function() {
   document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
-    dd.classList.remove('open');
+    setDropdownOpen(dd, false);
   });
 });
 var hamburger = document.querySelector('.nav-hamburger');

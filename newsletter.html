@@ -423,14 +423,14 @@ footer {
     <a href="productions.html">Productions</a>
     <a href="newsletter.html" class="active">Newsletter</a>
   <div class="nav-dropdown">
-    <button class="nav-dropdown-toggle">Case Studies <span class="nav-dropdown-chevron"></span></button>
+    <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
       <a href="case-study-plf.html">Pour Les Femmes</a>
       <a href="case-study-sae.html">SustainAble Exchange</a>
     </div>
   </div>
     <a href="contact.html">Contact</a>
-    <a href="tools/brand-content-readiness.html" class="nav-quiz">The Publisher Test</a>
+    <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -485,7 +485,7 @@ footer {
       <div class="what-item">
         <div class="what-item-label">Every week</div>
         <h3>The Jeff Hallstead Lens</h3>
-        <p>15+ years in audience measurement and branded content — applied to what's happening now. Not trend coverage. Informed perspective.</p>
+        <p>15+ years in audience measurement and branded content, applied to what's happening now.</p>
       </div>
     </div>
   </div>
@@ -533,13 +533,32 @@ const obs = new IntersectionObserver(entries => {
 fadeEls.forEach(el => obs.observe(el));
 
 // Nav hamburger
+function setDropdownOpen(dd, open) {
+  dd.classList.toggle('open', open);
+  dd.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', String(open));
+}
 document.querySelectorAll('.nav-dropdown').forEach(function(dd) {
-  dd.querySelector('.nav-dropdown-toggle').addEventListener('click', function(e) {
-    e.stopPropagation(); dd.classList.toggle('open');
+  var toggle = dd.querySelector('.nav-dropdown-toggle');
+  toggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    setDropdownOpen(dd, !dd.classList.contains('open'));
+  });
+  dd.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      setDropdownOpen(dd, false);
+      toggle.focus();
+    }
+  });
+  dd.addEventListener('focusout', function(e) {
+    if (!dd.contains(e.relatedTarget)) {
+      setDropdownOpen(dd, false);
+    }
   });
 });
 document.addEventListener('click', function() {
-  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) { dd.classList.remove('open'); });
+  document.querySelectorAll('.nav-dropdown.open').forEach(function(dd) {
+    setDropdownOpen(dd, false);
+  });
 });
 var hamburger = document.querySelector('.nav-hamburger');
 var navLinks = document.querySelector('.nav-links');

@@ -12,4 +12,6 @@
 /tools/brand-content-readiness          https://blueprint.jeffhallstead.com/  301!
 /tools/brand-content-readiness.html     https://blueprint.jeffhallstead.com/  301!
 
+/test  https://blueprint.jeffhallstead.com/  301
+
 /uploads/*  /tools/:splat  301

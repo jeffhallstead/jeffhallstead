@@ -63,6 +63,48 @@ nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-i
 .nav-links a.nav-quiz { color:var(--accent); border:1px solid rgba(230,86,72,0.35); padding:5px 14px; border-radius:2px; transition:background 0.2s,border-color 0.2s,color 0.2s; }
 .nav-links a.nav-quiz:hover { background:var(--accent-dim); border-color:var(--border-bright); color:var(--text-primary); }
 
+/* ── DROPDOWN (desktop) ───────────────────── */
+.nav-dropdown { position: relative; display: flex; align-items: center; }
+.nav-dropdown-toggle {
+  font-family: var(--font-ui); font-size: 13px;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  cursor: pointer; display: flex; align-items: center; gap: 5px;
+  background: none; border: none; padding: 0;
+  transition: color 0.2s;
+}
+.nav-dropdown-toggle:hover,
+.nav-dropdown.open .nav-dropdown-toggle { color: #ffffff; }
+.nav-dropdown-toggle.active { color: #ffffff; text-decoration: underline; text-underline-offset: 4px; }
+.nav-dropdown-chevron {
+  display: inline-block; width: 8px; height: 8px;
+  border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform 0.2s;
+}
+.nav-dropdown.open .nav-dropdown-chevron { transform: rotate(-135deg) translateY(-2px); }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: calc(100% + 16px); left: 50%;
+  transform: translateX(-50%);
+  background: rgba(32,29,26,0.98); backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.16);
+  min-width: 200px; z-index: 200;
+  flex-direction: column;
+}
+.nav-dropdown.open .nav-dropdown-menu,
+.nav-dropdown:hover .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a {
+  font-family: var(--font-ui); font-size: 13px;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { background: rgba(230,86,72,0.08); color: #ffffff; }
+.nav-dropdown-menu a.active { color: #e65648; }
+
+
 /* HERO */
 #hero { padding:140px 80px 80px; position:relative; overflow:hidden; border-bottom:1px solid var(--border-subtle); }
 .constellation { position:absolute; top:0; right:0; width:50%; height:100%; pointer-events:none; opacity:0.15; }

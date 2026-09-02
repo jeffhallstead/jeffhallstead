@@ -15,8 +15,6 @@
 <meta name="twitter:title" content="About Jeff Hallstead">
 <meta name="twitter:description" content="Jeff Hallstead has worked inside the media business — Warner Bros, Disney, Paramount, Comcast/NBCU, Amazon Studios — and built the content function on the brand side. He helps brand leaders turn their brands into media companies.">
 <meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,22 +25,31 @@
 }
 
 :root {
-  --bg-deep:    #040c1b;
-  --bg-mid:     #071426;
-  --bg-card:    #0d1e3c;
-  --accent-cyan:     #22d4f5;
-  --accent-cyan-dim: rgba(34,212,245,0.10);
-  --accent-orange:   #e84c2b;
+  /* ── GROUND — warm near-black ─────────────── */
+  --bg-deep:    #0c0b0a;
+  --bg-mid:     #14120f;
+  --bg-card:    #1c1a17;
+
+  /* ── ACCENT — single red ──────────────────── */
+  --accent:     #e65648;
+  --accent-dim: rgba(230,86,72,0.12);
+
+  /* ── INK ──────────────────────────────────── */
   --text-primary:   #ffffff;
-  --text-secondary: rgba(255,255,255,0.65);
-  --text-tertiary:  rgba(255,255,255,0.35);
+  --text-secondary: rgba(255,255,255,0.70);
+  --text-tertiary:  rgba(255,255,255,0.52);
+
+  /* ── BORDERS — neutral ────────────────────── */
   --border-subtle:      rgba(255,255,255,0.10);
-  --border-interactive: rgba(100,200,255,0.45);
-  --border-bright:      rgba(34,212,245,0.70);
-  --font-wordmark: 'Rajdhani', sans-serif;
-  --font-display:  'Barlow', sans-serif;
-  --font-body:     'Inter', sans-serif;
-  --font-mono:     'DM Mono', monospace;
+  --border-interactive: rgba(255,255,255,0.35);
+  --border-bright:      rgba(255,255,255,0.55);
+  --divider:            rgba(255,255,255,0.14);
+
+  /* ── TYPE ─────────────────────────────────── */
+  --font-display:  Georgia, 'Times New Roman', serif;
+  --font-ui:       Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  --font-wordmark: Georgia, 'Times New Roman', serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -50,7 +57,7 @@ body {
   background: var(--bg-deep);
   color: var(--text-secondary);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -60,33 +67,33 @@ nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 80px; height: 64px;
-  background: rgba(4,12,27,0.92);
+  background: rgba(12,11,10,0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .wordmark {
   font-family: var(--font-wordmark);
-  font-weight: 700; font-size: 15px;
-  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700; font-size: 17px;
+  letter-spacing: -0.01em;
   color: var(--text-primary); text-decoration: none;
 }
 .nav-links { display:flex; gap:32px; align-items:center; }
 .nav-links a {
-  font-family: var(--font-display); font-size:13px;
+  font-family: var(--font-ui); font-size:13px;
   color: var(--text-secondary); text-decoration: none;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a.active { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
 .nav-links a.nav-quiz {
-  color: var(--accent-cyan);
-  border: 1px solid rgba(34,212,245,0.35);
+  color: var(--accent);
+  border: 1px solid rgba(230,86,72,0.35);
   padding: 5px 14px; border-radius: 2px;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .nav-links a.nav-quiz:hover {
-  background: var(--accent-cyan-dim);
+  background: var(--accent-dim);
   border-color: var(--border-bright);
   color: var(--text-primary);
 }
@@ -95,7 +102,7 @@ nav {
 /* ── DROPDOWN ─────────────────────────────── */
 .nav-dropdown { position: relative; display: flex; align-items: center; }
 .nav-dropdown-toggle {
-  font-family: var(--font-display, 'Barlow', sans-serif); font-size: 13px;
+  font-family: var(--font-ui); font-size: 13px;
   color: rgba(255,255,255,0.65); text-decoration: none;
   cursor: pointer; display: flex; align-items: center; gap: 5px;
   background: none; border: none; padding: 0;
@@ -114,23 +121,23 @@ nav {
 .nav-dropdown-menu {
   display: none; position: absolute; top: calc(100% + 16px); left: 50%;
   transform: translateX(-50%);
-  background: rgba(7,20,38,0.97); backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(32,29,26,0.98); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.16);
   min-width: 200px; z-index: 200;
   flex-direction: column;
 }
 .nav-dropdown.open .nav-dropdown-menu,
 .nav-dropdown:hover .nav-dropdown-menu { display: flex; }
 .nav-dropdown-menu a {
-  font-family: var(--font-display, 'Barlow', sans-serif); font-size: 13px;
+  font-family: var(--font-ui); font-size: 13px;
   color: rgba(255,255,255,0.65); text-decoration: none;
   padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.07);
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
 }
 .nav-dropdown-menu a:last-child { border-bottom: none; }
-.nav-dropdown-menu a:hover { background: rgba(34,212,245,0.08); color: #ffffff; }
-.nav-dropdown-menu a.active { color: #22d4f5; }
+.nav-dropdown-menu a:hover { background: rgba(230,86,72,0.08); color: #ffffff; }
+.nav-dropdown-menu a.active { color: #e65648; }
 
 /* ── HERO ─────────────────────────────────── */
 #hero {
@@ -142,19 +149,19 @@ nav {
   pointer-events: none; opacity: 0.15;
 }
 .eyebrow {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-bottom: 16px;
+  color: var(--accent); margin-bottom: 16px;
 }
 hr.rule {
   width: 200px; height: 1px; background: rgba(255,255,255,0.15);
   border: none; margin: 0 0 32px;
 }
 h1 {
-  font-family: var(--font-display); font-weight: 300;
+  font-family: var(--font-display); font-weight: 700;
   font-size: clamp(36px, 5vw, 66px); line-height: 1.08;
   color: var(--text-primary); text-wrap: pretty;
-  letter-spacing: -0.01em; max-width: 760px;
+  letter-spacing: -0.02em; max-width: 760px;
 }
 
 /* ── HERO IMAGE ───────────────────────────── */
@@ -169,7 +176,7 @@ h1 {
   filter: brightness(0.85);
 }
 .hero-caption {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--text-tertiary); padding: 12px 0;
   border-top: 1px solid var(--border-subtle);
@@ -193,26 +200,27 @@ h1 {
   align-items: start;
 }
 .section-label {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-tertiary); padding-top: 8px;
   position: sticky; top: 88px;
 }
 .section-label span {
-  display: block; color: var(--accent-cyan);
+  display: block; color: var(--accent);
   font-size: 9px; letter-spacing: 0.1em; margin-bottom: 6px;
 }
 
 h2 {
-  font-family: var(--font-display); font-weight: 400;
+  font-family: var(--font-display); font-weight: 700;
   font-size: clamp(24px, 2.8vw, 38px); line-height: 1.15;
   color: var(--text-primary); text-wrap: pretty;
-  margin-bottom: 24px; letter-spacing: -0.01em;
+  margin-bottom: 24px; letter-spacing: -0.018em;
 }
 h3 {
-  font-family: var(--font-display); font-weight: 500;
+  font-family: var(--font-display); font-weight: 700;
   font-size: 18px; line-height: 1.3;
   color: var(--text-primary); margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 .body-text {
   font-size: 16px; line-height: 1.8;
@@ -230,14 +238,14 @@ h3 {
 }
 .step:first-child { border-top: 1px solid var(--border-subtle); }
 .step-num {
-  font-family: var(--font-display); font-weight: 300;
-  font-size: 32px; color: rgba(34,212,245,0.2);
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 32px; color: rgba(230,86,72,0.2);
   line-height: 1; min-width: 48px; flex-shrink: 0;
   margin-top: -4px;
 }
 .step-body { flex: 1; }
 .step-title {
-  font-family: var(--font-display); font-weight: 500;
+  font-family: var(--font-display); font-weight: 700;
   font-size: 16px; color: var(--text-primary);
   margin-bottom: 6px;
 }
@@ -252,13 +260,13 @@ h3 {
   position: relative;
 }
 .case-study-tag {
-  font-family: var(--font-mono); font-size: 9px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 9px;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-bottom: 16px;
+  color: var(--accent); margin-bottom: 16px;
   display: block;
 }
 .case-study h3 {
-  font-family: var(--font-display); font-weight: 400;
+  font-family: var(--font-display); font-weight: 700;
   font-size: 22px; color: var(--text-primary);
   margin-bottom: 20px; line-height: 1.2;
 }
@@ -266,15 +274,15 @@ h3 {
 .case-study p + p { margin-top: 16px; }
 .case-study .read-more {
   display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 24px; font-family: var(--font-display); font-size: 13px;
+  margin-top: 24px; font-family: var(--font-ui); font-size: 13px;
   color: var(--text-tertiary); text-decoration: none;
   transition: color 0.2s;
 }
-.case-study .read-more:hover { color: var(--accent-cyan); }
+.case-study .read-more:hover { color: var(--accent); }
 
 .sub-section { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--border-subtle); }
 .sub-label {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--text-tertiary); margin-bottom: 8px;
 }
@@ -288,9 +296,9 @@ h3 {
   display: flex; flex-direction: column;
   align-items: center; text-align: center; gap: 32px;
 }
-.cta-band h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 300; max-width: 560px; }
+.cta-band h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 700; max-width: 560px; }
 .btn {
-  font-family: var(--font-display); font-weight:400; font-size:13px;
+  font-family: var(--font-ui); font-weight:400; font-size:13px;
   letter-spacing: 0.05em; text-transform: lowercase;
   color: var(--text-primary); padding: 13px 32px;
   border-radius: 2px; background: transparent;
@@ -298,7 +306,7 @@ h3 {
   cursor: pointer; transition: background 0.2s, border-color 0.2s;
   text-decoration: none; display:inline-flex; align-items:center;
 }
-.btn:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.btn:hover { background: var(--accent-dim); border-color: var(--border-bright); }
 
 /* ── BACKGROUND SECTION ───────────────────── */
 .bg-facts {
@@ -374,7 +382,7 @@ footer {
     display: none; position: fixed;
     top: 64px; left: 0; right: 0;
     height: calc(100vh - 64px);
-    background: #040c1b;
+    background: #0c0b0a;
     flex-direction: column; padding: 32px 24px 64px;
     gap: 0; z-index: 99;
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -426,9 +434,9 @@ footer {
   gap: 40px; flex-wrap: wrap;
 }
 .subscribe-pub-name {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-bottom: 8px;
+  color: var(--accent); margin-bottom: 8px;
 }
 .subscribe-tagline {
   font-size: 15px; color: var(--text-secondary);
@@ -445,18 +453,18 @@ footer {
 .subscribe-form input[type="email"]::placeholder { color: var(--text-tertiary); }
 .subscribe-form input[type="email"]:focus { border-color: var(--border-bright); }
 .subscribe-form button {
-  font-family: var(--font-display); font-weight: 400; font-size: 13px;
+  font-family: var(--font-ui); font-weight: 400; font-size: 13px;
   letter-spacing: 0.05em; color: var(--text-primary);
   background: transparent; border: 1px solid var(--border-interactive);
   padding: 11px 20px; border-radius: 0 2px 2px 0;
   cursor: pointer; white-space: nowrap;
   transition: background 0.2s, border-color 0.2s;
 }
-.subscribe-form button:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.subscribe-form button:hover { background: var(--accent-dim); border-color: var(--border-bright); }
 .subscribe-sent {
-  display: none; font-family: var(--font-mono); font-size: 11px;
+  display: none; font-family: var(--font-ui); font-weight: 600; font-size: 11px;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-top: 10px;
+  color: var(--accent); margin-top: 10px;
 }
 @media (max-width: 960px) {
   .subscribe-band { padding: 40px 32px; }
@@ -564,13 +572,13 @@ footer {
 <!-- HERO -->
 <section id="hero" data-screen-label="01 Hero">
   <svg class="constellation" viewBox="0 0 700 600" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+    <g stroke="#e65648" stroke-width="0.6" fill="none">
       <line x1="100" y1="80" x2="350" y2="180"/><line x1="350" y1="180" x2="520" y2="120"/>
       <line x1="520" y1="120" x2="660" y2="240"/><line x1="200" y1="320" x2="430" y2="270"/>
       <line x1="430" y1="270" x2="610" y2="350"/><line x1="140" y1="460" x2="380" y2="420"/>
       <line x1="380" y1="420" x2="560" y2="500"/>
     </g>
-    <g fill="#22d4f5" opacity="0.7">
+    <g fill="#e65648" opacity="0.7">
       <circle cx="100" cy="80" r="2"/><circle cx="350" cy="180" r="2.5"/>
       <circle cx="520" cy="120" r="2"/><circle cx="660" cy="240" r="1.5"/>
       <circle cx="200" cy="320" r="2"/><circle cx="430" cy="270" r="2.5"/>
@@ -801,7 +809,7 @@ function substackSubscribe(e, form) {
     btn.textContent = label;
     if (sent) {
       sent.textContent = err.message;
-      sent.style.color = "rgba(232,76,43,0.9)";
+      sent.style.color = "rgba(230,86,72,0.9)";
       sent.style.display = "block";
     }
   });

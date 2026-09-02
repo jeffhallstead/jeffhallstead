@@ -15,10 +15,10 @@
 <meta name="twitter:title" content="Contact · Jeff Hallstead">
 <meta name="twitter:description" content="Start a conversation with Jeff Hallstead. Forty-five minutes on your business: where you are, what's blocking you, and whether branded entertainment is the right move.">
 <meta name="twitter:image" content="https://jeffhallstead.com/og-preview.jpg">
-<template id="__bundler_thumbnail" data-bg-color="#040c1b">
+<template id="__bundler_thumbnail" data-bg-color="#0c0b0a">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#040c1b"/>
-    <rect width="600" height="800" fill="#071426"/>
+    <rect width="1200" height="800" fill="#0c0b0a"/>
+    <rect width="600" height="800" fill="#14120f"/>
     <rect x="80" y="180" width="300" height="40" rx="2" fill="rgba(255,255,255,0.10)"/>
     <rect x="80" y="240" width="240" height="14" rx="2" fill="rgba(255,255,255,0.06)"/>
     <rect x="80" y="262" width="260" height="14" rx="2" fill="rgba(255,255,255,0.05)"/>
@@ -26,11 +26,9 @@
     <rect x="680" y="220" width="440" height="40" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
     <rect x="680" y="280" width="440" height="40" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
     <rect x="680" y="340" width="440" height="80" rx="2" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
-    <rect x="680" y="440" width="160" height="40" rx="2" fill="none" stroke="rgba(100,200,255,0.45)" stroke-width="1.5"/>
+    <rect x="680" y="440" width="160" height="40" rx="2" fill="none" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
   </svg>
 </template>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Inter:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,21 +39,31 @@
 }
 
 :root {
-  --bg-deep:    #040c1b;
-  --bg-mid:     #071426;
-  --bg-card:    #0d1e3c;
-  --accent-cyan:     #22d4f5;
-  --accent-cyan-dim: rgba(34,212,245,0.12);
+  /* ── GROUND — warm near-black ─────────────── */
+  --bg-deep:    #0c0b0a;
+  --bg-mid:     #14120f;
+  --bg-card:    #1c1a17;
+
+  /* ── ACCENT — single red ──────────────────── */
+  --accent:     #e65648;
+  --accent-dim: rgba(230,86,72,0.12);
+
+  /* ── INK ──────────────────────────────────── */
   --text-primary:   #ffffff;
-  --text-secondary: rgba(255,255,255,0.65);
-  --text-tertiary:  rgba(255,255,255,0.35);
+  --text-secondary: rgba(255,255,255,0.70);
+  --text-tertiary:  rgba(255,255,255,0.52);
+
+  /* ── BORDERS — neutral ────────────────────── */
   --border-subtle:      rgba(255,255,255,0.10);
-  --border-interactive: rgba(100,200,255,0.45);
-  --border-bright:      rgba(34,212,245,0.70);
-  --font-wordmark: 'Rajdhani', sans-serif;
-  --font-display:  'Barlow', sans-serif;
-  --font-body:     'Inter', sans-serif;
-  --font-mono:     'DM Mono', monospace;
+  --border-interactive: rgba(255,255,255,0.35);
+  --border-bright:      rgba(255,255,255,0.55);
+  --divider:            rgba(255,255,255,0.14);
+
+  /* ── TYPE ─────────────────────────────────── */
+  --font-display:  Georgia, 'Times New Roman', serif;
+  --font-ui:       Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  --font-body:     Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  --font-wordmark: Georgia, 'Times New Roman', serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -63,7 +71,7 @@ body {
   background: var(--bg-deep);
   color: var(--text-secondary);
   font-family: var(--font-body);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -74,33 +82,33 @@ nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 80px; height: 64px;
-  background: rgba(4,12,27,0.88);
+  background: rgba(12,11,10,0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .wordmark {
   font-family: var(--font-wordmark);
-  font-weight: 700; font-size: 15px;
-  letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 700; font-size: 17px;
+  letter-spacing: -0.01em;
   color: var(--text-primary); text-decoration: none;
 }
 .nav-links { display:flex; gap:32px; }
 .nav-links a {
-  font-family: var(--font-display); font-size:13px;
+  font-family: var(--font-ui); font-size:13px;
   color: var(--text-secondary); text-decoration: none;
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a.active { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
 .nav-links a.nav-quiz {
-  color: var(--accent-cyan);
-  border: 1px solid rgba(34,212,245,0.35);
+  color: var(--accent);
+  border: 1px solid rgba(230,86,72,0.35);
   padding: 5px 14px; border-radius: 2px;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 .nav-links a.nav-quiz:hover {
-  background: var(--accent-cyan-dim);
+  background: var(--accent-dim);
   border-color: var(--border-bright);
   color: var(--text-primary);
 }
@@ -122,22 +130,22 @@ nav {
   position: relative; overflow: hidden;
 }
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-ui); font-weight: 600;
   font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-bottom: 16px;
+  color: var(--accent); margin-bottom: 16px;
 }
 hr.rule {
   width: 200px; height: 1px; background: rgba(255,255,255,0.15);
   border: none; margin: 0 0 32px;
 }
 h1 {
-  font-family: var(--font-display); font-weight: 300;
+  font-family: var(--font-display); font-weight: 700;
   font-size: clamp(32px, 3.5vw, 52px); line-height: 1.1;
   color: var(--text-primary); text-wrap: pretty;
-  margin-bottom: 24px; letter-spacing: -0.01em;
+  margin-bottom: 24px; letter-spacing: -0.02em;
 }
 .left-body {
-  font-size: 15px; line-height: 1.75; max-width: 400px;
+  font-size: 16px; line-height: 1.75; max-width: 400px;
   color: var(--text-secondary);
 }
 .left-detail {
@@ -149,7 +157,7 @@ h1 {
   display: flex; gap: 16px; align-items: flex-start;
 }
 .detail-label {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--text-tertiary); min-width: 80px; margin-top: 2px;
 }
@@ -168,7 +176,7 @@ h1 {
   display: flex; flex-direction: column; justify-content: center;
 }
 .form-heading {
-  font-family: var(--font-display); font-weight: 400;
+  font-family: var(--font-display); font-weight: 700;
   font-size: 22px; color: var(--text-primary);
   margin-bottom: 40px; letter-spacing: -0.01em;
 }
@@ -178,7 +186,7 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field label {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-tertiary);
 }
@@ -200,7 +208,7 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 .field input:focus,
 .field textarea:focus {
   border-color: var(--border-interactive);
-  background: rgba(34,212,245,0.04);
+  background: rgba(230,86,72,0.04);
 }
 .field textarea {
   resize: vertical; min-height: 120px; line-height: 1.6;
@@ -208,10 +216,10 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 
 /* Error states */
 .field.error input,
-.field.error textarea { border-color: rgba(232,76,43,0.6); }
+.field.error textarea { border-color: rgba(230,86,72,0.6); }
 .field-error {
-  font-size: 11px; color: rgba(232,76,43,0.8);
-  font-family: var(--font-mono); letter-spacing: 0.05em;
+  font-size: 11px; color: rgba(230,86,72,0.8);
+  font-family: var(--font-ui); font-weight: 600; letter-spacing: 0.05em;
   display: none;
 }
 .field.error .field-error { display: block; }
@@ -223,17 +231,17 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 .form-error {
   display: none; margin-top: 16px;
   padding: 14px 16px;
-  background: rgba(232,76,43,0.08);
-  border: 1px solid rgba(232,76,43,0.35);
+  background: rgba(230,86,72,0.08);
+  border: 1px solid rgba(230,86,72,0.35);
   border-radius: 2px;
   font-size: 13px; line-height: 1.6;
   color: rgba(255,255,255,0.8); max-width: 480px;
 }
 .form-error.visible { display: block; }
-.form-error a { color: var(--accent-cyan); text-decoration: none; border-bottom: 1px solid rgba(34,212,245,0.35); }
+.form-error a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(230,86,72,0.35); }
 
 .submit-btn {
-  font-family: var(--font-display); font-weight:400; font-size:13px;
+  font-family: var(--font-ui); font-weight:400; font-size:13px;
   letter-spacing: 0.05em; text-transform: lowercase;
   color: var(--text-primary); padding: 13px 32px;
   border-radius: 2px; background: transparent;
@@ -241,19 +249,19 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
   cursor: pointer; transition: background 0.2s, border-color 0.2s;
   align-self: flex-start; margin-top: 8px;
 }
-.submit-btn:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.submit-btn:hover { background: var(--accent-dim); border-color: var(--border-bright); }
 .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* Success state */
 .success-msg {
   display: none; flex-direction: column; gap: 16px;
-  padding: 32px; background: rgba(34,212,245,0.06);
-  border: 1px solid rgba(34,212,245,0.2); border-radius: 2px;
+  padding: 32px; background: rgba(230,86,72,0.06);
+  border: 1px solid rgba(230,86,72,0.2); border-radius: 2px;
   max-width: 480px;
 }
 .success-msg.visible { display: flex; }
 .success-title {
-  font-family: var(--font-display); font-weight:500;
+  font-family: var(--font-display); font-weight: 700;
   font-size: 18px; color: var(--text-primary);
 }
 .success-body { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
@@ -268,7 +276,7 @@ footer {
 }
 .footer-copy { font-size: 12px; color: var(--text-tertiary); }
 .footer-center {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--text-tertiary); text-align: center;
 }
@@ -317,7 +325,7 @@ footer {
     display: none; position: fixed;
     top: 64px; left: 0; right: 0;
     height: calc(100vh - 64px);
-    background: #040c1b;
+    background: #0c0b0a;
     flex-direction: column; padding: 32px 24px 64px;
     gap: 0; z-index: 99;
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -369,9 +377,9 @@ footer {
   gap: 40px; flex-wrap: wrap;
 }
 .subscribe-pub-name {
-  font-family: var(--font-mono); font-size: 10px;
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-bottom: 8px;
+  color: var(--accent); margin-bottom: 8px;
 }
 .subscribe-tagline {
   font-size: 15px; color: var(--text-secondary);
@@ -388,18 +396,18 @@ footer {
 .subscribe-form input[type="email"]::placeholder { color: var(--text-tertiary); }
 .subscribe-form input[type="email"]:focus { border-color: var(--border-bright); }
 .subscribe-form button {
-  font-family: var(--font-display); font-weight: 400; font-size: 13px;
+  font-family: var(--font-ui); font-weight: 400; font-size: 13px;
   letter-spacing: 0.05em; color: var(--text-primary);
   background: transparent; border: 1px solid var(--border-interactive);
   padding: 11px 20px; border-radius: 0 2px 2px 0;
   cursor: pointer; white-space: nowrap;
   transition: background 0.2s, border-color 0.2s;
 }
-.subscribe-form button:hover { background: var(--accent-cyan-dim); border-color: var(--border-bright); }
+.subscribe-form button:hover { background: var(--accent-dim); border-color: var(--border-bright); }
 .subscribe-sent {
-  display: none; font-family: var(--font-mono); font-size: 11px;
+  display: none; font-family: var(--font-ui); font-weight: 600; font-size: 11px;
   letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--accent-cyan); margin-top: 10px;
+  color: var(--accent); margin-top: 10px;
 }
 @media (max-width: 960px) {
   .subscribe-band { padding: 40px 32px; }
@@ -446,13 +454,13 @@ footer {
   <!-- LEFT COLUMN -->
   <div class="contact-left">
     <svg class="constellation" viewBox="0 0 500 800" preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <g stroke="#22d4f5" stroke-width="0.6" fill="none">
+      <g stroke="#e65648" stroke-width="0.6" fill="none">
         <line x1="200" y1="100" x2="380" y2="200"/><line x1="380" y1="200" x2="460" y2="140"/>
         <line x1="300" y1="350" x2="450" y2="280"/><line x1="250" y1="500" x2="420" y2="450"/>
         <line x1="420" y1="450" x2="490" y2="520"/><line x1="180" y1="650" x2="360" y2="600"/>
         <line x1="360" y1="600" x2="470" y2="680"/>
       </g>
-      <g fill="#22d4f5" opacity="0.8">
+      <g fill="#e65648" opacity="0.8">
         <circle cx="200" cy="100" r="2"/><circle cx="380" cy="200" r="2.5"/>
         <circle cx="460" cy="140" r="1.5"/><circle cx="300" cy="350" r="2"/>
         <circle cx="450" cy="280" r="2"/><circle cx="250" cy="500" r="2.5"/>
@@ -519,8 +527,8 @@ footer {
 
     <div class="success-msg" id="success-msg">
       <div class="success-title">Message received.</div>
-      <p class="success-body">Jeff will follow up within 48 hours to schedule the first call. In the meantime, feel free to <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank" style="color:#22d4f5;text-decoration:none;border-bottom:1px solid rgba(34,212,245,0.35);">connect on LinkedIn</a>.</p>
-      <a href="index.html" style="font-family:'Barlow',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;margin-top:8px;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">← Back to home</a>
+      <p class="success-body">Jeff will follow up within 48 hours to schedule the first call. In the meantime, feel free to <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank" style="color:#e65648;text-decoration:none;border-bottom:1px solid rgba(230,86,72,0.35);">connect on LinkedIn</a>.</p>
+      <a href="index.html" style="font-family: var(--font-ui);font-size:13px;color:rgba(255,255,255,0.4);text-decoration:none;margin-top:8px;transition:color 0.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">← Back to home</a>
     </div>
   </div>
 
@@ -594,7 +602,7 @@ function substackSubscribe(e, form) {
     btn.textContent = label;
     if (sent) {
       sent.textContent = err.message;
-      sent.style.color = "rgba(232,76,43,0.9)";
+      sent.style.color = "rgba(230,86,72,0.9)";
       sent.style.display = "block";
     }
   });

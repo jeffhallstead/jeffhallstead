@@ -12,6 +12,20 @@
 /tools/brand-content-readiness          https://blueprint.jeffhallstead.com/  301!
 /tools/brand-content-readiness.html     https://blueprint.jeffhallstead.com/  301!
 
+# The Founder's Ceiling Quiz and the SDG Alignment Advisor were sunset.
+# Both files are deleted, so no `!` flag is needed here — nothing would be
+# served from these paths anyway. Old links land on the case study that
+# tells the story of each tool rather than a dead end.
+# Must stay ahead of the /uploads/* catch-all below, which is matched in order.
+/tools/founders-ceiling-quiz          /case-study-founders-ceiling-quiz  301
+/tools/founders-ceiling-quiz.html     /case-study-founders-ceiling-quiz  301
+/uploads/founders-ceiling-quiz        /case-study-founders-ceiling-quiz  301
+/uploads/founders-ceiling-quiz.html   /case-study-founders-ceiling-quiz  301
+/tools/sdg-alignment-advisor          /case-study-sdg-advisor            301
+/tools/sdg-alignment-advisor.html     /case-study-sdg-advisor            301
+/uploads/sdg-alignment-advisor        /case-study-sdg-advisor            301
+/uploads/sdg-alignment-advisor.html   /case-study-sdg-advisor            301
+
 /test  https://blueprint.jeffhallstead.com/  301
 
 /uploads/*  /tools/:splat  301

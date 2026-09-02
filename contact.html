@@ -48,6 +48,10 @@
   --accent:     #e65648;
   --accent-dim: rgba(230,86,72,0.12);
 
+  /* ── ERROR — amber, deliberately not the accent red ── */
+  --error:     #f0a23c;
+  --error-dim: rgba(240,162,60,0.10);
+
   /* ── INK ──────────────────────────────────── */
   --text-primary:   #ffffff;
   --text-secondary: rgba(255,255,255,0.70);
@@ -103,7 +107,7 @@ nav {
 .nav-links a.active { color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px; }
 .nav-links a.nav-quiz {
   color: var(--accent);
-  border: 1px solid rgba(230,86,72,0.35);
+  border: 1px solid rgba(240,162,60,0.35);
   padding: 5px 14px; border-radius: 2px;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
@@ -151,7 +155,7 @@ nav {
   white-space: nowrap;
 }
 .nav-dropdown-menu a:last-child { border-bottom: none; }
-.nav-dropdown-menu a:hover { background: rgba(230,86,72,0.08); color: #ffffff; }
+.nav-dropdown-menu a:hover { background: var(--error-dim); color: #ffffff; }
 .nav-dropdown-menu a.active { color: #e65648; }
 
 
@@ -258,9 +262,9 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 
 /* Error states */
 .field.error input,
-.field.error textarea { border-color: rgba(230,86,72,0.6); }
+.field.error textarea { border-color: rgba(240,162,60,0.6); }
 .field-error {
-  font-size: 11px; color: rgba(230,86,72,0.8);
+  font-size: 11px; color: var(--error);
   font-family: var(--font-ui); font-weight: 600; letter-spacing: 0.05em;
   display: none;
 }
@@ -273,14 +277,14 @@ form { display: flex; flex-direction: column; gap: 24px; max-width: 480px; }
 .form-error {
   display: none; margin-top: 16px;
   padding: 14px 16px;
-  background: rgba(230,86,72,0.08);
-  border: 1px solid rgba(230,86,72,0.35);
+  background: var(--error-dim);
+  border: 1px solid rgba(240,162,60,0.35);
   border-radius: 2px;
   font-size: 13px; line-height: 1.6;
   color: rgba(255,255,255,0.8); max-width: 480px;
 }
 .form-error.visible { display: block; }
-.form-error a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(230,86,72,0.35); }
+.form-error a { color: var(--error); text-decoration: none; border-bottom: 1px solid rgba(240,162,60,0.35); }
 
 .submit-btn {
   font-family: var(--font-ui); font-weight:400; font-size:13px;
@@ -635,6 +639,7 @@ function substackSubscribe(e, form) {
       sent.textContent = data.status === "active"
         ? "You're subscribed \u2192"
         : "Check your inbox to confirm \u2192";
+      sent.style.color = "";
       sent.style.display = "block";
     }
     form.style.display = "none";
@@ -644,7 +649,7 @@ function substackSubscribe(e, form) {
     btn.textContent = label;
     if (sent) {
       sent.textContent = err.message;
-      sent.style.color = "rgba(230,86,72,0.9)";
+      sent.style.color = "var(--error)";
       sent.style.display = "block";
     }
   });

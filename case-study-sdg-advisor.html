@@ -27,6 +27,10 @@
   --accent:     #e65648;
   --accent-dim: rgba(230,86,72,0.12);
 
+  /* ── ERROR — amber, deliberately not the accent red ── */
+  --error:     #f0a23c;
+  --error-dim: rgba(240,162,60,0.10);
+
   /* ── INK ──────────────────────────────────── */
   --text-primary:   #ffffff;
   --text-secondary: rgba(255,255,255,0.70);
@@ -509,6 +513,7 @@ function substackSubscribe(e, form) {
       sent.textContent = data.status === "active"
         ? "You're subscribed \u2192"
         : "Check your inbox to confirm \u2192";
+      sent.style.color = "";
       sent.style.display = "block";
     }
     form.style.display = "none";
@@ -518,7 +523,7 @@ function substackSubscribe(e, form) {
     btn.textContent = label;
     if (sent) {
       sent.textContent = err.message;
-      sent.style.color = "rgba(230,86,72,0.9)";
+      sent.style.color = "var(--error)";
       sent.style.display = "block";
     }
   });

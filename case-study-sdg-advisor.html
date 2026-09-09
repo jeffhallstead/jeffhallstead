@@ -429,7 +429,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
       <p class="subscribe-tagline">Weekly branded entertainment news, platform moves, and content strategy — for brand managers ready to move beyond advertising.</p>
     </div>
     <div>
-      <form class="subscribe-form" onsubmit="substackSubscribe(event,this)">
+      <form class="subscribe-form">
         <input type="email" name="email" placeholder="your@email.com" required>
         <button type="submit">Subscribe →</button>
       </form>
@@ -490,46 +490,6 @@ const obs = new IntersectionObserver(function(entries) {
 }, { threshold: 0.08 });
 fadeEls.forEach(function(el) { obs.observe(el); });
 
-function substackSubscribe(e, form) {
-  e.preventDefault();
-  var input = form.querySelector("input[type=email]");
-  var btn   = form.querySelector("button");
-  var sent  = form.nextElementSibling;
-  var label = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = "subscribing...";
-  fetch("/.netlify/functions/subscribe", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email: input.value.trim(), page: location.pathname })
-  })
-  .then(function (res) {
-    return res.json().catch(function () { return {}; }).then(function (data) {
-      if (!res.ok) throw new Error(data.error || "Something went wrong. Please try again.");
-      return data;
-    });
-  })
-  .then(function (data) {
-    if (sent) {
-      sent.textContent = data.status === "active"
-        ? "You're subscribed \u2192"
-        : "Check your inbox to confirm \u2192";
-      sent.style.color = "";
-      sent.style.display = "block";
-    }
-    form.style.display = "none";
-  })
-  .catch(function (err) {
-    btn.disabled = false;
-    btn.textContent = label;
-    if (sent) {
-      sent.textContent = err.message;
-      sent.style.color = "var(--error)";
-      sent.style.display = "block";
-    }
-  });
-}
-
 // Nav dropdown
 function setDropdownOpen(dd, open) {
   dd.classList.toggle('open', open);
@@ -578,5 +538,6 @@ if (hamburger) {
   });
 }
 </script>
+<script src="/assets/subscribe.js" defer></script>
 </body>
 </html>

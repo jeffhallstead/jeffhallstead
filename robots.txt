@@ -1,3 +1,16 @@
+# jeffhallstead.com
+
+# OpenAI crawlers, explicitly allowed
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Everything else
 User-agent: *
 Allow: /
 

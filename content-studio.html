@@ -380,6 +380,35 @@ footer {
 .footer-more a:hover { color: var(--text-secondary); }
 
 /* ── FADE-UP ──────────────────────────────── */
+/* ── WATCH (video facade) ─────────────────── */
+.watch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; max-width: 1040px; }
+.watch-link {
+  display: inline-block; margin-top: 24px; font-family: var(--font-ui); font-size: 14px;
+  color: var(--text-tertiary); text-decoration: none; transition: color 0.2s;
+}
+.watch-link:hover { color: var(--accent); }
+.yt { position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
+.yt-link, .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.2s; }
+.yt-link:hover img { opacity: 0.85; }
+.yt-play {
+  position: absolute; left: 50%; top: 50%; width: 64px; height: 64px;
+  transform: translate(-50%, -50%); border-radius: 50%;
+  background: rgba(12,11,10,0.72); border: 1px solid var(--border-bright); transition: background 0.2s;
+}
+.yt-play::after {
+  content: ""; position: absolute; left: 26px; top: 21px;
+  border-style: solid; border-width: 11px 0 11px 17px;
+  border-color: transparent transparent transparent #fff;
+}
+.yt-link:hover .yt-play, .yt-link:focus-visible .yt-play { background: var(--accent); }
+.yt-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.yt-time {
+  position: absolute; right: 8px; bottom: 8px; padding: 2px 6px;
+  font-family: var(--font-ui); font-size: 11px; color: #fff; background: rgba(0,0,0,0.75); border-radius: 2px;
+}
+@media (max-width: 960px) { .watch-grid { grid-template-columns: 1fr; gap: 32px; } }
+
 .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease, transform 0.65s ease; }
 .fade-up.visible { opacity:1; transform:translateY(0); }
 
@@ -540,6 +569,7 @@ footer {
     <a href="/content-studio" class="active">Services</a>
     <a href="/productions">Productions</a>
     <a href="/newsletter">Newsletter</a>
+    <a href="/show">Show</a>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
@@ -644,6 +674,20 @@ footer {
 <!-- WORKS ALONGSIDE AGENCIES -->
 <section id="agencies-note" data-screen-label="04b Works Alongside">
   <p class="section-body fade-up" style="max-width:640px;margin:0 auto;text-align:center;font-family:var(--font-display);font-style:italic;font-weight:400;font-size:18px;color:var(--text-primary);">Jeff works alongside your existing agencies and vendors rather than replacing them.</p>
+</section>
+
+<!-- WATCH: AUDIENCE BLUEPRINT -->
+<section id="watch" class="alt" data-screen-label="04c Watch">
+  <div class="watch-grid">
+    <div>
+      <div class="eyebrow fade-up">Watch — Previously On</div>
+      <hr class="rule fade-up">
+      <h2 class="fade-up">What an in-house media engine looks like once it runs.</h2>
+      <p class="section-body fade-up" style="margin-bottom:0">The finale of the Audience Blueprint series: the roles, editorial rhythm, flagship content, and measures that make a brand’s audience compound instead of reset every campaign.</p>
+      <a href="/show#audience-blueprint" class="watch-link fade-up">Watch the full four-part series →</a>
+    </div>
+    <div class="yt fade-up" style="transition-delay:0.1s" data-id="CAKzU8DJN4E"><a class="yt-link" href="https://www.youtube.com/watch?v=CAKzU8DJN4E" aria-label="Play: The In-House Media Engine: Build an Audience Asset That Compounds"><img src="https://i.ytimg.com/vi/CAKzU8DJN4E/hq720.jpg" alt="" loading="lazy" decoding="async"><span class="yt-play" aria-hidden="true"></span><span class="yt-time">7:21</span></a></div>
+  </div>
 </section>
 
 <!-- PROOF: POUR LES FEMMES -->
@@ -752,6 +796,7 @@ footer {
   </div>
   <div class="footer-more" role="navigation" aria-label="More from Jeff Hallstead">
     <span class="footer-more-label">More</span>
+    <a href="/show">Previously On (Show)</a>
     <a href="/microdramas">Branded Microdramas</a>
     <a href="/fractional-cco-vs-agency">Fractional CCO vs. Agency</a>
     <a href="/case-study-plf">Pour Les Femmes</a>
@@ -817,6 +862,20 @@ if (hamburger) {
     });
   });
 }
+// Video facade: swap the thumbnail for the player on click
+document.querySelectorAll('.yt-link').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var box = a.parentElement;
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + box.dataset.id + '?autoplay=1&rel=0';
+    f.title = a.getAttribute('aria-label').replace(/^Play: /, '');
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    box.replaceChild(f, a);
+    f.focus();
+  });
+});
 </script>
 <script src="/assets/subscribe.js" defer></script>
 </body>

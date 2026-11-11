@@ -29,3 +29,13 @@
 /test  https://blueprint.jeffhallstead.com/  301
 
 /uploads/*  /tools/:splat  301
+
+# Legacy Ghost blog URLs (pre-2026 site) that Search Console still crawls.
+# Only paths with a genuine equivalent page are redirected; the old topical
+# articles have no counterpart and are left to 404 so Google drops them
+# (redirecting them to the homepage would be flagged as soft 404s).
+/how-i-work-with-new-clients/*        /content-studio   301
+/how-i-work-with-new-clients          /content-studio   301
+/case-study-sustainable-exchange      /case-study-sae   301
+/conta                                /contact          301
+/page/*                               /                 301

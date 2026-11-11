@@ -488,6 +488,16 @@ footer {
   text-decoration: none; transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--text-secondary); }
+.footer-more {
+  flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);
+}
+.footer-more-label {
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.footer-more a { font-size: 12px; color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+.footer-more a:hover { color: var(--text-secondary); }
 
 /* ── FADE-UP ──────────────────────────────── */
 .fade-up {
@@ -797,21 +807,21 @@ footer {
 
 <!-- ── NAV ────────────────────────────────── -->
 <nav>
-  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <a href="/" class="wordmark">Jeff Hallstead</a>
   <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="about.html">About Jeff</a>
-    <a href="content-studio.html">Services</a>
-    <a href="productions.html">Productions</a>
-    <a href="newsletter.html">Newsletter</a>
+    <a href="/" class="active">Home</a>
+    <a href="/about">About Jeff</a>
+    <a href="/content-studio">Services</a>
+    <a href="/productions">Productions</a>
+    <a href="/newsletter">Newsletter</a>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
-      <a href="case-study-plf.html">Pour Les Femmes</a>
-      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="/case-study-plf">Pour Les Femmes</a>
+      <a href="/case-study-sae">SustainAble Exchange</a>
     </div>
   </div>
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -846,7 +856,7 @@ footer {
     <h1 class="fade-up" style="transition-delay:0.1s">Your Brand Doesn't Need to Run More Ads.<br><em style="font-style:italic;font-weight:400;color:rgba(255,255,255,0.75)">It Needs an Audience It Owns.</em></h1>
     <p class="hero-subhead fade-up" style="transition-delay:0.2s">Every quarter, you pay more to reach the same people — and it disappears the moment the campaign ends. Jeff helps brand and marketing leaders connect what people watch with what they buy, including creating content strategies and platforms so that they own the audience.</p>
     <div class="btn-group fade-up" style="transition-delay:0.3s">
-      <a href="contact.html" class="btn">start a conversation</a>
+      <a href="/contact" class="btn">start a conversation</a>
       <a href="#results" class="btn-ghost btn">see the results →</a>
     </div>
   </div>
@@ -930,7 +940,7 @@ footer {
           <span class="result-stat-label">Visits from one<br>brand campaign</span>
         </div>
       </div>
-      <a href="case-study-plf.html" class="text-link">Read the case study →</a>
+      <a href="/case-study-plf" class="text-link">Read the case study →</a>
     </div>
   </div>
 
@@ -1004,8 +1014,8 @@ footer {
 <section id="mid-cta" data-screen-label="06 Mid CTA">
   <div class="cta-question fade-up">Ready to own your audience?</div>
   <div class="btn-group fade-up" style="transition-delay:0.1s; justify-content:center;">
-    <a href="contact.html" class="btn">start a conversation</a>
-    <a href="content-studio.html" class="btn btn-ghost">need a fractional CCO? see services →</a>
+    <a href="/contact" class="btn">start a conversation</a>
+    <a href="/content-studio" class="btn btn-ghost">need a fractional CCO? see services →</a>
   </div>
 </section>
 
@@ -1034,8 +1044,8 @@ footer {
   <h2 class="fade-up" style="text-align:center;max-width:680px;margin:0 auto">Start Building an Audience You Own.</h2>
   <p class="fade-up" style="margin:28px auto 0;text-align:center;max-width:520px">If you're a brand or marketing leader who knows paid media alone won't get you there, one 45-minute conversation will tell you whether branded entertainment is the right move — and what it would take to build it.</p>
   <div class="btn-group fade-up" style="justify-content:center;margin-top:52px;transition-delay:0.15s">
-    <a href="contact.html" class="btn">start a conversation</a>
-    <a href="case-study-plf.html" class="btn-ghost btn">read a case study →</a>
+    <a href="/contact" class="btn">start a conversation</a>
+    <a href="/case-study-plf" class="btn-ghost btn">read a case study →</a>
   </div>
 </section>
 
@@ -1064,8 +1074,17 @@ footer {
   <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <span class="footer-center">Content strategy and fractional content leadership for brands building audiences they own.</span>
   <div class="footer-links">
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank" rel="noopener">LinkedIn <span class="sr-only">(opens in a new tab)</span></a>
+  </div>
+  <div class="footer-more" role="navigation" aria-label="More from Jeff Hallstead">
+    <span class="footer-more-label">More</span>
+    <a href="/microdramas">Branded Microdramas</a>
+    <a href="/fractional-cco-vs-agency">Fractional CCO vs. Agency</a>
+    <a href="/case-study-plf">Pour Les Femmes</a>
+    <a href="/case-study-sae">SustainAble Exchange</a>
+    <a href="/case-study-founders-ceiling-quiz">Founder&rsquo;s Ceiling Quiz</a>
+    <a href="/case-study-sdg-advisor">SDG Alignment Advisor</a>
   </div>
 </footer>
 

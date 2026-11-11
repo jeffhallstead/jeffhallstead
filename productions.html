@@ -158,6 +158,16 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
 .footer-links { display:flex; gap:24px; }
 .footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
 .footer-links a:hover { color:rgba(255,255,255,0.5); }
+.footer-more {
+  flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);
+}
+.footer-more-label {
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.footer-more a { font-size: 12px; color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+.footer-more a:hover { color: var(--text-secondary); }
 
 /* FADE */
 .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease,transform 0.65s ease; }
@@ -219,21 +229,21 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
 <body>
 
 <nav>
-  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <a href="/" class="wordmark">Jeff Hallstead</a>
   <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About Jeff</a>
-    <a href="content-studio.html">Services</a>
-    <a href="productions.html" class="active">Productions</a>
-    <a href="newsletter.html">Newsletter</a>
+    <a href="/">Home</a>
+    <a href="/about">About Jeff</a>
+    <a href="/content-studio">Services</a>
+    <a href="/productions" class="active">Productions</a>
+    <a href="/newsletter">Newsletter</a>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
-      <a href="case-study-plf.html">Pour Les Femmes</a>
-      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="/case-study-plf">Pour Les Femmes</a>
+      <a href="/case-study-sae">SustainAble Exchange</a>
     </div>
   </div>
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -263,7 +273,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   <h1 class="fade-up" style="transition-delay:0.1s">The Content Doesn't Make Itself.<br><em>Neither Does the Greenlight.</em></h1>
   <p class="hero-sub fade-up" style="transition-delay:0.2s">Jeff Hallstead works as an executive producer across non-fiction, documentary, branded series, podcasts, animation, and emerging short-form formats — bringing creative development, production partnerships, and distribution strategy together in one place. From concept to platform, from financing to premiere.</p>
   <div class="hero-actions fade-up" style="transition-delay:0.3s">
-    <a href="contact.html" class="btn">discuss a project</a>
+    <a href="/contact" class="btn">discuss a project</a>
   </div>
 </section>
 
@@ -302,7 +312,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
             <div class="format-num">05</div>
             <h3>Microdramas</h3>
             <p>Short-form serialized narrative developed for brand clients and emerging streaming platforms. Co-developed with <a href="https://www.brettstaneart.com/" target="_blank" style="color:var(--accent);text-decoration:none">Brett Staneart</a>, an Emmy and Writers Guild Award-winning writer and executive producer whose credits include <em>Guiding Light</em>, <em>The Young and the Restless</em>, and 13 seasons of <em>The Real Housewives of Beverly Hills</em>.</p>
-            <a href="microdramas.html" class="format-link">Learn more about branded microdramas →</a>
+            <a href="/microdramas" class="format-link">Learn more about branded microdramas →</a>
           </div>
         </div>
       </div>
@@ -334,7 +344,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
         <p class="body-text">For brands ready to move beyond advertising, the Content Studio is the full-stack engagement model — original series development, multi-platform distribution, and the audience-building infrastructure that turns content into a compounding asset.</p>
         <div class="studio-band">
           <p>Built on the Pour Les Femmes playbook: <em>Pillow Talk</em>, an original series hosted by Robin Wright featuring Chelsea Handler, Jamie Lee Curtis, and Amber Valletta, distributed across YouTube, Roku, Spotify, Apple Podcasts, iHeart Radio, and Vimeo.</p>
-          <a href="content-studio.html" class="studio-link">Explore the Content Studio model →</a>
+          <a href="/content-studio" class="studio-link">Explore the Content Studio model →</a>
         </div>
       </div>
     </div>
@@ -370,7 +380,7 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
   <div class="eyebrow">Let's Build It</div>
   <h2>Bring Me Your Greenlight Problem.</h2>
   <p class="cta-sub">Whether you have a concept that needs a production partner, a brand that needs an original series, or a project that needs someone who can hold creative and commercial in the same hand — this is the conversation to start.</p>
-  <a href="contact.html" class="btn">discuss a project →</a>
+  <a href="/contact" class="btn">discuss a project →</a>
 </div>
 
 <!-- SUBSCRIBE BAND -->
@@ -394,9 +404,18 @@ footer { background:var(--bg-deep); border-top:1px solid var(--border-subtle); p
 <footer>
   <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <div class="footer-links">
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://www.brandedentertainmentbrief.com" target="_blank">Newsletter</a>
     <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-more" role="navigation" aria-label="More from Jeff Hallstead">
+    <span class="footer-more-label">More</span>
+    <a href="/microdramas">Branded Microdramas</a>
+    <a href="/fractional-cco-vs-agency">Fractional CCO vs. Agency</a>
+    <a href="/case-study-plf">Pour Les Femmes</a>
+    <a href="/case-study-sae">SustainAble Exchange</a>
+    <a href="/case-study-founders-ceiling-quiz">Founder&rsquo;s Ceiling Quiz</a>
+    <a href="/case-study-sdg-advisor">SDG Alignment Advisor</a>
   </div>
 </footer>
 

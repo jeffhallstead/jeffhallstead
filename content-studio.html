@@ -368,6 +368,16 @@ footer {
 .footer-links { display:flex; gap:24px; }
 .footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
 .footer-links a:hover { color:rgba(255,255,255,0.5); }
+.footer-more {
+  flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);
+}
+.footer-more-label {
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.footer-more a { font-size: 12px; color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+.footer-more a:hover { color: var(--text-secondary); }
 
 /* ── FADE-UP ──────────────────────────────── */
 .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease, transform 0.65s ease; }
@@ -523,21 +533,21 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <a href="/" class="wordmark">Jeff Hallstead</a>
   <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About Jeff</a>
-    <a href="content-studio.html" class="active">Services</a>
-    <a href="productions.html">Productions</a>
-    <a href="newsletter.html">Newsletter</a>
+    <a href="/">Home</a>
+    <a href="/about">About Jeff</a>
+    <a href="/content-studio" class="active">Services</a>
+    <a href="/productions">Productions</a>
+    <a href="/newsletter">Newsletter</a>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
-      <a href="case-study-plf.html">Pour Les Femmes</a>
-      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="/case-study-plf">Pour Les Femmes</a>
+      <a href="/case-study-sae">SustainAble Exchange</a>
     </div>
   </div>
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -569,7 +579,7 @@ footer {
   <h1 class="fade-up" style="transition-delay:0.1s">You don't need an agency.<br><em>You need someone who has built this before.</em></h1>
   <p class="hero-sub fade-up" style="transition-delay:0.2s">Jeff helps brand and marketing leaders operate like media companies: the content strategy, the original programming, and the distribution that turn an audience into an asset the brand owns. Built for brand teams carrying a content mandate without a senior content leader.</p>
   <div class="fade-up" style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;transition-delay:0.3s">
-    <a href="contact.html" class="btn">start a conversation</a>
+    <a href="/contact" class="btn">start a conversation</a>
     <a href="#flywheel" class="btn">see the process ↓</a>
   </div>
 </section>
@@ -597,7 +607,7 @@ footer {
       <div class="proof-label">Distribution platforms<br>launched</div>
     </div>
   </div>
-  <p class="section-body fade-up" style="margin-top:32px;margin-bottom:0;transition-delay:0.2s">Results from the Pour Les Femmes engagement. <a href="case-study-plf.html" style="color:var(--accent);text-decoration:none;">Read the full case study →</a></p>
+  <p class="section-body fade-up" style="margin-top:32px;margin-bottom:0;transition-delay:0.2s">Results from the Pour Les Femmes engagement. <a href="/case-study-plf" style="color:var(--accent);text-decoration:none;">Read the full case study →</a></p>
 </section>
 
 <!-- THE FLYWHEEL -->
@@ -689,7 +699,7 @@ footer {
       <p style="margin-top:14px">Jeff builds the measurement framework so you can prove the program is working before the next budget cycle. That framework is the part most content programs never get, and it is what turns a season of output into a case for the next budget.</p>
       <p style="margin-top:14px">Working sessions with your team through the ninety days, plus the stakeholder session that gets the plan approved.</p>
       <p style="margin-top:14px;color:var(--text-tertiary);font-size:12px">Best for teams with a content budget approved — typically $250,000 a year or more — and no clear plan for spending it.</p>
-      <a href="contact.html" class="btn" style="margin-top:20px">start a conversation →</a>
+      <a href="/contact" class="btn" style="margin-top:20px">start a conversation →</a>
     </div>
     <div class="model">
       <div class="model-tag">Ongoing</div>
@@ -701,7 +711,7 @@ footer {
       <p style="margin-top:14px">When a project is greenlit, executive producing is scoped separately, because production oversight runs well past what a monthly retainer holds.</p>
       <p style="margin-top:14px">Most engagements run six to twelve months.</p>
       <p style="margin-top:14px;color:var(--text-tertiary);font-size:12px">Best for teams of two to five spending $250,000 a year or more on content with no senior content leader running it.</p>
-      <a href="contact.html" class="btn" style="margin-top:20px">start a conversation →</a>
+      <a href="/contact" class="btn" style="margin-top:20px">start a conversation →</a>
     </div>
   </div>
 </section>
@@ -712,7 +722,7 @@ footer {
     <h2>Let's build your entertainment brand.</h2>
     <p>jeffhallstead.com</p>
   </div>
-  <a href="contact.html" class="btn fade-up" style="transition-delay:0.1s">start a conversation</a>
+  <a href="/contact" class="btn fade-up" style="transition-delay:0.1s">start a conversation</a>
 </div>
 
 <!-- FOOTER -->
@@ -737,8 +747,17 @@ footer {
 <footer>
   <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <div class="footer-links">
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-more" role="navigation" aria-label="More from Jeff Hallstead">
+    <span class="footer-more-label">More</span>
+    <a href="/microdramas">Branded Microdramas</a>
+    <a href="/fractional-cco-vs-agency">Fractional CCO vs. Agency</a>
+    <a href="/case-study-plf">Pour Les Femmes</a>
+    <a href="/case-study-sae">SustainAble Exchange</a>
+    <a href="/case-study-founders-ceiling-quiz">Founder&rsquo;s Ceiling Quiz</a>
+    <a href="/case-study-sdg-advisor">SDG Alignment Advisor</a>
   </div>
 </footer>
 

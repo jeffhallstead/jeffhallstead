@@ -336,6 +336,16 @@ footer {
 .footer-links { display:flex; gap:24px; }
 .footer-links a { font-size:12px; color:var(--text-tertiary); text-decoration:none; transition:color 0.2s; }
 .footer-links a:hover { color:rgba(255,255,255,0.5); }
+.footer-more {
+  flex-basis: 100%; display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle);
+}
+.footer-more-label {
+  font-family: var(--font-ui); font-weight: 600; font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.footer-more a { font-size: 12px; color: var(--text-tertiary); text-decoration: none; transition: color 0.2s; }
+.footer-more a:hover { color: var(--text-secondary); }
 
 /* ── FADE-UP ──────────────────────────────── */
 .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.65s ease, transform 0.65s ease; }
@@ -552,21 +562,21 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="wordmark">Jeff Hallstead</a>
+  <a href="/" class="wordmark">Jeff Hallstead</a>
   <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html" class="active">About Jeff</a>
-    <a href="content-studio.html">Services</a>
-    <a href="productions.html">Productions</a>
-    <a href="newsletter.html">Newsletter</a>
+    <a href="/">Home</a>
+    <a href="/about" class="active">About Jeff</a>
+    <a href="/content-studio">Services</a>
+    <a href="/productions">Productions</a>
+    <a href="/newsletter">Newsletter</a>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Case Studies <span class="nav-dropdown-chevron" aria-hidden="true"></span></button>
     <div class="nav-dropdown-menu">
-      <a href="case-study-plf.html">Pour Les Femmes</a>
-      <a href="case-study-sae.html">SustainAble Exchange</a>
+      <a href="/case-study-plf">Pour Les Femmes</a>
+      <a href="/case-study-sae">SustainAble Exchange</a>
     </div>
   </div>
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://blueprint.jeffhallstead.com/" class="nav-quiz">Take the Publisher Test</a>
   </div>
   <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -619,7 +629,7 @@ footer {
         <p class="body-text">Most brand leaders can already see it. Attention is moving toward content people choose. The brands winning that attention are operating like media companies.</p>
         <p class="body-text" style="margin-top:20px">Jeff Hallstead helps brand and marketing leaders make that shift: the content strategy, the original programming, and the distribution that turn an audience into an asset the brand owns. Usually over ninety days, working alongside the team that will run it.</p>
         <div style="margin-top:32px">
-          <a href="contact.html" class="btn">start a conversation</a>
+          <a href="/contact" class="btn">start a conversation</a>
         </div>
       </div>
     </div>
@@ -698,7 +708,7 @@ footer {
             <p class="body-text" style="font-size:14px">Jeff created and co-founded the Pour Les Femmes Foundation, a 501(c)(3) public charity. He led the PR launch during UNGA week in New York, including a private event at Tavern on the Green sponsored by Salesforce and a panel at the Clinton Global Initiative with welcome remarks by Secretary Clinton. In 2023, Jeff worked with co-founder Robin Wright and Jack Dorsey's #startsmall team on a $250,000 grant to support women and children in conflict regions of Eastern Congo.</p>
           </div>
 
-          <a href="case-study-plf.html" class="read-more">Read the full Pour Les Femmes case study →</a>
+          <a href="/case-study-plf" class="read-more">Read the full Pour Les Femmes case study →</a>
         </div>
 
         <!-- Current Advisory -->
@@ -706,7 +716,7 @@ footer {
           <span class="case-study-tag">Current · Executive Producer &amp; Strategic Advisor</span>
           <h3>Bombo Sports &amp; Entertainment</h3>
           <p>Active development across documentary, branded series, animation, and podcast. Distribution partners include Netflix, HBO Max, and Amazon.</p>
-          <a href="productions.html" class="read-more">See Productions →</a>
+          <a href="/productions" class="read-more">See Productions →</a>
         </div>
 
 
@@ -744,7 +754,7 @@ footer {
 <!-- CTA BAND -->
 <div class="cta-band fade-up" data-screen-label="06 CTA">
   <h2>Ready to own your audience?</h2>
-  <a href="contact.html" class="btn">start a conversation</a>
+  <a href="/contact" class="btn">start a conversation</a>
 </div>
 
 <!-- FOOTER -->
@@ -769,8 +779,17 @@ footer {
 <footer>
   <span class="footer-copy">&copy; 2026 Jeff Hallstead · Momentive Ventures LLC</span>
   <div class="footer-links">
-    <a href="contact.html">Contact</a>
+    <a href="/contact">Contact</a>
     <a href="https://www.linkedin.com/in/jeffhallstead/" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-more" role="navigation" aria-label="More from Jeff Hallstead">
+    <span class="footer-more-label">More</span>
+    <a href="/microdramas">Branded Microdramas</a>
+    <a href="/fractional-cco-vs-agency">Fractional CCO vs. Agency</a>
+    <a href="/case-study-plf">Pour Les Femmes</a>
+    <a href="/case-study-sae">SustainAble Exchange</a>
+    <a href="/case-study-founders-ceiling-quiz">Founder&rsquo;s Ceiling Quiz</a>
+    <a href="/case-study-sdg-advisor">SDG Alignment Advisor</a>
   </div>
 </footer>
 

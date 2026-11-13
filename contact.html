@@ -679,6 +679,11 @@ form.addEventListener('submit', async e => {
       body: new URLSearchParams(new FormData(form)).toString()
     });
     if (!res.ok) throw new Error('HTTP ' + res.status);
+    // GA4 lead event (gtag is injected site-wide by Netlify). Sent only after
+    // Netlify accepts the POST, so failed submits never count as leads.
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', { form_name: 'contact', method: 'contact_form' });
+    }
     form.style.display = 'none';
     successMsg.classList.add('visible');
     successMsg.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -749,5 +754,6 @@ if (hamburger) {
 }
 </script>
 <script src="/assets/subscribe.js" defer></script>
+<script src="/assets/track.js" defer></script>
 </body>
 </html>

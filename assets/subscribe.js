@@ -209,6 +209,11 @@
       .then(function (token) { return post(rec, token); })
       .then(function (data) {
         rec.busy = false;
+        /* GA4 conversion event (gtag is injected site-wide by Netlify). Sent
+         * only after the subscribe function accepted the address. */
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'sign_up', { method: 'newsletter', form_location: location.pathname });
+        }
         show(rec, data.status === 'active'
           ? "You're subscribed →"
           : 'Check your inbox to confirm →', false);
